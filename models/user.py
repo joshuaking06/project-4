@@ -42,6 +42,7 @@ class User(db.Model, BaseModel):
 
 
 class UserSchema(ma.ModelSchema, BaseSchema):
+    # stories = fields.Nested()
 
     @validates_schema
     # pylint: disable=R0201
