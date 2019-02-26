@@ -1,6 +1,7 @@
 from app import db, app
 from models.user import User, UserSchema
 from models.story import Story
+from models.comment import Comment
 
 user_schema = UserSchema()
 
@@ -17,6 +18,19 @@ with app.app_context():
 
     if errors:
         raise Exception(errors)
+
+
+    josh, errors = user_schema.load({
+        'username': 'joshking',
+        'email': 'joshking@gmail.com',
+        'password': 'chelseatillidie',
+        'password_confirmation': 'chelseatillidie'
+    })
+
+    if errors:
+        raise Exception(errors)
+
+
 
     db.session.add(alessandro)
 
