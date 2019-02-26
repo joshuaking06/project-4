@@ -15,16 +15,32 @@ reddit = praw.Reddit(client_id=os.getenv('REDDIT_PERSONAL_USE_SCRIPT'), \
 
 subreddit = reddit.subreddit('shortstories')
 
-topics_dict = {}
+
 
 @api.route('/reddit')
-def stories_index():
-    for submission in subreddit.top(limit=1):
-        topics_dict["title"] = submission.title
-        topics_dict["score"] = submission.score
-        topics_dict["id"] = submission.id
-        topics_dict["url"] = submission.url
-        topics_dict["comms_num"] = submission.num_comments
-        topics_dict["created"] = submission.created
-        topics_dict["body"] = submission.selftext
-    return jsonify(topics_dict), 200
+def reddit_stories_index():
+    posts = []
+    for submission in subreddit.top(limit=10):
+        post = {}
+        post["title"] = submission.title
+        post["score"] = submission.score
+        post["id"] = submission.id
+        post["genre"] = submission.link_flair_text
+        post["url"] = submission.url
+        post["created"] = submission.created
+        posts.append(post)
+    return jsonify(posts), 200
+
+
+@api.route('/reddit/posts/<string:post_id>')
+def reddit_story_show(post_id):
+    submission = reddit.submission(id=post_id)
+    post = {}
+    post["title"] = submission.title
+    post["score"] = submission.score
+    post["id"] = submission.id
+    post["genre"] = submission.link_flair_text
+    post["url"] = submission.url
+    post["created"] = submission.created
+    post["content"] = submission.selftext
+    return jsonify(post)
