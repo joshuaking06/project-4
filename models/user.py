@@ -5,7 +5,6 @@ from app import db, ma, bcrypt
 from sqlalchemy.ext.hybrid import hybrid_property
 from marshmallow import validates_schema, fields, ValidationError, validate
 from .base import BaseModel, BaseSchema
-from .story import Story, StorySchema
 
 class User(db.Model, BaseModel):
 
