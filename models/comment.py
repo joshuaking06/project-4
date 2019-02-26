@@ -1,6 +1,6 @@
 from app import db, ma
-from .base import BaseModel, BaseSchema
 from marshmallow import fields
+from .base import BaseModel, BaseSchema
 
 class Comment(db.Model, BaseModel):
 
@@ -13,8 +13,8 @@ class Comment(db.Model, BaseModel):
     story = db.relationship('Story', backref='comment')
 
 class MessageSchema(ma.ModelSchema, BaseSchema):
-    users = fields.Nested('UserSchema')
-    creator = fields.Nested('UserSchema')
+    user = fields.Nested('UserSchema')
+    story = fields.Nested('StorySchema')
 
     class Meta:
         model = Comment
