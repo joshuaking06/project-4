@@ -2,6 +2,11 @@ from app import db, ma
 from marshmallow import fields
 from .base import BaseModel, BaseSchema
 
+readinglists_storys = db.Table('readinglists_storys',
+    db.Column('readinglists_id'),
+    db.Column('stories_id')
+)
+
 class ReadingList(db.Model, BaseModel):
 
     __tablename__ = 'readinglists'
@@ -11,6 +16,7 @@ class ReadingList(db.Model, BaseModel):
 
 
 class ReadingListSchema(ma.ModelSchema, BaseSchema):
+    user = fields.Nested('UserSchema', exclude=('email', 'videos', 'readinglists'))
 
     class Meta:
         model = ReadingList
