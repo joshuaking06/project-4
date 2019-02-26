@@ -2,6 +2,7 @@ from app import db, app
 from models.user import User, UserSchema
 from models.story import Story
 from models.comment import Comment
+from models.message import Message
 
 user_schema = UserSchema()
 
@@ -44,5 +45,12 @@ with app.app_context():
 
     comment1 = Comment(text='cool story bro', user=josh, story=inter)
     db.session.add(comment1)
+
+    message1 = Message(content='Hello Alex', receiver=josh, sender=alessandro)
+    message2 = Message(content='Hello Josh', receiver=alessandro, sender=josh)
+    message3 = Message(content='I really eonjed reading your story', receiver=alessandro, sender=josh)
+    db.session.add(message1)
+    db.session.add(message2)
+    db.session.add(message3)
 
     db.session.commit()
