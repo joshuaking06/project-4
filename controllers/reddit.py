@@ -13,7 +13,18 @@ reddit = praw.Reddit(client_id=os.getenv('REDDIT_PERSONAL_USE_SCRIPT'), \
                      username=os.getenv('REDDIT_USERNAME'), \
                      password=os.getenv('REDDIT_PASSWORD'))
 
+subreddit = reddit.subreddit('shortstories')
+
+topics_dict = {}
+
 @api.route('/reddit')
 def stories_index():
-    print('hello')
-    return 'hello', 200
+    for submission in subreddit.top(limit=1):
+        topics_dict["title"] = submission.title
+        topics_dict["score"] = submission.score
+        topics_dict["id"] = submission.id
+        topics_dict["url"] = submission.url
+        topics_dict["comms_num"] = submission.num_comments
+        topics_dict["created"] = submission.created
+        topics_dict["body"] = submission.selftext
+    return jsonify(topics_dict), 200
