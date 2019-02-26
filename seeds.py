@@ -19,6 +19,7 @@ with app.app_context():
     if errors:
         raise Exception(errors)
 
+    db.session.add(alessandro)
 
     josh, errors = user_schema.load({
         'username': 'joshking',
@@ -30,9 +31,9 @@ with app.app_context():
     if errors:
         raise Exception(errors)
 
+    db.session.add(josh)
 
 
-    db.session.add(alessandro)
 
     inter = Story(title='inter', description='a short story about inter',
         content='I always love inter and hated chleseas',
@@ -40,4 +41,8 @@ with app.app_context():
         creator=alessandro)
 
     db.session.add(inter)
+
+    comment1 = Comment(text='cool story bro', user=josh, story=inter)
+    db.session.add(comment1)
+
     db.session.commit()
