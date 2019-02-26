@@ -8,7 +8,9 @@
   "scripts": {
     "serve:react": "webpack-dev-server",
     "serve:flask": "pipenv run flask run -p 4000",
-    "seed"
+    "seed": "pipenv run python seeds.py",
+    "test": "mocha --require test/helper --require ignore-styles test/**/*_spec.js",
+    "postinstall": "[ \"$NODE_ENV\" = \"production\" ] && yarn build || exit 0"
   },
   "devDependencies": {
     "@babel/register": "^7.0.0",
