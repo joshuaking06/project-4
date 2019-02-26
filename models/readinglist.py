@@ -2,9 +2,9 @@ from app import db, ma
 from marshmallow import fields
 from .base import BaseModel, BaseSchema
 
-readinglists_storys = db.Table('readinglists_storys',
-    db.Column('readinglists_id'),
-    db.Column('stories_id')
+readinglists_storys = db.Table('readinglists_stories',
+    db.Column('readinglists_id', db.Integer, db.ForeignKey('readinglists.id'), primary_key=True),
+    db.Column('stories_id', db.Integer, db.ForeignKey('stories.id'), primary_key=True)
 )
 
 class ReadingList(db.Model, BaseModel):
