@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, g
 from models.user import UserSchema, User
-from models.message import MessageSchema, Message
+from models.message import MessageSchema
 from lib.secure_route import secure_route
 
 api = Blueprint('auth', __name__)
