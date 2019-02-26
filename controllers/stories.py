@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from models.story import Story, StorySchema
 from lib.secure_route import secure_route
+from models.comment import Comment, CommentSchema
 
 api = Blueprint('stories', __name__)
 
@@ -37,7 +38,7 @@ def create():
     return story_schema.jsonify(story)
 
 
-# == UPDATE A WEAPON ===
+# == UPDATE A STORY ===
 @api.route('/stories/<int:story_id>', methods=['PUT'])
 # @secure_route
 def update(story_id):
@@ -56,6 +57,7 @@ def update(story_id):
 
 # === DELETE A STORY ===
 @api.route('/stories/<int:story_id>', methods=['DELETE'])
+# @secure_route
 def delete(story_id):
 
     story = Story.query.get(story_id)

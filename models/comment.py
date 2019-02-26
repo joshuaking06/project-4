@@ -8,7 +8,7 @@ class Comment(db.Model, BaseModel):
     text = db.Column(db.Text(1000), nullable=False)
 
 
-class MessageSchema(ma.ModelSchema, BaseSchema):
+class CommentSchema(ma.ModelSchema, BaseSchema):
 
     class Meta:
         model = Comment
