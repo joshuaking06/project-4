@@ -20,10 +20,10 @@ with app.app_context():
 
     db.session.add(alessandro)
 
-    inter = Story(title = 'inter', description = 'a short story about inter',
-        content = 'I always love inter and hated chleseas',
-        genre = 'fantasy',
-        creator = alessandro)
+    inter = Story(title='inter', description='a short story about inter',
+        content='I always love inter and hated chleseas',
+        genre='fantasy',
+        creator=alessandro)
 
     db.session.add(inter)
     db.session.commit()
