@@ -5,6 +5,7 @@ from app import db, ma, bcrypt
 from sqlalchemy.ext.hybrid import hybrid_property
 from marshmallow import validates_schema, fields, ValidationError, validate
 from .base import BaseModel, BaseSchema
+from .story import Story, StorySchema
 
 class User(db.Model, BaseModel):
 
@@ -51,12 +52,12 @@ class UserSchema(ma.ModelSchema, BaseSchema):
                 'Passwords do not match',
                 'password_confirmation'
             )
-
     password = fields.String(
         required=True,
         validate=[validate.Length(min=8, max=50)]
     )
     password_confirmation = fields.String(required=True)
+    stories = fields.Nested('StorySchema', many=True, exclude=('creator',))
 
     class Meta:
         model = User
