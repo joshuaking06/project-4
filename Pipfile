@@ -15,6 +15,7 @@ jsonify = "*"
 requests = "*"
 pyjwt = "*"
 flask-bcrypt = "*"
+praw = "*"
 
 [requires]
 python_version = "3.7"

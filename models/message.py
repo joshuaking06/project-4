@@ -5,7 +5,7 @@ class Message(db.Model, BaseModel):
 
     __tablename__ = 'messages'
 
-    content = db.Column(db.Text(1000), nullable=False)
+    content = db.Column(db.Text(), nullable=False)
 
 
 class MessageSchema(ma.ModelSchema, BaseSchema):
