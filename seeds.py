@@ -57,8 +57,8 @@ with app.app_context():
     db.session.add(message2)
     db.session.add(message3)
 
-    currentlty_reading = ReadingList(title='My to read list', user=josh, stories_saved=[inter])
-    db.session.add(currentlty_reading)
+    currently_reading = ReadingList(title='My to read list', user=josh, stories_saved=[inter])
+    db.session.add(currently_reading)
 
 
 
