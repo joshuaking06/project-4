@@ -124,3 +124,10 @@ def add_new(user_id, story_id):
 
 
     return user_schema.jsonify(user)
+
+@api.route('/users/<int:user_id>/stories/<int:story_id>', methods=['DELETE'])
+def delete_from_reading_list(user_id, story_id):
+    user = User.query.get(user_id)
+    print(user.read_list)
+
+    return 'hello there', 204
