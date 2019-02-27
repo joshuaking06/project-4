@@ -20,10 +20,12 @@ subreddit = reddit.subreddit('shortstories')
 
 
 
-@api.route('/reddit', methods=['GET'])
-def reddit_stories_index():
+@api.route('/reddit/count/<int:count_id>', methods=['GET'])
+def reddit_stories_index(count_id):
+    if count_id > 980:
+        count_id = 980
     posts = []
-    for submission in subreddit.top(limit=10):
+    for submission in subreddit.hot(limit=count_id):
         post = {}
         post["title"] = submission.title
         post["score"] = submission.score
