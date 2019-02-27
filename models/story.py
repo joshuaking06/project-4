@@ -3,6 +3,13 @@ from marshmallow import fields
 from .base import BaseModel, BaseSchema
 from .user import User
 
+
+stories_users = db.Table('stories_users',
+    db.Column('users_id', db.Integer, db.ForeignKey('readinglists.id'), primary_key=True),
+    db.Column('stories_id', db.Integer, db.ForeignKey('stories.id'), primary_key=True)
+)
+
+
 class Story(db.Model, BaseModel):
 
     __tablename__ = 'stories'
