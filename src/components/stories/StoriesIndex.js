@@ -3,12 +3,24 @@ import FlipPage from 'react-flip-page'
 import { Segment, Header } from 'semantic-ui-react'
 import axios from 'axios'
 
+
+const style = {
+      marginTop: '15%',
+      marginLeft: 'auto',
+      width: '95%',
+      height: '500px',
+      backgroundImage: `url(https://marketplace.canva.com/MABdzJjyLYc/1/thumbnail_large/canva-student-writing-paper-lined--MABdzJjyLYc.png)`,
+      backgroundSize: 'cover'
+    }
+
+
 class StoriesIndex extends React.Component{
   constructor(){
     super()
 
     this.state={
       width: window.innerWidth,
+      stories: []
     }
 
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this)
@@ -16,6 +28,8 @@ class StoriesIndex extends React.Component{
 
   componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange)
+    axios.get('/api/stories')
+      .then(res => this.setState({ stories: res.data }))
   }
 
   componentWillUnmount() {
@@ -31,7 +45,7 @@ class StoriesIndex extends React.Component{
   render(){
     const { width } = this.state
     const isMobile = width <= 500
-
+    console.log(this.state.stories)
     if(isMobile){
       return(
         <div id='flipper'>
@@ -40,8 +54,13 @@ class StoriesIndex extends React.Component{
             loopForever
             orientation='horizontal'
           >
-            <img src="http://unsplash.it/320/480" />
-            <img src="http://clipart-library.com/image_gallery/206146.png" />
+            {this.state.stories.map(story =>
+              <Segment
+                style={style}
+                className='index-card'
+                key={story.id}
+              > {story.title} </Segment>
+            )}
           </FlipPage>
         </div>
       )
