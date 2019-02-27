@@ -5,7 +5,7 @@ class Comment(db.Model, BaseModel):
 
     __tablename__ = 'comments'
 
-    text = db.Column(db.Text(1000), nullable=False)
+    text = db.Column(db.Text(), nullable=False)
 
 
 class CommentSchema(ma.ModelSchema, BaseSchema):
