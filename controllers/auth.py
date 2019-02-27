@@ -6,6 +6,7 @@ from lib.secure_route import secure_route
 api = Blueprint('auth', __name__)
 user_schema = UserSchema()
 message_schema = MessageSchema()
+users_schema = UserSchema(many=True)
 
 
 # == REGISTER ===
@@ -36,6 +37,12 @@ def login():
         'token': user.generate_token()
     })
 
+
+# === INDEX USERS ===
+@api.route('/users', methods=['GET'])
+def index():
+    users = User.query.all()
+    return users_schema.jsonify(users)
 
 # === SHOW ===
 @api.route('/users/<int:user_id>', methods=['GET'])
