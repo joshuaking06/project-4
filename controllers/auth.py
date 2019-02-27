@@ -124,3 +124,8 @@ def add_new(user_id, story_id):
 
 
     return user_schema.jsonify(user)
+
+# === Follow user ===
+
+
+# === UnFollow user ===
