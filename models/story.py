@@ -5,7 +5,7 @@ from .user import User
 
 
 stories_users = db.Table('stories_users',
-    db.Column('users_id', db.Integer, db.ForeignKey('readinglists.id'), primary_key=True),
+    db.Column('users_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
     db.Column('stories_id', db.Integer, db.ForeignKey('stories.id'), primary_key=True)
 )
 
@@ -20,6 +20,7 @@ class Story(db.Model, BaseModel):
     genre = db.Column(db.String(30), nullable=False)
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     creator = db.relationship('User', backref='stories')
+    likes = db.relationship('User', secondary=stories_users, backref='usersliked')
 
 class StorySchema(ma.ModelSchema, BaseSchema):
     creator = fields.Nested('UserSchema')
