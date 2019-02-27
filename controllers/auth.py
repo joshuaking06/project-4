@@ -154,4 +154,4 @@ def unfollow_users(user_id, unfollow_id):
     unfollow.following.remove(user)
     user.save()
 
-    return 'done', 201
+    return '', 204
