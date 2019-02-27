@@ -51,11 +51,13 @@ class Navbar extends React.Component{
             >
               <Icon name='bars'/>
               <Menu.Item name='home' active={true} />
-              <Menu.Item
-                name='Sign-Up'
-              />
-              <Menu.Item
-                name='Login'/>
+              <Menu.Menu position='right'>
+                <Menu.Item
+                  name='Sign-Up'
+                />
+                <Menu.Item
+                  name='Login'/>
+              </Menu.Menu>
             </Menu>
         }
 
