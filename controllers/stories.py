@@ -28,7 +28,7 @@ def show(story_id):
 
 # == CREATE A NEW STORY ===
 @api.route('/stories', methods=['POST'])
-# @secure_route
+@secure_route
 def create():
 
     story, errors = story_schema.load(request.get_json())
@@ -43,7 +43,7 @@ def create():
 
 # == UPDATE A STORY ===
 @api.route('/stories/<int:story_id>', methods=['PUT'])
-# @secure_route
+@secure_route
 def update(story_id):
 
     story = Story.query.get(story_id)
@@ -60,7 +60,7 @@ def update(story_id):
 
 # === DELETE A STORY ===
 @api.route('/stories/<int:story_id>', methods=['DELETE'])
-# @secure_route
+@secure_route
 def delete(story_id):
 
     story = Story.query.get(story_id)
