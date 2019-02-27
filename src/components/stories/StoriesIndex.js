@@ -1,6 +1,7 @@
 import React from 'react'
 import FlipPage from 'react-flip-page'
 import { Segment } from 'semantic-ui-react'
+import axios from 'axios'
 
 class StoriesIndex extends React.Component{
   constructor(){
@@ -15,6 +16,8 @@ class StoriesIndex extends React.Component{
 
   componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange)
+    axios.get('/api/reddit/count/10')
+      .then(res => console.log(res))
   }
 
   componentWillUnmount() {
