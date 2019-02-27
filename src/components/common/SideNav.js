@@ -19,12 +19,28 @@ const SideNav = ({handleSidebarHide, visible}) => {
         Home
       </Menu.Item>
       <Menu.Item as='a'>
-        <Icon name='gamepad' />
-        Games
+        <Icon name='book' />
+        Library
       </Menu.Item>
       <Menu.Item as='a'>
-        <Icon name='camera' />
-        Channels
+        <Icon name='envelope' />
+        Message
+      </Menu.Item>
+      <Menu.Item as='a'>
+        <Icon name='cogs' />
+        Setting
+      </Menu.Item>
+      <Menu.Item as='a'>
+        <Icon name='pencil alternate' />
+        Add New Story
+      </Menu.Item>
+      <Menu.Item as='a'>
+        <Icon name='file alternate outline' />
+        Reding List
+      </Menu.Item>
+      <Menu.Item as='a'>
+        <Icon name='question circle outline' />
+        About Us
       </Menu.Item>
     </Sidebar>
   )
