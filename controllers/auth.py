@@ -145,3 +145,13 @@ def follow_users(user_id, follower_id):
     user.save()
 
     return 'done', 201
+
+
+@api.route('/users/<int:user_id>/unfollow/<int:unfollow_id>', methods=['POST'])
+def unfollow_users(user_id, unfollow_id):
+    user = User.query.get(user_id)
+    unfollow = User.query.get(unfollow_id)
+    unfollow.following.remove(user)
+    user.save()
+
+    return 'done', 201
