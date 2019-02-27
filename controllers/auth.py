@@ -122,10 +122,17 @@ def add_new(user_id, story_id):
 
     user.save()
 
-
     return user_schema.jsonify(user)
 
-# === Follow user ===
 
 
-# === UnFollow user ===
+@api.route('/users/<int:user_id>/stories/<int:story_id>', methods=['DELETE'])
+def delete_from_reading_list(user_id, story_id):
+    user = User.query.get(user_id)
+    story = Story.query.get(story_id)
+
+    user.read_list.remove(story)
+
+    user.save()
+
+    return '', 204
