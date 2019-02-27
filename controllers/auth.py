@@ -1,13 +1,16 @@
 # pylint: disable=W0611
 from flask import Blueprint, jsonify, request, g
+from lib.secure_route import secure_route
 from models.user import UserSchema, User
 from models.message import MessageSchema
-from lib.secure_route import secure_route
+from models.story import Story, StorySchema
 
 api = Blueprint('auth', __name__)
 user_schema = UserSchema()
 message_schema = MessageSchema()
 users_schema = UserSchema(many=True)
+story_schema = StorySchema()
+user_schema = UserSchema()
 
 
 # == REGISTER ===
@@ -107,3 +110,17 @@ def delete(user_id):
     user.remove()
 
     return '', 204
+
+# === ADD TO USER READ LIST ===
+
+@api.route('/users/<int:user_id>/stories/<int:story_id>', methods=['POST'])
+# @secure_route
+def add_new(user_id, story_id):
+    user = User.query.get(user_id)
+    story = Story.query.get(story_id)
+    user.read_list.append(story)
+
+    user.save()
+
+
+    return user_schema.jsonify(user)
