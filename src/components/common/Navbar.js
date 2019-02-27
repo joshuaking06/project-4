@@ -52,10 +52,10 @@ class Navbar extends React.Component{
               <Icon name='bars'/>
               <Menu.Item name='home' active={true} />
               <Menu.Item
-                name='messages'
+                name='Sign-Up'
               />
               <Menu.Item
-                name='friends'/>
+                name='Login'/>
             </Menu>
         }
 
