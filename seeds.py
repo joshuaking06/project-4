@@ -1,5 +1,5 @@
 from app import db, app
-from models.user import User, UserSchema
+from models.user import UserSchema
 from models.story import Story
 from models.comment import Comment
 from models.message import Message

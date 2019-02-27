@@ -6,6 +6,12 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from marshmallow import validates_schema, fields, ValidationError, validate
 from .base import BaseModel, BaseSchema
 
+users_users = db.Table('users_users',
+    db.Column('users_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+    db.Column('users_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+)
+
+
 class User(db.Model, BaseModel):
 
     __tablename__ = 'users'
