@@ -1,13 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Segment, Sidebar, Menu } from 'semantic-ui-react'
 import StoriesIndex from './components/stories/StoriesIndex'
+import StoriesNew from './components/stories/StoriesNew'
 import Navbar from './components/common/Navbar'
 import SideNav from './components/common/SideNav'
 
-
 import 'semantic-ui-css/semantic.min.css'
 import './style.scss'
+
 
 class App extends React.Component{
   constructor(props){
@@ -33,21 +35,27 @@ class App extends React.Component{
 
   render(){
     return (
-      <main>
-        <Sidebar.Pushable as={Segment}>
-          <SideNav
-            handleSidebarHide={this.handleSidebarHide}
-            visible={this.state.sidebarVisible}
-          />
-          <Sidebar.Pusher>
+      <div>
+        <BrowserRouter>
+          <main>
+            <Sidebar.Pushable as={Segment}>
+              <SideNav
+                handleSidebarHide={this.handleSidebarHide}
+                visible={this.state.sidebarVisible}
+              />
+              <Sidebar.Pusher>
+                <Navbar handleShowClick={this.handleShowClick} />
 
-            <Navbar handleShowClick={this.handleShowClick} />
-            <StoriesIndex />
+                <Switch>
+                  <Route path="/new" component={StoriesNew} />
+                  <Route path="/" component={StoriesIndex} />
+                </Switch>
 
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
-      </main>
-
+              </Sidebar.Pusher>
+            </Sidebar.Pushable>
+          </main>
+        </BrowserRouter>
+      </div>
     )
   }
 }
