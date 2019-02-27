@@ -12,5 +12,5 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 bcrypt = Bcrypt(app)
 
-# pylint: disable=W0611,C0413
+# pylint: disable=W0611,C0412,C0413
 from config import routes

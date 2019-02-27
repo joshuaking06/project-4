@@ -1,6 +1,8 @@
 from app import db, ma
 from marshmallow import fields
 from .base import BaseModel, BaseSchema
+from .user import User
+# from .comment import Comment, CommentSchema
 
 reading_list = db.Table('reading_list',
     db.Column('users_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
