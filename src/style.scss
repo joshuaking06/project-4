@@ -1,16 +1,17 @@
 html{
   main{
     height: 100vh;
-    .ui.segment{
+    .ui.segment .index-card{
       background-color: darkgrey;
     }
     #flipper{
+      background-color: darkgrey;
       display: flex;
       justify-content: center;
-      margin-top: 10%;
+      padding-top: 10%;
       margin-left: auto;
       margin-right: auto;
-      height: 500px;
+      height: 100vh;
     }
   }
 }
