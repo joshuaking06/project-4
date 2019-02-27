@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Sidebar, Menu } from 'semantic-ui-react'
+import { Segment, Sidebar, Menu } from 'semantic-ui-react'
 import StoriesIndex from './components/stories/StoriesIndex'
 import Navbar from './components/common/Navbar'
 import SideNav from './components/common/SideNav'
