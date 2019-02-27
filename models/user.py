@@ -3,8 +3,16 @@ import jwt
 from config.environment import secret
 from app import db, ma, bcrypt
 from sqlalchemy.ext.hybrid import hybrid_property
+from sqlalchemy.ext.declarative import declarative_base
 from marshmallow import validates_schema, fields, ValidationError, validate
 from .base import BaseModel, BaseSchema
+
+# users_users = db.Table('users_users',
+#     db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+#     db.Column('following_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+# )
+Base = declarative_base()
+
 
 class User(db.Model, BaseModel):
 
@@ -13,6 +21,10 @@ class User(db.Model, BaseModel):
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(128), nullable=True, unique=True)
     password_hash = db.Column(db.String(128), nullable=True)
+    # followings = db.relationship('User', secondary=users_users,
+    #     primaryjoin=id == users_users.c.user_id,
+    #     secondaryjoin=id == users_users.c.following_id,
+    #     backref='followers')
 
     @hybrid_property
     def password(self):
@@ -42,6 +54,7 @@ class User(db.Model, BaseModel):
 
 
 class UserSchema(ma.ModelSchema, BaseSchema):
+    # stories = fields.Nested()
 
     @validates_schema
     # pylint: disable=R0201
