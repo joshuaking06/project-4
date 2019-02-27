@@ -29,7 +29,7 @@ class User(db.Model, BaseModel):
     email = db.Column(db.String(128), nullable=True, unique=True)
     password_hash = db.Column(db.String(128), nullable=True)
 
-    followed = db.relationship(
+    following = db.relationship(
         'User',
         secondary=followers,
         primaryjoin=(followers.c.follower_id == id),
@@ -69,6 +69,9 @@ class User(db.Model, BaseModel):
 class UserSchema(ma.ModelSchema, BaseSchema):
 
     read_list = fields.Nested('StorySchema', many=True, only=('id', 'title'))
+    following = fields.Nested('UserSchema', many=True, only=('username', 'id'))
+    followers = fields.Nested('UserSchema', many=True, only=('username', 'id'))
+
     @validates_schema
     # pylint: disable=R0201
     def check_passwords_match(self, data):
