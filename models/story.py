@@ -15,7 +15,7 @@ class Story(db.Model, BaseModel):
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(255), nullable=True)
     content = db.Column(db.Text(), nullable=False)
-    genre = db.Column(db.String(30), nullable=False)
+    genre = db.Column(db.String(40), nullable=True)
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     creator = db.relationship('User', backref='stories_written')
     read_list = db.relationship('User', secondary=reading_list, backref='read_list')

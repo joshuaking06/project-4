@@ -16,7 +16,7 @@ def index(user_id):
     user = User.query.get(user_id)
     return user_schema.jsonify(user)
 
-@api.route('/users/<int:user_id>/stories/<int:story_id>', methods=['GET'])
+@api.route('/users/<int:user_id>/stories/<int:story_id>', methods=['POST'])
 def add_new(user_id, story_id):
     user = User.query.get(user_id)
     story = Story.query.get(story_id)
