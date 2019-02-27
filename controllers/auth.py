@@ -125,7 +125,6 @@ def add_new(user_id, story_id):
     return user_schema.jsonify(user)
 
 
-
 @api.route('/users/<int:user_id>/stories/<int:story_id>', methods=['DELETE'])
 def delete_from_reading_list(user_id, story_id):
     user = User.query.get(user_id)
@@ -136,3 +135,13 @@ def delete_from_reading_list(user_id, story_id):
     user.save()
 
     return '', 204
+
+
+@api.route('/users/<int:user_id>/follow/<int:follower_id>', methods=['POST'])
+def follow_users(user_id, follower_id):
+    user = User.query.get(user_id)
+    follower = User.query.get(follower_id)
+    user.followed.append(follower)
+    user.save()
+
+    return 'done', 204
