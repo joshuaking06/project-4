@@ -16,7 +16,7 @@ class ReadingList(db.Model, BaseModel):
     stories_saved = db.relationship('Story', secondary=readinglists_stories, backref='readinglists')
 
 class ReadingListSchema(ma.ModelSchema, BaseSchema):
-    user = fields.Nested('UserSchema', exclude=('email', 'videos', 'readinglists'))
+    user = fields.Nested('UserSchema', exclude=('email', 'stories', 'readinglists'))
 
     class Meta:
         model = ReadingList
