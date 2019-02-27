@@ -48,7 +48,14 @@ with app.app_context():
 
     db.session.add(josh)
 
+    siddant, errors = user_schema.load({
+    'username': 'siddant',
+    'email': 'up662369@gmail.com',
+    'password': 'password12345678',
+    'password_confirmation': 'password12345678'
+    })
 
+    db.session.add(siddant)
     comment1 = Comment(text='cool story bro', user=josh, story=inter)
     db.session.add(comment1)
 
