@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Icon, Button, Sidebar, Segment } from 'semantic-ui-react'
+import { Menu, Icon, Button } from 'semantic-ui-react'
 
 class Navbar extends React.Component{
   constructor(props){

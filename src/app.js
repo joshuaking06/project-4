@@ -6,6 +6,9 @@ import StoriesIndex from './components/stories/StoriesIndex'
 import StoriesNew from './components/stories/StoriesNew'
 import Navbar from './components/common/Navbar'
 import SideNav from './components/common/SideNav'
+import Register from './components/Auth/Register'
+import FlashMessages from './components/common/FlashMessages'
+
 
 import 'semantic-ui-css/semantic.min.css'
 import './style.scss'
@@ -45,8 +48,9 @@ class App extends React.Component{
               />
               <Sidebar.Pusher>
                 <Navbar handleShowClick={this.handleShowClick} />
-
+                <FlashMessages />
                 <Switch>
+                  <Route path="/register" component={Register} />
                   <Route path="/new" component={StoriesNew} />
                   <Route path="/" component={StoriesIndex} />
                 </Switch>
@@ -60,4 +64,4 @@ class App extends React.Component{
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'))

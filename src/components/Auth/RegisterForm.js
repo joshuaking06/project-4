@@ -1,11 +1,11 @@
 import React from 'react'
 import { Segment, Grid, Form, Input, Divider, Button, TextArea, Icon, Message } from 'semantic-ui-react'
-import ReactFilestack from 'filestack-react'
 
 
 
 
-const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess, changeSuccess }) => {
+
+const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
 
   // function made to return error messages from the error response from server, putting them in array to be passed into message
   const errorMessages = Object.keys(errors).map(errorKey => {
