@@ -21,6 +21,7 @@ class Story(db.Model, BaseModel):
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     creator = db.relationship('User', backref='stories')
     likes = db.relationship('User', secondary=stories_users, backref='usersliked')
+    
 
 class StorySchema(ma.ModelSchema, BaseSchema):
     creator = fields.Nested('UserSchema')

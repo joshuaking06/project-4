@@ -1,6 +1,6 @@
 import os
 from flask import Blueprint, jsonify
-from models.story import Story, StorySchema
+from models.story import StorySchema
 import praw
 
 
