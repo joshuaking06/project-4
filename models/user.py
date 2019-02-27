@@ -6,10 +6,10 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from marshmallow import validates_schema, fields, ValidationError, validate
 from .base import BaseModel, BaseSchema
 
-users_users = db.Table('users_users',
-    db.Column('users_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('users_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-)
+# users_users = db.Table('users_users',
+#     db.Column('following_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+#     db.Column('follower_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+# )
 
 
 class User(db.Model, BaseModel):
@@ -19,7 +19,7 @@ class User(db.Model, BaseModel):
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(128), nullable=True, unique=True)
     password_hash = db.Column(db.String(128), nullable=True)
-    followings = db.relationship('User', secondary=users_users, backref='followers')
+    # followings = db.relationship('User', secondary=users_users, backref='followers')
 
     @hybrid_property
     def password(self):

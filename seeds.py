@@ -3,6 +3,8 @@ from models.user import UserSchema
 from models.story import Story
 from models.comment import Comment
 from models.message import Message
+from models.readinglist import ReadingList
+
 
 user_schema = UserSchema()
 
@@ -39,7 +41,9 @@ with app.app_context():
     inter = Story(title='inter', description='a short story about inter',
         content='I always love inter and hated chleseas',
         genre='fantasy',
-        creator=alessandro)
+        creator=alessandro,
+        likes=[josh]
+        )
 
     db.session.add(inter)
 
@@ -52,5 +56,11 @@ with app.app_context():
     db.session.add(message1)
     db.session.add(message2)
     db.session.add(message3)
+
+    currentlty_reading = ReadingList(title='My to read list', user=josh, stories_saved=[inter])
+    db.session.add(currentlty_reading)
+
+
+
 
     db.session.commit()
