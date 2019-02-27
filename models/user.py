@@ -19,6 +19,7 @@ class User(db.Model, BaseModel):
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(128), nullable=True, unique=True)
     password_hash = db.Column(db.String(128), nullable=True)
+    followings = db.relationship('User', secondary=users_users, backref='followers')
 
     @hybrid_property
     def password(self):
