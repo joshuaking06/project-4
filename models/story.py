@@ -2,6 +2,7 @@ from app import db, ma
 from marshmallow import fields
 from .base import BaseModel, BaseSchema
 from .user import User
+# from .comment import Comment, CommentSchema
 
 
 stories_users = db.Table('stories_users',
