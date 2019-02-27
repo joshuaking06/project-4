@@ -141,7 +141,7 @@ def delete_from_reading_list(user_id, story_id):
 def follow_users(user_id, follower_id):
     user = User.query.get(user_id)
     follower = User.query.get(follower_id)
-    user.followed.append(follower)
+    follower.following.append(user)
     user.save()
 
-    return 'done', 204
+    return 'done', 201
