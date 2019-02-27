@@ -43,7 +43,7 @@ with app.app_context():
         genre='fantasy',
         creator=alessandro,
         likes=[josh]
-        )
+    )
 
     db.session.add(inter)
 

@@ -2,29 +2,41 @@ from datetime import datetime, timedelta
 import jwt
 from config.environment import secret
 from app import db, ma, bcrypt
+# from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.hybrid import hybrid_property
-from sqlalchemy.ext.declarative import declarative_base
 from marshmallow import validates_schema, fields, ValidationError, validate
 from .base import BaseModel, BaseSchema
 
-# users_users = db.Table('users_users',
-#     db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-#     db.Column('following_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-# )
-Base = declarative_base()
+# Base = declarative_base()
 
+# users_users = db.Table('users_users', Base.metadata,
+#     db.Column('followings_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+#     db.Column('followers_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+# )
+
+followers = db.Table('followers',
+    db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
+    db.Column('followed_id', db.Integer, db.ForeignKey('users.id'))
+)
 
 class User(db.Model, BaseModel):
 
     __tablename__ = 'users'
 
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(128), nullable=True, unique=True)
     password_hash = db.Column(db.String(128), nullable=True)
-    # followings = db.relationship('User', secondary=users_users,
-    #     primaryjoin=id == users_users.c.user_id,
-    #     secondaryjoin=id == users_users.c.following_id,
-    #     backref='followers')
+
+    followed = db.relationship(
+        'User',
+        secondary=followers,
+        primaryjoin=(followers.c.follower_id == id),
+        secondaryjoin=(followers.c.followed_id == id),
+        backref=db.backref('followers', lazy='dynamic'),
+        lazy='dynamic'
+    )
+
 
     @hybrid_property
     def password(self):
