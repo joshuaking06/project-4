@@ -1,19 +1,28 @@
-from flask import Blueprint
-from models.readinglist import ReadingList, ReadingListSchema
+# pylint: disable=W0611
+from flask import Blueprint, jsonify
+from models.story import Story, StorySchema
+from models.user import User, UserSchema
 
 
-readinglist_schema = ReadingListSchema()
-readinglists_schema = ReadingListSchema(many=True)
+story_schema = StorySchema()
+user_schema = UserSchema()
+
 
 api = Blueprint('readinglists', __name__)
 
-@api.route('/readinglists', methods=['GET'])
-def readinglists():
-    reading_lists = ReadingList.query.all()
-    return readinglists_schema.jsonify(reading_lists)
+
+@api.route('/users/<int:user_id>', methods=['GET'])
+def index(user_id):
+    user = User.query.get(user_id)
+    return user_schema.jsonify(user)
+
+@api.route('/users/<int:user_id>/stories/<int:story_id>', methods=['GET'])
+def add_new(user_id, story_id):
+    user = User.query.get(user_id)
+    story = Story.query.get(story_id)
+    user.read_list.append(story)
+
+    user.save()
 
 
-@api.route('/readinglists/<int:rl_id>', methods=['GET'])
-def readinglists_show(rl_id):
-    reading_list = ReadingList.query.get(rl_id)
-    return readinglist_schema.jsonify(reading_list)
+    return user_schema.jsonify(user)

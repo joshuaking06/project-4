@@ -1,10 +1,8 @@
 from app import db, ma
 from marshmallow import fields
 from .base import BaseModel, BaseSchema
-from .user import User
 
-
-stories_users = db.Table('stories_users',
+reading_list = db.Table('reading_list',
     db.Column('users_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
     db.Column('stories_id', db.Integer, db.ForeignKey('stories.id'), primary_key=True)
 )
@@ -19,9 +17,8 @@ class Story(db.Model, BaseModel):
     content = db.Column(db.Text(), nullable=False)
     genre = db.Column(db.String(30), nullable=False)
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    creator = db.relationship('User', backref='stories')
-    likes = db.relationship('User', secondary=stories_users, backref='usersliked')
-    
+    creator = db.relationship('User', backref='stories_written')
+    read_list = db.relationship('User', secondary=reading_list, backref='read_list')
 
 class StorySchema(ma.ModelSchema, BaseSchema):
     creator = fields.Nested('UserSchema')

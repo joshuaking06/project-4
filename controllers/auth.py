@@ -1,3 +1,4 @@
+# pylint: disable=W0611
 from flask import Blueprint, jsonify, request, g
 from models.user import UserSchema, User
 from models.message import MessageSchema, Message
