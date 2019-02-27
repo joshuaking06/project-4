@@ -3,7 +3,6 @@ from models.user import UserSchema
 from models.story import Story
 from models.comment import Comment
 from models.message import Message
-from models.readinglist import ReadingList
 
 
 user_schema = UserSchema()
