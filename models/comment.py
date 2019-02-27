@@ -1,6 +1,7 @@
 from app import db, ma
 from marshmallow import fields
 from .base import BaseModel, BaseSchema
+from .user import User
 
 class Comment(db.Model, BaseModel):
 

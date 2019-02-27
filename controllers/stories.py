@@ -10,6 +10,8 @@ story_schema = StorySchema()
 comment_schema = CommentSchema()
 
 
+# ================= *** STORY *** =================
+
 # === INDEX ===
 @api.route('/stories', methods=['GET'])
 def index():
@@ -18,9 +20,9 @@ def index():
 
 
 # === SHOW (story_id) --> ALL SINGULAR!!!
-@api.route('/stories/<int:stories_id>', methods=['GET'])
-def show(stories_id):
-    story = Story.query.get(stories_id)
+@api.route('/stories/<int:story_id>', methods=['GET'])
+def show(story_id):
+    story = Story.query.get(story_id)
     return story_schema.jsonify(story)
 
 
@@ -68,6 +70,9 @@ def delete(story_id):
     return '', 204
 
 
+# ================= *** COMMENT *** ======================
+
+
 # === CREATE A COMMENT ===
 @api.route('/stories/<int:story_id>/comment', methods=['POST'])
 @secure_route
@@ -86,9 +91,9 @@ def create_comment(story_id):
     return comment_schema.jsonify(comment)
 
 # === DELETE COMMENT ===
-@api.route('/stories/<int:story_id>/comment', methods=['DELETE'])
+@api.route('/stories/<int:story_id>/comments/<int:comment_id>', methods=['DELETE'])
 @secure_route
-def delete_comment(story_id):
+def delete_comment(story_id, comment_id):
 
     comment = Story.query.get(story_id)
     comment, errors = comment_schema.load(request.get_json(), instance=comment)
@@ -96,9 +101,29 @@ def delete_comment(story_id):
     if errors:
         return jsonify(errors), 422
 
-    comment.story = Story.query.get(story_id)
+    comment.story = Story.query.get(comment_id)
     comment.user = g.current_user
 
     comment.remove()
 
     return '', 204
+
+
+# === EDIT COMMENT ===
+
+@api.route('/stories/<int:story_id>/comments/<int:comment_id>', methods=['PUT'])
+@secure_route
+
+def update_comment(story_id, comment_id):
+
+    comment, errors = comment_schema.load(request.get_json())
+
+    if errors:
+        return jsonify(errors), 422
+
+    comment.story = Story.query.get(comment_id)
+    comment.user = g.current_user
+
+    comment.save()
+
+    return comment_schema.jsonify(comment)
