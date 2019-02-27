@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Icon, Button, Sidebar, Segment } from 'semantic-ui-react'
+import { Menu, Icon, Button } from 'semantic-ui-react'
 
 class Navbar extends React.Component{
   constructor(props){
@@ -7,7 +7,7 @@ class Navbar extends React.Component{
 
     this.state={
       visible: false,
-      width: window.innerWidth,
+      width: window.innerWidth
     }
 
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this)
@@ -29,7 +29,7 @@ class Navbar extends React.Component{
     return(
       <div>
 
-          {isMobile &&
+        {isMobile &&
 
               <Menu inverted>
                 <Menu.Item>
@@ -43,24 +43,26 @@ class Navbar extends React.Component{
               </Menu>
 
 
-          }
+        }
 
-          {!isMobile &&
+        {!isMobile &&
             <Menu inverted
               onClick={this.props.handleShowClick}
             >
               <Icon name='bars'/>
-               <Menu.Item name='home' active={true} />
-               <Menu.Item
-                 name='messages'
-               />
-               <Menu.Item
-                 name='friends'/>
+              <Menu.Item name='home' active={true} />
+              <Menu.Menu position='right'>
+                <Menu.Item
+                  name='Sign-Up'
+                />
+                <Menu.Item
+                  name='Login'/>
+              </Menu.Menu>
             </Menu>
-           }
+        }
 
 
-     </div>
+      </div>
     )
   }
 }
