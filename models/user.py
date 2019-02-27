@@ -19,6 +19,7 @@ followers = db.Table('followers',
     db.Column('followed_id', db.Integer, db.ForeignKey('users.id'))
 )
 
+
 class User(db.Model, BaseModel):
 
     __tablename__ = 'users'
@@ -66,8 +67,8 @@ class User(db.Model, BaseModel):
 
 
 class UserSchema(ma.ModelSchema, BaseSchema):
-    # stories = fields.Nested()
 
+    read_list = fields.Nested('StorySchema', many=True, only=('id', 'title'))
     @validates_schema
     # pylint: disable=R0201
     def check_passwords_match(self, data):
@@ -81,7 +82,7 @@ class UserSchema(ma.ModelSchema, BaseSchema):
         validate=[validate.Length(min=8, max=50)]
     )
     password_confirmation = fields.String(required=True)
-    stories = fields.Nested('StorySchema', many=True, exclude=('creator',))
+    # stories_written = fields.Nested('StorySchema', many=True, exclude=('creator',))
 
     class Meta:
         model = User
