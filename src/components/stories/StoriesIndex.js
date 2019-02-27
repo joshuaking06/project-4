@@ -5,9 +5,7 @@ import axios from 'axios'
 
 
 const style = {
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      width: '95%',
+      width: '100%',
       height: '500px',
       backgroundImage: `url(https://marketplace.canva.com/MABdzJjyLYc/1/thumbnail_large/canva-student-writing-paper-lined--MABdzJjyLYc.png)`,
       backgroundSize: 'cover'
