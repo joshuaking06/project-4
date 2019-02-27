@@ -1,6 +1,6 @@
 import os
 from flask import Blueprint, jsonify
-from models.story import Story, StorySchema
+from models.story import StorySchema
 import praw
 
 
@@ -27,7 +27,6 @@ def reddit_stories_index():
         post["score"] = submission.score
         post["id"] = submission.id
         post["genre"] = submission.link_flair_text
-        post["url"] = submission.url
         post["created"] = submission.created
         posts.append(post)
     return jsonify(posts), 200
