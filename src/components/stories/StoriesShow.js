@@ -10,7 +10,7 @@ class StoriesShow extends React.Component{
   }
 
   componentDidMount(){
-    axios.get(`/api/reddit/avn7jf`)
+    axios.get(`/api/reddit/av9juv`)
       .then(res => this.setState({ story: res.data }))
   }
 
