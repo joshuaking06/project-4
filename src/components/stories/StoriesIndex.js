@@ -138,6 +138,7 @@ class StoriesIndex extends React.Component{
     } else return(
       <Segment>
         <DesktopIndex
+          loadMore={this.loadMore}
           reddit={this.state.reddit}
           stories={this.state.stories}
         />

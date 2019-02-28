@@ -22,7 +22,6 @@ class SideNav extends React.Component{
 
   handleItemClick(e, { name }){
     this.setState({ activeItem: name })
-    console.log('name is',name)
     if(name === 'home')this.props.history.push('/')
     if(name === 'Login')this.props.history.push('/login')
     if(name === 'Sign Up')this.props.history.push('/register')
