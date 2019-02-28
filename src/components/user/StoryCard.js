@@ -4,9 +4,7 @@ import {Icon,Card  } from 'semantic-ui-react'
 const StoryCard = (story) => {
 
   const { title, genre, description } = story.story
-  console.log(genre)
-  console.log(story)
-
+  
   return(
     <Card className='users-profile-card' style={{width: 'auto'}}>
       <Card.Content header={title} />

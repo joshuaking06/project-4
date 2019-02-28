@@ -1,19 +1,18 @@
 import React from 'react'
 import StoryCard from './StoryCard'
+import Auth from '../../lib/Auth'
 
 import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-react'
 
 const UsersDetail = (usersDetail) => {
-  console.log(usersDetail)
 
   const { username, followers, following, stories_written } = usersDetail.usersDetail// eslint-disable-line
-  console.log(stories_written.length)
+  // console.log(followers)
+  // const a = followers.map(follower => {
+  //   return follower.id
+  // })
+  // console.log(a)
 
-
-  // {stories_written.map(story =>
-  //   <StoryCard key={story.id} story={story}/>
-  // )
-  // }
   return(
 
     <Grid columns={1} stackable textAlign='center'>
@@ -26,14 +25,18 @@ const UsersDetail = (usersDetail) => {
         <Image src='https://react.semantic-ui.com/images/avatar/large/patrick.png' size='medium' circular centered/>
 
         <Divider  hidden />
-        <Button primary className='detail'><Icon name='add user'/>Follow</Button>
+        {
+
+          followers.some(f => f.id === Auth.getUserID())  ? (
+            <Button positive className='detail'> <Icon name='check circle'/>Following</Button>
+          ) : (
+            <Button primary className='detail'><Icon name='add user'/>Follow</Button>
+          )
+
+
+        }
         <Button primary className='detail'> <Icon name='comments'/>Message User</Button>
 
-        <Divider hidden />
-        {/*
-                    <Button positive className='detail'> <Icon name='check circle'/>Following</Button>
-
-                  */}
         <Divider hidden />
 
         <Grid columns={3} stackable textAlign='center'>
