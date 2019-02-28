@@ -37,6 +37,7 @@ class SideNav extends React.Component{
     return(
 
       <Sidebar
+        id='sidebar'
         as={Menu}
         animation='overlay'
         icon='labeled'

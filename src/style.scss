@@ -1,4 +1,7 @@
 html{
+  #sidebar{
+    height: 100vh;
+  }
   main{
     #reader{
       height: 85vh;
@@ -29,7 +32,7 @@ html{
       padding-top: 10%;
       margin-left: auto;
       margin-right: auto;
-      height: 100vh;
+      height: 90vh;
     }
   }
 }
