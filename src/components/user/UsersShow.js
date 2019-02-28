@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import { Segment,Statistic, Container, Grid, Image,Header,Divider, Button,Icon,Card  } from 'semantic-ui-react'
 
 const description = [
@@ -8,6 +9,16 @@ const description = [
 
 class UsersShow extends React.Component{
 
+  constructor(){
+    super()
+  }
+
+  componentDidMount(){
+    axios.get(`/api/users/${this.props.match.params.id}`)
+      .then( res =>{
+        this.setState({ usersDetail: res.data})
+      })
+  }
 
 
   render(){
@@ -25,12 +36,12 @@ class UsersShow extends React.Component{
               <Image src='https://react.semantic-ui.com/images/avatar/large/patrick.png' size='medium' circular centered/>
 
               <Divider  hidden />
-              <Button primary><Icon name='add user'/>Follow</Button>
-              <Button primary> <Icon name='comments'/>Message User</Button>
+              <Button primary className='detail'><Icon name='add user'/>Follow</Button>
+              <Button primary className='detail'> <Icon name='comments'/>Message User</Button>
 
               <Divider hidden />
 
-              <Button positive> <Icon name='check circle'/>Following</Button>
+              <Button positive className='detail'> <Icon name='check circle'/>Following</Button>
               <Divider hidden />
 
               <Grid columns={3} stackable textAlign='center'>
