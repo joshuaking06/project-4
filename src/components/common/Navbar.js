@@ -14,6 +14,7 @@ class Navbar extends React.Component{
     }
 
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this)
+    this.handleItemClick = this.handleItemClick.bind(this)
     this.logout = this.logout.bind(this)
   }
 
@@ -48,9 +49,9 @@ class Navbar extends React.Component{
 
               <Menu inverted>
                 <Menu.Item
-                  onClick={this.props.handleShowClick}
+                  onClick={this.props.handleShowClick} >
 
-                >
+
                     <Icon name='bars'/>
 
                 </Menu.Item>
@@ -65,7 +66,7 @@ class Navbar extends React.Component{
               onClick={this.props.handleShowClick}
             >
               <Icon name='bars'/>
-<<<<<<< HEAD
+            </Menu.Item>
 
               <Menu.Item
                 name='home'
@@ -74,10 +75,6 @@ class Navbar extends React.Component{
                 <Icon name='home' /> Home
               </Menu.Item>
 
-=======
-            </Menu.Item>
-              <Menu.Item name='home' active={true} />
->>>>>>> development
               <Menu.Menu position='right'>
                 {!Auth.isAuthenticated() &&
 
