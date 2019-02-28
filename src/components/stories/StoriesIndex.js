@@ -113,12 +113,12 @@ class StoriesIndex extends React.Component{
                 <Button size='small' color='black' circular icon='add' />
 
                 <Link to ={{
-                    pathname: `/stories/${story.id}`,
-                    state: {
-                        reddit: this.state.reddit,
-                        storyId: story.id
-                }}} >
-                    <Button size='small' secondary> Read Now </Button>
+                  pathname: `/stories/${story.id}`,
+                  state: {
+                    reddit: this.state.reddit,
+                    storyId: story.id
+                  }}} >
+                  <Button size='small' secondary> Read Now </Button>
                 </Link>
 
                 {this.state.reddit &&

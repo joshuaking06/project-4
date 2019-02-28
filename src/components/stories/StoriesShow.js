@@ -17,14 +17,14 @@ class StoriesShow extends React.Component{
   async getStory(count){
     let story
     this.state.reddit ? story = await axios.get(`/api/reddit/${this.state.storyId}`) :
-       story = await axios.get(`/api/stories/${this.state.storyId}`)
+      story = await axios.get(`/api/stories/${this.state.storyId}`)
     return await story.data
   }
 
   componentDidMount(){
     this.getStory().then(story => this.setState({story}))
   }
-  
+
 
   render(){
     if(!this.state.story) return null

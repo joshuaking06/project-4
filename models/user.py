@@ -71,6 +71,7 @@ class UserSchema(ma.ModelSchema, BaseSchema):
     read_list = fields.Nested('StorySchema', many=True, only=('id', 'title'))
     following = fields.Nested('UserSchema', many=True, only=('username', 'id'))
     followers = fields.Nested('UserSchema', many=True, only=('username', 'id'))
+    # pylint: disable=C0301
     stories_written = fields.Nested('StorySchema', many=True, only=('title', 'genre', 'description', 'id'))
     @validates_schema
     # pylint: disable=R0201
