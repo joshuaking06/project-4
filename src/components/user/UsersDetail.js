@@ -6,7 +6,7 @@ import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-re
 const UsersDetail = (usersDetail) => {
   console.log(usersDetail)
 
-  const { username, followers, following, stories_written } = usersDetail.usersDetail
+  const { username, followers, following, stories_written } = usersDetail.usersDetail// eslint-disable-line
   console.log(stories_written.length)
 
 
