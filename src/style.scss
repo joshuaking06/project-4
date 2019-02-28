@@ -1,5 +1,9 @@
 html{
   main{
+    #nav{
+      position: fixed !important; /* Set the navbar to fixed position */
+      top: 0 !important; /* Position the navbar at the top of the page */
+    }
     height: 100vh;
     .ui.segment .index-card{
       background-color: darkgrey;
