@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom'
 
 import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-react'
 
-const UsersDetail = (usersDetail) => {
 
-  const { username, followers, following, stories_written,id } = usersDetail.usersDetail// eslint-disable-line
-  // console.log(followers)
-  // const a = followers.map(follower => {
-  //   return follower.id
-  // })
-  // console.log(a)
+
+
+const UsersDetail = ({usersDetail, handleUnfollowEvent, handleFollowEvent}) => {
+  console.log(handleFollowEvent)
+
+  const { username, followers, following, stories_written,id } = usersDetail // eslint-disable-line
+
   return(
 
     <Grid columns={1} stackable textAlign='center'>
@@ -29,9 +29,9 @@ const UsersDetail = (usersDetail) => {
           id !== Auth.getUserID() &&
           (
             followers.some(f => f.id === Auth.getUserID())  ? (
-              <Button positive className='detail'> <Icon name='check circle'/>Following</Button>
+              <Button positive className='detail' onClick={handleUnfollowEvent}> <Icon name='check circle'/>Following</Button>
             ) : (
-              <Button primary className='detail'><Icon name='add user'/>Follow</Button>
+              <Button primary className='detail' onClick={handleFollowEvent}><Icon name='add user'/>Follow</Button>
             )
           )
         }
