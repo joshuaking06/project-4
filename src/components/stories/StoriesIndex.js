@@ -1,6 +1,7 @@
 import React from 'react'
 import FlipPage from 'react-flip-page'
-import { Segment, Header, Divider } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Segment, Header, Divider, Container, Button, Icon } from 'semantic-ui-react'
 import axios from 'axios'
 
 
@@ -13,8 +14,8 @@ const style = {
 
 
 class StoriesIndex extends React.Component{
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
     this.state={
       width: window.innerWidth,
@@ -22,18 +23,24 @@ class StoriesIndex extends React.Component{
     }
 
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this)
+    this.handleItemClick = this.handleItemClick.bind(this)
   }
 
+  handleItemClick(){
+    console.log('clicked me')
+  }
+  // bringing in all the stories
   componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange)
     axios.get('/api/stories')
       .then(res => this.setState({ stories: res.data }))
   }
-
+  // checking if window size changes
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleWindowSizeChange)
   }
 
+  // telling state size of window
   handleWindowSizeChange(){
     this.setState({ width: window.innerWidth })
   }
@@ -55,15 +62,36 @@ class StoriesIndex extends React.Component{
           >
             {this.state.stories.map(story =>
               <Segment
+                textAlign='center'
                 style={style}
                 className='index-card'
                 key={story.id}
               >
-                <Divider hidden />
-                <Header
-                  as='h3'
-                  textAlign='center'
-                > {story.title} </Header>
+                <Container>
+                  <Divider hidden />
+                  <Header
+                    as='h3'
+                  > {story.title} </Header>
+                  <Divider hidden section />
+                  {story.description &&
+                    <p className="card-text"><strong> Description: </strong> {story.description}</p>
+                  }
+                  <Divider hidden section />
+                  {story.genre &&
+                    <p className="card-text"><strong> Genre: </strong> {story.genre} </p>
+                  }
+                  {story.creator &&
+                    <div>
+                      <p className="card-text"><strong> Author: </strong> {story.creator.username} </p>
+                    </div>
+                  }
+
+                </Container>
+                <Divider section hidden />
+                <Button onClick={this.handleItemClick} color='black' circular icon='add' />
+                <Link to={`/stories/${story.id}`}>
+                  <Button onClick={this.handleItemClick} secondary> Read This Story </Button>
+                </Link>
               </Segment>
             )}
           </FlipPage>

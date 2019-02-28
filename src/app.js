@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Segment, Sidebar, Menu } from 'semantic-ui-react'
 import StoriesIndex from './components/stories/StoriesIndex'
-import StoriesNew from './components/stories/StoriesNew'
+import StoriesShow from './components/stories/StoriesShow'
 import Navbar from './components/common/Navbar'
 import SideNav from './components/common/SideNav'
 import Register from './components/Auth/Register'
@@ -53,7 +53,7 @@ class App extends React.Component{
                 <Switch>
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
-                  <Route path="/new" component={StoriesNew} />
+                  <Route path="/stories/:id" component={StoriesShow} />
                   <Route path="/" component={StoriesIndex} />
                 </Switch>
 

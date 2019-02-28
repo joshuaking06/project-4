@@ -3,6 +3,9 @@ html{
     height: 100vh;
     .ui.segment .index-card{
       background-color: darkgrey;
+      .card-text{
+        text-align: center;
+      }
     }
     #flipper{
       background-color: darkgrey;
