@@ -18,6 +18,8 @@ class StoriesIndex extends React.Component{
     super(props)
 
     this.state={
+      count: 10,
+      reddit: true,
       width: window.innerWidth,
       stories: []
     }
@@ -29,12 +31,21 @@ class StoriesIndex extends React.Component{
   handleItemClick(){
     console.log('clicked me')
   }
-  // bringing in all the stories
-  componentDidMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange)
-    axios.get('/api/stories')
-      .then(res => this.setState({ stories: res.data }))
+
+  async getStories(reddit){
+    let stories
+    reddit ? stories = await axios.get(`/api/reddit/count/${this.state.count}`) :
+       stories = await axios.get(`/api/stories`)
+    return await stories.data
   }
+
+
+  // bringing in all the stories
+  componentDidMount(){
+    window.addEventListener('resize', this.handleWindowSizeChange)
+    this.getStories().then(stories => this.setState({ stories }))
+  }
+
   // checking if window size changes
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleWindowSizeChange)
