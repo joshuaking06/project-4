@@ -32,6 +32,7 @@ class StoriesIndex extends React.Component{
     console.log('clicked me')
   }
 
+  // get stories depending on whether user is on reddit page or discover stories page
   async getStories(reddit){
     let stories
     reddit ? stories = await axios.get(`/api/reddit/count/${this.state.count}`) :
@@ -99,9 +100,9 @@ class StoriesIndex extends React.Component{
 
                 </Container>
                 <Divider section hidden />
-                <Button onClick={this.handleItemClick} color='black' circular icon='add' />
+                <Button color='black' circular icon='add' />
                 <Link to={`/stories/${story.id}`}>
-                  <Button onClick={this.handleItemClick} secondary> Read This Story </Button>
+                  <Button secondary> Read This Story </Button>
                 </Link>
               </Segment>
             )}
