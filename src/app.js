@@ -9,6 +9,7 @@ import SideNav from './components/common/SideNav'
 import Register from './components/Auth/Register'
 import FlashMessages from './components/common/FlashMessages'
 import Login from './components/Auth/Login'
+import UsersShow from './components/user/UsersShow'
 import LoadingPage from './components/common/LoadingPage'
 
 
@@ -55,6 +56,7 @@ class App extends React.Component{
                   <Route path="/loading" component={LoadingPage} />
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
+                  <Route path="/users/:id" component={UsersShow} />
                   <Route path="/stories/:id" component={StoriesShow} />
                   <Route path="/stories" component={StoriesIndex} />
                   <Route path="/reddit" component={StoriesIndex} />

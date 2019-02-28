@@ -8,7 +8,7 @@ from models.story import Story, StorySchema
 api = Blueprint('auth', __name__)
 user_schema = UserSchema()
 message_schema = MessageSchema()
-users_schema = UserSchema(many=True)
+users_schema = UserSchema(many=True, exclude=('followers', 'following'))
 story_schema = StorySchema()
 user_schema = UserSchema()
 
