@@ -9,6 +9,7 @@ class UsersShow extends React.Component{
 
   constructor(){
     super()
+    this.state = {}
   }
 
   componentDidMount(){
@@ -20,7 +21,7 @@ class UsersShow extends React.Component{
 
 
   render(){
-    if(!this.state ) return(<h1>Loadinng...</h1>)
+    if(!this.state.usersDetail ) return(<h1>Loadinng...</h1>)
     return(
       <Container>
         <Segment>

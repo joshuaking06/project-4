@@ -6,8 +6,14 @@ import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-re
 const UsersDetail = (usersDetail) => {
   console.log(usersDetail)
 
-  const { username, followers, following } = usersDetail.usersDetail
-  console.log(username)
+  const { username, followers, following, stories_written } = usersDetail.usersDetail
+  console.log(stories_written.length)
+
+
+  // {stories_written.map(story =>
+  //   <StoryCard key={story.id} story={story}/>
+  // )
+  // }
   return(
 
     <Grid columns={1} stackable textAlign='center'>
@@ -33,13 +39,23 @@ const UsersDetail = (usersDetail) => {
         <Grid columns={3} stackable textAlign='center'>
           <Statistic label='followers' value={(followers.length+0.00).toLocaleString()} />
           <Statistic label='followings' value={(following.length+0.00).toLocaleString()} />
-          <Statistic label='posts' value='0' />
+          <Statistic label='posts' value={(stories_written.length+0.00).toLocaleString()} />
         </Grid>
 
         <Divider  />
 
 
-        <StoryCard />
+        {stories_written.length> 0  ? (
+          stories_written.map(story =>
+            <StoryCard key={story.id} story={story}/>
+          )
+
+        ) : (
+          <p>User has not posted any stories</p>
+        )}
+
+
+
 
       </Grid.Column>
     </Grid>

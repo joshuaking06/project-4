@@ -1,15 +1,16 @@
 import React from 'react'
 import {Icon,Card  } from 'semantic-ui-react'
-const description = [
-  'Amy is a violinist with 2 years experience in the wedding industry.',
-  'She enjoys the outdoors and currently resides in upstate New York.'
-].join(' ')
-const StoryCard = () => {
+
+const StoryCard = (story) => {
+
+  const { title, genre, description } = story.story
+  console.log(genre)
+  console.log(story)
 
   return(
     <Card className='users-profile-card' style={{width: 'auto'}}>
-      <Card.Content header='About Amy' />
-      <Card.Meta content='Horror, Sci-fi' />
+      <Card.Content header={title} />
+      <Card.Meta content={genre} />
       <Card.Content description={description} />
       <Card.Content extra >
         <a>
