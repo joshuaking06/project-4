@@ -1,7 +1,16 @@
 import React from 'react'
 import FlipPage from 'react-flip-page'
-import { Segment } from 'semantic-ui-react'
+import { Segment, Header, Divider } from 'semantic-ui-react'
 import axios from 'axios'
+
+
+const style = {
+      width: '100%',
+      height: '500px',
+      backgroundImage: `url(https://marketplace.canva.com/MABdzJjyLYc/1/thumbnail_large/canva-student-writing-paper-lined--MABdzJjyLYc.png)`,
+      backgroundSize: 'cover'
+    }
+
 
 class StoriesIndex extends React.Component{
   constructor(){
@@ -9,6 +18,7 @@ class StoriesIndex extends React.Component{
 
     this.state={
       width: window.innerWidth,
+      stories: []
     }
 
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this)
@@ -16,8 +26,8 @@ class StoriesIndex extends React.Component{
 
   componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange)
-    axios.get('/api/reddit/count/10')
-      .then(res => console.log(res))
+    axios.get('/api/stories')
+      .then(res => this.setState({ stories: res.data }))
   }
 
   componentWillUnmount() {
@@ -33,17 +43,29 @@ class StoriesIndex extends React.Component{
   render(){
     const { width } = this.state
     const isMobile = width <= 500
-
+    console.log(this.state.stories)
     if(isMobile){
       return(
         <div id='flipper'>
+          <Divider section hidden />
           <FlipPage
             style={{ touchAction: 'none' }}
             loopForever
             orientation='horizontal'
           >
-            <img src="http://unsplash.it/320/480" />
-            <img src="http://clipart-library.com/image_gallery/206146.png" />
+            {this.state.stories.map(story =>
+              <Segment
+                style={style}
+                className='index-card'
+                key={story.id}
+              >
+                <Divider hidden />
+                <Header
+                  as='h3'
+                  textAlign='center'
+                > {story.title} </Header>
+              </Segment>
+            )}
           </FlipPage>
         </div>
       )

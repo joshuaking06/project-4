@@ -1,7 +1,17 @@
-main{
-  height: 100vh;
-  #flipper{
-    margin: auto;
-    height: 100%;
+html{
+  main{
+    height: 100vh;
+    .ui.segment .index-card{
+      background-color: darkgrey;
+    }
+    #flipper{
+      background-color: darkgrey;
+      display: flex;
+      justify-content: center;
+      padding-top: 10%;
+      margin-left: auto;
+      margin-right: auto;
+      height: 100vh;
+    }
   }
 }

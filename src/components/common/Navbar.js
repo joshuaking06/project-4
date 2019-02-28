@@ -47,13 +47,12 @@ class Navbar extends React.Component{
         {isMobile &&
 
               <Menu inverted>
-                <Menu.Item>
-                  <Button
-                    onClick={this.props.handleShowClick}
-                    inverted
-                  >
+                <Menu.Item
+                  onClick={this.props.handleShowClick}
+
+                >
                     <Icon name='bars'/>
-                  </Button>
+
                 </Menu.Item>
               </Menu>
 
@@ -61,10 +60,12 @@ class Navbar extends React.Component{
         }
 
         {!isMobile &&
-            <Menu inverted
+            <Menu inverted>
+            <Menu.Item
               onClick={this.props.handleShowClick}
             >
               <Icon name='bars'/>
+<<<<<<< HEAD
 
               <Menu.Item
                 name='home'
@@ -73,6 +74,10 @@ class Navbar extends React.Component{
                 <Icon name='home' /> Home
               </Menu.Item>
 
+=======
+            </Menu.Item>
+              <Menu.Item name='home' active={true} />
+>>>>>>> development
               <Menu.Menu position='right'>
                 {!Auth.isAuthenticated() &&
 
