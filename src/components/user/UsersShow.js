@@ -20,10 +20,11 @@ class UsersShow extends React.Component{
 
 
   render(){
+    if(!this.state ) return(<h1>Loadinng...</h1>)
     return(
       <Container>
         <Segment>
-          <UsersDetail />
+          <UsersDetail  usersDetail={this.state.usersDetail}/>
         </Segment>
       </Container>
 

@@ -1,17 +1,19 @@
 import React from 'react'
-import {Statistic, Grid, Image,Header,Divider, Button,Icon,Card  } from 'semantic-ui-react'
-const description = [
-  'Amy is a violinist with 2 years experience in the wedding industry.',
-  'She enjoys the outdoors and currently resides in upstate New York.'
-].join(' ')
-const UsersDetail = () => {
+import StoryCard from './StoryCard'
 
+import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-react'
+
+const UsersDetail = (usersDetail) => {
+  console.log(usersDetail)
+
+  const { username, followers, following } = usersDetail.usersDetail
+  console.log(username)
   return(
 
     <Grid columns={1} stackable textAlign='center'>
       <Grid.Column width={8}  >
         <Header as='h1' icon textAlign='center'>
-          <Header.Content>User name</Header.Content>
+          <Header.Content>{username}</Header.Content>
         </Header>
 
 
@@ -29,30 +31,15 @@ const UsersDetail = () => {
         <Divider hidden />
 
         <Grid columns={3} stackable textAlign='center'>
-          <Statistic label='followers' value='5,550' />
-          <Statistic label='followings' value='5,550' />
-          <Statistic label='posts' value='5,550' />
+          <Statistic label='followers' value={(followers.length+0.00).toLocaleString()} />
+          <Statistic label='followings' value={(following.length+0.00).toLocaleString()} />
+          <Statistic label='posts' value='0' />
         </Grid>
 
         <Divider  />
 
 
-        <Card className='users-profile-card' style={{width: 'auto'}}>
-          <Card.Content header='About Amy' />
-          <Card.Meta content='Horror, Sci-fi' />
-          <Card.Content description={description} />
-          <Card.Content extra >
-            <a>
-              <Icon name='comment outline' />
-                        22 comments
-            </a>
-            <a>
-              <Icon name='heart outline' />
-                        22 likes
-            </a>
-          </Card.Content>
-        </Card>
-
+        <StoryCard />
 
       </Grid.Column>
     </Grid>
