@@ -1,9 +1,13 @@
 import React from 'react'
+import LoadingPage from '../common/LoadingPage'
 
 
 const StoryNew = () => {
   return(
-    <h1> Hello world </h1>
+    <div>
+      <LoadingPage />
+      <h1> Hello world </h1>
+    </div>
   )
 }
 

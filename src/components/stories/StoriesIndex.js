@@ -2,14 +2,15 @@ import React from 'react'
 import FlipPage from 'react-flip-page'
 import { Segment, Header, Divider } from 'semantic-ui-react'
 import axios from 'axios'
+import LoadingPage from '../common/LoadingPage'
 
 
 const style = {
-      width: '100%',
-      height: '500px',
-      backgroundImage: `url(https://marketplace.canva.com/MABdzJjyLYc/1/thumbnail_large/canva-student-writing-paper-lined--MABdzJjyLYc.png)`,
-      backgroundSize: 'cover'
-    }
+  width: '100%',
+  height: '500px',
+  backgroundImage: 'url(https://marketplace.canva.com/MABdzJjyLYc/1/thumbnail_large/canva-student-writing-paper-lined--MABdzJjyLYc.png)',
+  backgroundSize: 'cover'
+}
 
 
 class StoriesIndex extends React.Component{
@@ -47,6 +48,7 @@ class StoriesIndex extends React.Component{
     if(isMobile){
       return(
         <div id='flipper'>
+          <LoadingPage />
           <Divider section hidden />
           <FlipPage
             style={{ touchAction: 'none' }}
@@ -69,9 +71,7 @@ class StoriesIndex extends React.Component{
           </FlipPage>
         </div>
       )
-    }
-
-    else return(
+    } else return(
       <Segment>
         <p> Hello there </p>
         <p> Hello again </p>
@@ -80,9 +80,5 @@ class StoriesIndex extends React.Component{
     )
   }
 }
-
-
-
-
 
 export default StoriesIndex

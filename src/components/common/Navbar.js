@@ -98,7 +98,7 @@ class Navbar extends React.Component{
               <Menu.Item
                 name='Logout'
                 onClick={this.logout}
-              > <Icon name='remove user' /> Logout
+              > <Icon name='log out' /> Logout
               </Menu.Item>
 
                 }

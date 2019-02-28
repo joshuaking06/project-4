@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Grid, Form, Input, Divider, Button, TextArea, Message, Image } from 'semantic-ui-react'
+import { Segment, Grid, Form, Input, Divider, Button, TextArea, Message, Image, Icon } from 'semantic-ui-react'
 
 
 
@@ -14,11 +14,11 @@ const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
 
   return(
     <Grid columns={1} stackable textAlign='center'>
-      <Grid.Column width={8}>
+      <Grid.Column width={7}>
         <Divider hidden />
         <Segment color='blue'>
-          {/*<Icon name='add user' size='huge' />*/}
-          <Image src="https://digitalsynopsis.com/wp-content/uploads/2016/06/loading-animations-preloader-gifs-ui-ux-effects-19.gif" />
+          <Icon name='user plus' size='huge' />
+          {/*<Image src="https://digitalsynopsis.com/wp-content/uploads/2016/06/loading-animations-preloader-gifs-ui-ux-effects-19.gif" />*/}
           {imageSuccess && <Message
             success> Image Successfully Uploaded </Message>
           }
@@ -35,6 +35,8 @@ const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
             <Form.Field required>
               <label>Create Your Username</label>
               <Input
+                icon='user'
+                iconPosition='left'
                 onChange={handleChange}
                 placeholder='Username'
                 required
@@ -45,6 +47,8 @@ const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
 
             <Form.Group widths='equal'>
               <Form.Input
+                icon='info'
+                iconPosition='left'
                 label='First name'
                 required
                 name='firstName'
@@ -53,6 +57,8 @@ const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
               />
 
               <Form.Input
+                icon='info'
+                iconPosition='left'
                 onChange={handleChange}
                 required
                 label='Last name'
@@ -63,6 +69,8 @@ const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
             <Form.Field required>
               <label>Enter Your Email</label>
               <Input
+                icon='envelope'
+                iconPosition='left'
                 onChange={handleChange}
                 placeholder='Email'
                 type='email'
@@ -72,6 +80,8 @@ const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
             <Form.Field required>
               <label>Create a Password</label>
               <Input
+                icon='lock'
+                iconPosition='left'
                 onChange={handleChange}
                 placeholder='Password'
                 type='password'
@@ -81,6 +91,8 @@ const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
             <Form.Field required>
               <label>Confirm Your Password</label>
               <Input
+                icon='lock'
+                iconPosition='left'
                 onChange={handleChange}
                 placeholder='Password'
                 type='password'
@@ -99,7 +111,7 @@ const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
             </Form.Field>
 
 
-            <Button fluid content="Create Your Profile" primary />
+            <Button fluid content="Submit" primary icon='send' />
 
           </Form>
         </Segment>
