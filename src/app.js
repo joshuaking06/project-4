@@ -58,7 +58,6 @@ class App extends React.Component{
                   <Route path="/login" component={Login} />
                   <Route path="/users/:id" component={UsersShow} />
                   <Route path="/stories/:id" component={StoriesShow} />
-                  <Route path="/stories" component={StoriesIndex} />
                   <Route path="/reddit" component={StoriesIndex} />
                 </Switch>
 

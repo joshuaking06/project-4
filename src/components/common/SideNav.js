@@ -26,6 +26,7 @@ class SideNav extends React.Component{
     if(name === 'home')this.props.history.push('/')
     if(name === 'Login')this.props.history.push('/login')
     if(name === 'Sign Up')this.props.history.push('/register')
+    if(name === 'Stories')this.props.history.push('/reddit')
   }
 
   logout(){
@@ -72,7 +73,9 @@ class SideNav extends React.Component{
             </Menu.Item>
         }
 
-        <Menu.Item as='a'>
+        <Menu.Item as='a'
+          name='Stories'
+          onClick={this.handleItemClick} >
           <Icon name='book' />
             Stories
         </Menu.Item>
@@ -83,7 +86,7 @@ class SideNav extends React.Component{
         </Menu.Item>
 
         {!Auth.isAuthenticated() &&
-            <Menu.Item as='a'>
+            <Menu.Item as='a' >
               <Icon name='pencil alternate' />
               Add New Story
             </Menu.Item>
