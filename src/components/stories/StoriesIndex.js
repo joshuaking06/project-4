@@ -39,7 +39,7 @@ class StoriesIndex extends React.Component{
   async getStories(count){
     let stories
     this.state.reddit ? stories = await axios.get(`/api/reddit/count/${count}`) :
-       stories = await axios.get(`/api/stories`)
+      stories = await axios.get('/api/stories')
     return await stories.data
   }
 
