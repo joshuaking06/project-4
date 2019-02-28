@@ -50,8 +50,8 @@ class Login extends React.Component{
     })
     const { postData } = this.state
     return(
-      <Grid columns={1} textAlign='center'>
-        <Grid.Column width={7}>
+      <Grid columns={2} textAlign='center'>
+        <Grid.Column width={8}>
           <Divider hidden/>
           <Segment color="blue">
             <Image src="https://d2lp05f39ek59n.cloudfront.net/uploads/ReadMe_product_img_690313098_readme.png" />

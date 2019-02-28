@@ -39,7 +39,7 @@ class StoriesIndex extends React.Component{
   async getStories(count){
     let stories
     this.state.reddit ? stories = await axios.get(`/api/reddit/count/${count}`) :
-       stories = await axios.get(`/api/stories`)
+      stories = await axios.get('/api/stories')
     return await stories.data
   }
 
@@ -113,12 +113,12 @@ class StoriesIndex extends React.Component{
                 <Button size='small' color='black' circular icon='add' />
 
                 <Link to ={{
-                    pathname: `/stories/${story.id}`,
-                    state: {
-                        reddit: this.state.reddit,
-                        storyId: story.id
-                }}} >
-                    <Button size='small' secondary> Read Now </Button>
+                  pathname: `/stories/${story.id}`,
+                  state: {
+                    reddit: this.state.reddit,
+                    storyId: story.id
+                  }}} >
+                  <Button size='small' secondary> Read Now </Button>
                 </Link>
 
                 {this.state.reddit &&
