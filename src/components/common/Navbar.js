@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link, withRouter } from 'react-router-dom'
 import { Menu, Icon, Button } from 'semantic-ui-react'
+import Auth from '../../lib/Auth'
 
 class Navbar extends React.Component{
   constructor(props){
@@ -7,10 +9,12 @@ class Navbar extends React.Component{
 
     this.state={
       visible: false,
-      width: window.innerWidth
+      width: window.innerWidth,
+      activeItem: 'home'
     }
 
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this)
+    this.logout = this.logout.bind(this)
   }
 
   componentDidMount() {
@@ -21,10 +25,21 @@ class Navbar extends React.Component{
     this.setState({ width: window.innerWidth })
   }
 
+  handleItemClick(e, { name }){
+    this.setState({ activeItem: name })
+    if(name === 'home')this.props.history.push('/')
+    if(name === 'Login')this.props.history.push('/login')
+    if(name === 'Sign Up')this.props.history.push('/register')
+  }
 
+  logout(){
+    Auth.removeToken()
+    this.props.history.push('/')
+  }
 
   render(){
     const isMobile = (this.state.width <= 500)
+    const { activeItem } = this.state
 
     return(
       <div>
@@ -50,14 +65,44 @@ class Navbar extends React.Component{
               onClick={this.props.handleShowClick}
             >
               <Icon name='bars'/>
-              <Menu.Item name='home' active={true} />
+
+              <Menu.Item
+                name='home'
+                active={this.props.location.pathname === '/'}
+                onClick={this.handleItemClick} >
+                <Icon name='home' /> Home
+              </Menu.Item>
+
               <Menu.Menu position='right'>
+                {!Auth.isAuthenticated() &&
+
                 <Menu.Item
-                  name='Sign-Up'
-                />
+                  name='Sign Up'
+                  onClick={this.handleItemClick}>
+                  <Icon name='add user' /> Sign Up
+                </Menu.Item>
+                }
+
+                {!Auth.isAuthenticated() &&
                 <Menu.Item
-                  name='Login'/>
+                  name='Login'
+                  onClick={this.handleItemClick} >
+                  <Icon name='user circle'/> Log In
+                </Menu.Item>
+                }
+
+                {
+                  Auth.isAuthenticated() &&
+              <Menu.Item
+                name='Logout'
+                onClick={this.logout}
+              > <Icon name='remove user' /> Logout
+              </Menu.Item>
+
+                }
+
               </Menu.Menu>
+
             </Menu>
         }
 
@@ -67,4 +112,4 @@ class Navbar extends React.Component{
   }
 }
 
-export default Navbar
+export default withRouter(Navbar)
