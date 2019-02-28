@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Segment, Grid } from 'semantic-ui-react'
+import { Container, Segment, Grid, Divider, Header } from 'semantic-ui-react'
 
 const style = {
   height: '400px',
@@ -15,6 +15,7 @@ class DesktopIndex extends React.Component{
 
 
   render(){
+    console.log(this.props.stories)
     return(
       <Container>
         <Grid columns={3}>
@@ -31,9 +32,32 @@ class DesktopIndex extends React.Component{
                         reddit: this.props.reddit,
                         storyId: story.id
                 }}}> <Segment
+                        className='desktop-index'
                         style={style}
-                  > {story.title}
+                  > <Divider hidden />
+                    <Header as='h1'> {story.title} </Header>
+                    <Divider section hidden />
+                    {story.genre &&
+                      <Header as='h3'> Genre: <span>{story.genre}</span> </Header>
+                    }
+
+
+                    {story.creator &&
+                      <Header as='h3'> Author: {story.creator.username} </Header>
+                    }
+
+                    {!story.creator &&
+                      <Header as='h3'> Source: Reddit{story.score && <span>({story.score} upvotes)</span>} </Header>
+                    }
+
+                    {story.description &&
+                      <Header as='h3'>
+                        Description: {story.description}
+                      </Header>
+                    }
+
                   </Segment>
+                  <Divider />
                 </Link>
               )}
             </Segment>
