@@ -1,11 +1,5 @@
 import React from 'react'
-import { Segment,Statistic, Container, Grid, Image,Header,Divider  } from 'semantic-ui-react'
-
-const items = [
-  { key: 'followers', label: 'Followers', value: '22' },
-  { key: 'followings', label: 'Followings', value: '31,200' },
-  { key: 'posts', label: 'Posts', value: '22' }
-]
+import { Segment,Statistic, Container, Grid, Image,Header,Divider, Button,Icon  } from 'semantic-ui-react'
 
 class UsersShow extends React.Component{
 
@@ -21,8 +15,19 @@ class UsersShow extends React.Component{
               <Header as='h1' icon textAlign='center'>
                 <Header.Content>User name</Header.Content>
               </Header>
+
+
               <Image src='https://react.semantic-ui.com/images/avatar/large/patrick.png' size='medium' circular centered/>
-              <Divider section hidden />
+
+              <Divider  hidden />
+              <Button primary><Icon name='add user'/>Follow</Button>
+              <Button primary>               <Icon name='talk'/>Message User</Button>
+
+              <Divider hidden />
+
+              <Button positive> <Icon name='check circle'/>Following</Button>
+              <Divider hidden />
+
               <Grid columns={3} stackable textAlign='center'>
                 <Statistic label='followers' value='5,550' />
                 <Statistic label='followings' value='5,550' />
