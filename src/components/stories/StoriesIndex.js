@@ -21,7 +21,7 @@ class StoriesIndex extends React.Component{
 
     this.state={
       count: 20,
-      reddit: false,
+      reddit: (this.props.match.path === "/reddit"),
       width: window.innerWidth,
       stories: []
     }
@@ -69,6 +69,7 @@ class StoriesIndex extends React.Component{
 
 
   render(){
+    console.log(this.state)
     if(this.state.stories.length < 1) return <LoadingPage />
     const { width } = this.state
     const isMobile = width <= 500
@@ -137,6 +138,7 @@ class StoriesIndex extends React.Component{
     } else return(
       <Segment>
         <DesktopIndex
+          reddit={this.state.reddit}
           stories={this.state.stories}
         />
       </Segment>
