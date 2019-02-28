@@ -1,15 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { Segment, Sidebar, Menu } from 'semantic-ui-react'
+import { Segment, Sidebar, Menu, Image } from 'semantic-ui-react'
 import StoriesIndex from './components/stories/StoriesIndex'
-import StoriesNew from './components/stories/StoriesNew'
+import StoriesShow from './components/stories/StoriesShow'
 import Navbar from './components/common/Navbar'
 import SideNav from './components/common/SideNav'
 import Register from './components/Auth/Register'
 import FlashMessages from './components/common/FlashMessages'
 import Login from './components/Auth/Login'
 import UsersShow from './components/user/UsersShow'
+import LoadingPage from './components/common/LoadingPage'
 
 
 import 'semantic-ui-css/semantic.min.css'
@@ -31,7 +32,7 @@ class App extends React.Component{
 
   handleShowClick(){
     this.setState({ sidebarVisible: true })
-    console.log(this.state)
+    console.log('HANDLING SHOW CLICK')
   }
 
   handleSidebarHide(){
@@ -52,11 +53,13 @@ class App extends React.Component{
                 <Navbar handleShowClick={this.handleShowClick} />
                 <FlashMessages />
                 <Switch>
+                  <Route path="/loading" component={LoadingPage} />
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
-                  <Route path="/new" component={StoriesNew} />
                   <Route path="/users/:id" component={UsersShow} />
-                  <Route path="/" component={StoriesIndex} />
+                  <Route path="/stories/:id" component={StoriesShow} />
+                  <Route path="/stories" component={StoriesIndex} />
+                  <Route path="/reddit" component={StoriesIndex} />
                 </Switch>
 
               </Sidebar.Pusher>

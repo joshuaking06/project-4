@@ -5,7 +5,7 @@ from lib.secure_route import secure_route
 
 api = Blueprint('stories', __name__)
 
-stories_schema = StorySchema(many=True)
+stories_schema = StorySchema(many=True, exclude=('content', ))
 story_schema = StorySchema()
 comment_schema = CommentSchema()
 

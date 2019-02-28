@@ -1,8 +1,21 @@
-main{
-  height: 100vh;
-  #flipper{
-    margin: auto;
-    height: 100%;
+html{
+  main{
+    height: 100vh;
+    .ui.segment .index-card{
+      background-color: darkgrey;
+      .card-text{
+        text-align: center;
+      }
+    }
+    #flipper{
+      background-color: darkgrey;
+      display: flex;
+      justify-content: center;
+      padding-top: 10%;
+      margin-left: auto;
+      margin-right: auto;
+      height: 100vh;
+    }
   }
 }
 
@@ -12,4 +25,69 @@ main{
 
 .ui.button.detail{
   margin-bottom: 10px;
+}
+
+p {
+  margin-top: 10px;
+}
+
+
+
+#books {
+position: relative;
+width: 300px;
+height: 300px;
+margin: 3em auto;
+background: url(https://digitalsynopsis.com/wp-content/uploads/2016/06/loading-animations-preloader-gifs-ui-ux-effects-4.gif) 0 0 repeat;
+}
+
+#books:before {
+content: "";
+position: absolute;
+top: 0%;
+left: 0%;
+width: 100%;
+height: 100%;
+z-index: 2;
+}
+
+#books:after {
+content: "";
+position: absolute;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+opacity: 0.2;
+}
+
+
+
+@keyframes rotate {
+0% {background-position: 0 0;}
+100% {background-position: 630px 0;}
+}
+
+
+@-moz-keyframes rotate {
+0% {background-position: 0 0;}
+100% {background-position: 630px 0;}
+}
+
+
+@-webkit-keyframes rotate {
+0% {background-position: 0 0;}
+100% {background-position: 630px 0;}
+}
+
+
+@-ms-keyframes rotate {
+0% {background-position: 0 0;}
+100% {background-position: 630px 0;}
+}
+
+
+@-o-keyframes rotate {
+0% {background-position: 0 0;}
+100% {background-position: 630px 0;}
 }

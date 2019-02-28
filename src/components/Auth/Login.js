@@ -1,5 +1,5 @@
 import React from 'react'
-import { Divider, Button, Grid, Form, Input, Segment, Icon, Message } from 'semantic-ui-react'
+import { Divider, Button, Grid, Form, Input, Segment, Icon, Message, Image } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import Auth from '../../lib/Auth'
 import Flash from '../../lib/Flash'
@@ -51,10 +51,12 @@ class Login extends React.Component{
     const { postData } = this.state
     return(
       <Grid columns={1} textAlign='center'>
-        <Grid.Column width={5}>
+        <Grid.Column width={7}>
           <Divider hidden/>
           <Segment color="blue">
-            <Icon name='user circle' size='huge' />
+            <Image src="https://d2lp05f39ek59n.cloudfront.net/uploads/ReadMe_product_img_690313098_readme.png" />
+            {/* <Icon name='user circle' size='huge' /> */}
+            <p> Welcome back!</p>
 
             {/* displaying error messages when they exist, passing in list  of error messages */}
             {errorMessages.length >0 && <Message
@@ -68,6 +70,8 @@ class Login extends React.Component{
               <Form.Field>
                 <label>Your Email</label>
                 <Input
+                  icon='envelope'
+                  iconPosition='left'
                   value={postData.email}
                   onChange={this.handleChange}
                   placeholder='Email'
@@ -77,6 +81,8 @@ class Login extends React.Component{
               <Form.Field>
                 <label>Your Password</label>
                 <Input
+                  icon='lock'
+                  iconPosition='left'
                   value={postData.password}
                   onChange={this.handleChange}
                   type='password'
@@ -85,7 +91,7 @@ class Login extends React.Component{
                 />
               </Form.Field>
               <Divider hidden/>
-              <Button fluid content="Log In" primary />
+              <Button fluid content="Log In" primary icon='send' />
             </Form>
             <Divider hidden />
             <a href='#' onClick={this.goToRegister}> Need have an account? Click Here to Sign Up. </a>
