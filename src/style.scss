@@ -1,5 +1,13 @@
 html{
   main{
+    #reader{
+      height: 85vh;
+      overflow: scroll;
+    }
+    #index-reader{
+      height: 85vh;
+      overflow: scroll
+    }
     #nav{
       position: fixed !important; /* Set the navbar to fixed position */
       top: 0 !important; /* Position the navbar at the top of the page */

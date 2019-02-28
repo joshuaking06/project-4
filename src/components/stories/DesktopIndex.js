@@ -22,6 +22,7 @@ class DesktopIndex extends React.Component{
           <Grid.Column width={3}></Grid.Column>
           <Grid.Column width={10}>
             <Segment
+              id='index-reader'
               className='desktop-index'
               raised
             >

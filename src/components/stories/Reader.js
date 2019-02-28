@@ -13,7 +13,7 @@ const Reader = ({ story }) => {
 
 
   return(
-    <Segment textAlign='center' color='red'>
+    <Segment id='reader' textAlign='center' color='red'>
       <Header as='h2'> {story.title} </Header>
       <Divider section hidden/>
       {newStory.map((story, index) =>

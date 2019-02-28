@@ -135,13 +135,14 @@ class StoriesIndex extends React.Component{
         </div>
       )
     } else return(
-      <Segment>
+      <div>
+        <Divider hidden section />
         <DesktopIndex
           loadMore={this.loadMore}
           reddit={this.state.reddit}
           stories={this.state.stories}
         />
-      </Segment>
+      </div>
     )
   }
 }
