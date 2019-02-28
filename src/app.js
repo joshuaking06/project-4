@@ -9,6 +9,7 @@ import SideNav from './components/common/SideNav'
 import Register from './components/Auth/Register'
 import FlashMessages from './components/common/FlashMessages'
 import Login from './components/Auth/Login'
+import UsersShow from './components/user/UsersShow'
 
 
 import 'semantic-ui-css/semantic.min.css'
@@ -54,6 +55,7 @@ class App extends React.Component{
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
                   <Route path="/new" component={StoriesNew} />
+                  <Route path="/users/:id" component={UsersShow} />
                   <Route path="/" component={StoriesIndex} />
                 </Switch>
 
