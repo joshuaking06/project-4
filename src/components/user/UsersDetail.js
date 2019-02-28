@@ -1,6 +1,7 @@
 import React from 'react'
 import StoryCard from './StoryCard'
 import Auth from '../../lib/Auth'
+import { Link } from 'react-router-dom'
 
 import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-react'
 
@@ -54,7 +55,15 @@ const UsersDetail = (usersDetail) => {
 
         {stories_written.length> 0  ? (
           stories_written.map(story =>
-            <StoryCard key={story.id} story={story}/>
+            <Link to ={{
+              pathname: `/stories/${story.id}`,
+              state: {
+                reddit: false,
+                storyId: story.id
+              }}}  key={story.id}>
+              <StoryCard key={story.id} story={story}/>
+            </Link>
+
           )
 
         ) : (
