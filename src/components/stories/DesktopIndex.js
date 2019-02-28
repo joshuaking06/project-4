@@ -14,7 +14,11 @@ class DesktopIndex extends React.Component{
   render(){
     return(
       <Container>
-
+        <Segment raised>
+          {this.state.stories.map(story =>
+            <div key={story.id}>
+          )}
+        </Segment>
       </Container>
     )
   }
