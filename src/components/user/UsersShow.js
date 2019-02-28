@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Segment, Container } from 'semantic-ui-react'
 
 import UsersDetail from './UsersDetail'
+import LoadingPage from '../common/LoadingPage'
 
 
 class UsersShow extends React.Component{
@@ -24,7 +25,7 @@ class UsersShow extends React.Component{
 
 
   render(){
-    if(!this.state.usersDetail ) return(<h1>Loadinng...</h1>)
+    if(!this.state.usersDetail ) return <LoadingPage />
     return(
       <Container>
         <Segment>

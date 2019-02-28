@@ -33,14 +33,13 @@ const UsersDetail = (usersDetail) => {
               <Button primary className='detail'><Icon name='add user'/>Follow</Button>
             )
           )
-
         }
+
         {
           id !== Auth.getUserID() &&
           (
             <Button primary className='detail'> <Icon name='comments'/>Message User</Button>
           )
-
         }
 
         <Divider hidden />
@@ -53,7 +52,6 @@ const UsersDetail = (usersDetail) => {
 
         <Divider  />
 
-
         {stories_written.length> 0  ? (
           stories_written.map(story =>
             <StoryCard key={story.id} story={story}/>
@@ -62,9 +60,6 @@ const UsersDetail = (usersDetail) => {
         ) : (
           <p>User has not posted any stories</p>
         )}
-
-
-
 
       </Grid.Column>
     </Grid>
