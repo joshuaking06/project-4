@@ -6,13 +6,12 @@ import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-re
 
 const UsersDetail = (usersDetail) => {
 
-  const { username, followers, following, stories_written } = usersDetail.usersDetail// eslint-disable-line
+  const { username, followers, following, stories_written,id } = usersDetail.usersDetail// eslint-disable-line
   // console.log(followers)
   // const a = followers.map(follower => {
   //   return follower.id
   // })
   // console.log(a)
-
   return(
 
     <Grid columns={1} stackable textAlign='center'>
@@ -26,16 +25,23 @@ const UsersDetail = (usersDetail) => {
 
         <Divider  hidden />
         {
-
-          followers.some(f => f.id === Auth.getUserID())  ? (
-            <Button positive className='detail'> <Icon name='check circle'/>Following</Button>
-          ) : (
-            <Button primary className='detail'><Icon name='add user'/>Follow</Button>
+          id !== Auth.getUserID() &&
+          (
+            followers.some(f => f.id === Auth.getUserID())  ? (
+              <Button positive className='detail'> <Icon name='check circle'/>Following</Button>
+            ) : (
+              <Button primary className='detail'><Icon name='add user'/>Follow</Button>
+            )
           )
 
+        }
+        {
+          id !== Auth.getUserID() &&
+          (
+            <Button primary className='detail'> <Icon name='comments'/>Message User</Button>
+          )
 
         }
-        <Button primary className='detail'> <Icon name='comments'/>Message User</Button>
 
         <Divider hidden />
 
