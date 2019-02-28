@@ -54,7 +54,8 @@ class App extends React.Component{
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
                   <Route path="/stories/:id" component={StoriesShow} />
-                  <Route path="/" component={StoriesIndex} />
+                  <Route path="/stories" component={StoriesIndex} />
+                  <Route path="/reddit" component={StoriesIndex} />
                 </Switch>
 
               </Sidebar.Pusher>

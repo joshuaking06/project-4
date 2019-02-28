@@ -1,8 +1,9 @@
 import React from 'react'
 import FlipPage from 'react-flip-page'
 import { Link } from 'react-router-dom'
-import { Segment, Header, Divider, Container, Button, Icon } from 'semantic-ui-react'
 import axios from 'axios'
+import { Segment, Header, Divider, Container, Button, Icon } from 'semantic-ui-react'
+import DesktopIndex from './DesktopIndex'
 
 
 const style = {
@@ -18,14 +19,15 @@ class StoriesIndex extends React.Component{
     super(props)
 
     this.state={
-      count: 10,
-      reddit: true,
+      count: 20,
+      reddit: false,
       width: window.innerWidth,
       stories: []
     }
 
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this)
     this.handleItemClick = this.handleItemClick.bind(this)
+    this.loadMore = this.loadMore.bind(this)
   }
 
   handleItemClick(){
@@ -33,18 +35,24 @@ class StoriesIndex extends React.Component{
   }
 
   // get stories depending on whether user is on reddit page or discover stories page
-  async getStories(reddit){
+  async getStories(count){
     let stories
-    reddit ? stories = await axios.get(`/api/reddit/count/${this.state.count}`) :
+    this.state.reddit ? stories = await axios.get(`/api/reddit/count/${count}`) :
        stories = await axios.get(`/api/stories`)
     return await stories.data
+  }
+
+  loadMore(){
+    this.getStories(this.state.count).then(stories => {
+      this.setState({ stories: stories, count: this.state.count + 10 })
+    })
   }
 
 
   // bringing in all the stories
   componentDidMount(){
     window.addEventListener('resize', this.handleWindowSizeChange)
-    this.getStories().then(stories => this.setState({ stories }))
+    this.getStories(10).then(stories => this.setState({ stories }))
   }
 
   // checking if window size changes
@@ -100,11 +108,26 @@ class StoriesIndex extends React.Component{
 
                 </Container>
                 <Divider section hidden />
-                <Button color='black' circular icon='add' />
-                <Link to={`/stories/${story.id}`}>
-                  <Button secondary> Read This Story </Button>
+                <Button size='small' color='black' circular icon='add' />
+
+                <Link to ={{
+                    pathname: `/stories/${story.id}`,
+                    state: {
+                        reddit: this.state.reddit,
+                        storyId: story.id
+                }}} >
+                    <Button size='small' secondary> Read Now </Button>
                 </Link>
+
+                {this.state.reddit &&
+                  <Button
+                    size='small'
+                    onClick={this.loadMore}
+                    primary> Load More
+                  </Button>
+                }
               </Segment>
+
             )}
           </FlipPage>
         </div>
@@ -113,9 +136,9 @@ class StoriesIndex extends React.Component{
 
     else return(
       <Segment>
-        <p> Hello there </p>
-        <p> Hello again </p>
-        <p> Hello again again </p>
+        <DesktopIndex
+          stories={this.state.stories}
+        />
       </Segment>
     )
   }
