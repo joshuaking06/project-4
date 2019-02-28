@@ -46,7 +46,6 @@ class SideNav extends React.Component{
         vertical
         visible={this.props.visible}
         width='thin'>
-        <Divider hidden />
 
         <Menu.Item as='a'
           name='home'
