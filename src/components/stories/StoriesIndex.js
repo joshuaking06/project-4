@@ -10,7 +10,7 @@ import DesktopIndex from './DesktopIndex'
 const style = {
   width: '100%',
   height: '500px',
-  backgroundImage: 'url(https://marketplace.canva.com/MABdzJjyLYc/1/thumbnail_large/canva-student-writing-paper-lined--MABdzJjyLYc.png)',
+  backgroundImage: 'url(https://previews.123rf.com/images/ke77kz/ke77kz1701/ke77kz170100026/69863051-old-paper-background-rustic-paper-texture-for-the-design-.jpg)',
   backgroundSize: 'cover'
 }
 
@@ -136,7 +136,7 @@ class StoriesIndex extends React.Component{
       )
     } else return(
       <div>
-        <Divider hidden section />
+        <Divider />
         <DesktopIndex
           loadMore={this.loadMore}
           reddit={this.state.reddit}
