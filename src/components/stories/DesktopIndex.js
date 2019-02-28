@@ -13,7 +13,9 @@ class DesktopIndex extends React.Component{
 
   render(){
     return(
-      null
+      <Container>
+
+      </Container>
     )
   }
 }
