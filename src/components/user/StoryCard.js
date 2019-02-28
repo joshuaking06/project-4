@@ -15,11 +15,11 @@ const StoryCard = (story) => {
       <Card.Content extra >
         <a>
           <Icon name='comment outline' />
-                        22 comments
+                        0 comments
         </a>
         <a>
           <Icon name='heart outline' />
-                        22 likes
+                        0 likes
         </a>
       </Card.Content>
     </Card>
