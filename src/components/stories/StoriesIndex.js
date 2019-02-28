@@ -2,12 +2,9 @@ import React from 'react'
 import FlipPage from 'react-flip-page'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-<<<<<<< HEAD
 import LoadingPage from '../common/LoadingPage'
-=======
 import { Segment, Header, Divider, Container, Button, Icon } from 'semantic-ui-react'
 import DesktopIndex from './DesktopIndex'
->>>>>>> development
 
 
 const style = {
