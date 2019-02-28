@@ -24,6 +24,7 @@ class StoriesShow extends React.Component{
   componentDidMount(){
     this.getStory().then(story => this.setState({story}))
   }
+  
 
   render(){
     if(!this.state.story) return null
