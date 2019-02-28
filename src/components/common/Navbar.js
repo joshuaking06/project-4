@@ -41,6 +41,7 @@ class Navbar extends React.Component{
   render(){
     const isMobile = (this.state.width <= 500)
     const { activeItem } = this.state
+    console.log(this.props.handleShowClick)
 
     return(
       <div>
@@ -81,7 +82,8 @@ class Navbar extends React.Component{
                 <Menu.Item
                   name='Sign Up'
                   onClick={this.handleItemClick}>
-                  <Icon name='add user' /> Sign Up
+                  <Icon name='add user' />
+                  Sign Up
                 </Menu.Item>
                 }
 
@@ -89,7 +91,8 @@ class Navbar extends React.Component{
                 <Menu.Item
                   name='Login'
                   onClick={this.handleItemClick} >
-                  <Icon name='user circle'/> Log In
+                  <Icon name='user circle'/>
+                  Log In
                 </Menu.Item>
                 }
 
@@ -97,8 +100,9 @@ class Navbar extends React.Component{
                   Auth.isAuthenticated() &&
               <Menu.Item
                 name='Logout'
-                onClick={this.logout}
-              > <Icon name='log out' /> Logout
+                onClick={this.logout}>
+                <Icon name='log out' />
+                Logout
               </Menu.Item>
 
                 }

@@ -31,7 +31,7 @@ class App extends React.Component{
 
   handleShowClick(){
     this.setState({ sidebarVisible: true })
-    console.log(this.state)
+    console.log('HANDLING SHOW CLICK')
   }
 
   handleSidebarHide(){

@@ -42,13 +42,13 @@ class StoriesIndex extends React.Component{
 
 
   render(){
+    if(this.state.stories.length < 1) return <LoadingPage />
     const { width } = this.state
     const isMobile = width <= 500
     console.log(this.state.stories)
     if(isMobile){
       return(
         <div id='flipper'>
-          <LoadingPage />
           <Divider section hidden />
           <FlipPage
             style={{ touchAction: 'none' }}
