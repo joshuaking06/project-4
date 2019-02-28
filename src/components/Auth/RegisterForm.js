@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Grid, Form, Input, Divider, Button, TextArea, Icon, Message } from 'semantic-ui-react'
+import { Segment, Grid, Form, Input, Divider, Button, TextArea, Message, Image } from 'semantic-ui-react'
 
 
 
@@ -17,7 +17,8 @@ const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
       <Grid.Column width={8}>
         <Divider hidden />
         <Segment color='blue'>
-          <Icon name='add user' size='huge' />
+          {/*<Icon name='add user' size='huge' />*/}
+          <Image src="https://digitalsynopsis.com/wp-content/uploads/2016/06/loading-animations-preloader-gifs-ui-ux-effects-19.gif" />
           {imageSuccess && <Message
             success> Image Successfully Uploaded </Message>
           }
@@ -32,7 +33,7 @@ const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
 
 
             <Form.Field required>
-              <label>Create A Username</label>
+              <label>Create Your Username</label>
               <Input
                 onChange={handleChange}
                 placeholder='Username'

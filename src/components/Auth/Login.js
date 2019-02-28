@@ -1,5 +1,5 @@
 import React from 'react'
-import { Divider, Button, Grid, Form, Input, Segment, Icon, Message } from 'semantic-ui-react'
+import { Divider, Button, Grid, Form, Input, Segment, Icon, Message, Image } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import Auth from '../../lib/Auth'
 import Flash from '../../lib/Flash'
@@ -51,10 +51,12 @@ class Login extends React.Component{
     const { postData } = this.state
     return(
       <Grid columns={1} textAlign='center'>
-        <Grid.Column width={5}>
+        <Grid.Column width={8}>
           <Divider hidden/>
           <Segment color="blue">
-            <Icon name='user circle' size='huge' />
+            <Image src="https://d2lp05f39ek59n.cloudfront.net/uploads/ReadMe_product_img_690313098_readme.png" />
+            {/* <Icon name='user circle' size='huge' /> */}
+            <p> Welcome back!</p>
 
             {/* displaying error messages when they exist, passing in list  of error messages */}
             {errorMessages.length >0 && <Message
