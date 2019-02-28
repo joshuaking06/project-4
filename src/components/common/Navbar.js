@@ -48,7 +48,7 @@ class Navbar extends React.Component{
 
         {isMobile &&
 
-              <Menu inverted>
+              <Menu fixed='top' inverted>
                 <Menu.Item
                   onClick={this.props.handleShowClick} >
 
@@ -62,7 +62,7 @@ class Navbar extends React.Component{
         }
 
         {!isMobile &&
-            <Menu inverted>
+            <Menu fixed='top' inverted>
               <Menu.Item
                 onClick={this.props.handleShowClick}
               >
