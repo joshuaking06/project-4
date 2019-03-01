@@ -99,14 +99,14 @@ class SideNav extends React.Component{
             </Menu.Item>
         }
 
-        <Menu.Item as='a'>
+        <Menu.Item onClick={this.handleItemClick} name='settings' as='a'>
           <Icon name='cogs' />
-            Setting
+            Settings
         </Menu.Item>
 
         <Menu.Item as='a'>
-          <Icon name='question circle outline' />
-            About Us
+          <Icon name='user' />
+            My Profile
         </Menu.Item>
 
         {Auth.isAuthenticated() &&

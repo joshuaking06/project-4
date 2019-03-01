@@ -18,6 +18,7 @@ import MessagesShow from './components/user/MessagesShow'
 
 import MyLibrary from './components/stories/MyLibrary'
 import Home from './components/common/Home'
+import SettingsPage from './components/common/SettingsPage'
 
 import 'semantic-ui-css/semantic.min.css'
 import './style.scss'
@@ -63,7 +64,7 @@ class App extends React.Component{
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
                   <Route path="/messages/:id/show" component={MessagesShow} />
-
+                  <Route path="/settings" component={SettingsPage} />
                   <Route path="/messages" component={Messages} />
                   <Route path="/users/:id/message" component={UsersMessages} />
                   <Route path="/users/:id" component={UsersShow} />

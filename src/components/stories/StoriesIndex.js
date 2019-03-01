@@ -87,6 +87,7 @@ class StoriesIndex extends React.Component{
         <div id='flipper'>
           <Divider section hidden />
           <FlipPage
+            responsive
             style={{ touchAction: 'none' }}
           >
             {this.state.stories.map(story =>
