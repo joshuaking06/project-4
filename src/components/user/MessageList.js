@@ -8,17 +8,19 @@ import { List, Image} from 'semantic-ui-react'
 
 
 
-const MessageList = () => {
+const MessageList = ({ messageData, information }) => {
+  const {content, created_at, receiver,sender } = messageData
+  // const {id, username } = receiver
+  const {id, username } = sender || receiver
+
   return(
-    <List divided relaxed>
-      <List.Item>
-        <Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />
-        <List.Content>
-          <List.Header as='a'>Semantic-Org/Semantic-UI</List.Header>
-          <List.Description as='a'>Updated 10 mins ago</List.Description>
-        </List.Content>
-      </List.Item>
-    </List>
+    <List.Item>
+      <Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />
+      <List.Content>
+        <List.Header as='a'>{username}</List.Header>
+        <List.Description as='a'>{`${information} :  ${created_at}`}</List.Description>
+      </List.Content>
+    </List.Item>
   )
 
 }

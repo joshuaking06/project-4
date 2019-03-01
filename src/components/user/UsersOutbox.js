@@ -4,7 +4,7 @@ import MessageList from './MessageList'
 // import { Link } from 'react-router-dom'
 
 // import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-react'
-import {Grid} from 'semantic-ui-react'
+import {Grid,List} from 'semantic-ui-react'
 
 
 
@@ -19,10 +19,22 @@ const UsersOutbox = ({outbox}) => {
 
         {
           outbox.length> 0 ? (
-            <div className='message-holder'>
+            <List divided relaxed>
               <p>You have sent {outbox.length} messages</p>
-              <MessageList />
-            </div>
+              {
+                outbox.map(message =>
+
+                  <MessageList
+                    key={message.id}
+                    messageData={message}
+                    information={'Message was sent at'}
+                  />
+                )
+              }
+
+
+            </List>
+
           ) : (
             <p>You have sent {outbox.length} messages</p>
 
