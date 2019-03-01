@@ -8,10 +8,10 @@ from models.story import Story, StorySchema
 api = Blueprint('auth', __name__)
 user_schema = UserSchema()
 message_schema = MessageSchema()
-users_schema = UserSchema(many=True, exclude=('followers', 'following', 'inbox', 'outbox'))
+users_schema = UserSchema(many=True, exclude=('followers', 'following', 'inbox', 'outbox', 'read_list'))
 story_schema = StorySchema()
-# user_schema = UserSchema(exclude=('inbox', 'outbox'))
-user_schema = UserSchema()
+user_schema = UserSchema(exclude=('inbox', 'outbox', 'read_list'))
+# user_schema = UserSchema()
 
 
 # == REGISTER ===
@@ -65,14 +65,14 @@ def send_message(user_id):
     if errors:
         return jsonify(errors), 422
     message.save()
-    return message_schema.jsonify(message)
+    return message_schema.jsonify(message), 200
 
 # === ME ===
 @api.route('/me', methods=['GET'])
 @secure_route
 def me():
-
-    return user_schema.jsonify(g.current_user)
+    me_schema = UserSchema()
+    return me_schema.jsonify(g.current_user)
 
 
 # == UPDATE THE USER ===
@@ -96,7 +96,6 @@ def update(user_id):
 @api.route('/users/<int:user_id>', methods=['DELETE'])
 # @secure_route
 def delete(user_id):
-
     user = User.query.get(user_id)
     user, errors = user_schema.load(request.get_json(), instance=user)
 

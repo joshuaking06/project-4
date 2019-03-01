@@ -36,18 +36,12 @@ class Message extends React.Component{
     if(!this.state.postData ) return <LoadingPage />
     const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
     const body = this.state.postData
-    console.log({body: body})
     axios.post(`/api/users/${this.props.match.params.id}/inbox`,  body, {headers: headers}
     )
-      .then( res =>{
-        console.log(res)
-      }
-
+      .then(
+        this.props.history.push(`/users/${this.props.match.params.id}`)
       )
-
   }
-
-
 
   render(){
     if(!this.state.usersDetail ) return <LoadingPage />
