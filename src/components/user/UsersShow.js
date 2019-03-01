@@ -4,6 +4,7 @@ import { Segment, Container } from 'semantic-ui-react'
 
 import UsersDetail from './UsersDetail'
 import LoadingPage from '../common/LoadingPage'
+import Auth from '../../lib/Auth'
 
 
 class UsersShow extends React.Component{
@@ -23,16 +24,28 @@ class UsersShow extends React.Component{
   }
 
   handleFollowEvent(){
-    console.log('follow')
+    axios.post(`/api/users/${this.props.match.params.id}/follow/${Auth.getUserID()}`)
+      .then( res =>{
+        //this.setState({ usersDetail: res.data})
+        console.log('followig', res)
+
+      })
   }
 
   handleUnfollowEvent(){
-    console.log('un-follow')
+    axios.post(`/api/users/${this.props.match.params.id}/unfollow/${Auth.getUserID()}`)
+      .then( res =>{
+        //this.setState({ usersDetail: res.data})
+        console.log('un-follow', res)
 
+      })
   }
+
+
+
   render(){
-    console.log(this.handleFollowEvent, 'HANDLEUNFOLLOW')
     if(!this.state.usersDetail ) return <LoadingPage />
+    {console.log(this.state.usersDetail.followers)}
     return(
       <Container>
         <Segment>

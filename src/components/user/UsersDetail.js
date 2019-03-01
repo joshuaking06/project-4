@@ -9,7 +9,6 @@ import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-re
 
 
 const UsersDetail = ({usersDetail, handleUnfollowEvent, handleFollowEvent}) => {
-  console.log(handleFollowEvent)
 
   const { username, followers, following, stories_written,id } = usersDetail // eslint-disable-line
 

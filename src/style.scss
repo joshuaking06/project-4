@@ -24,6 +24,9 @@ html{
 
 .users-profile-card p{
   margin-right: 10px;
+  &:hover{
+    color: #6495ED;
+  }
 }
 
 .ui.button.detail{
