@@ -14,7 +14,8 @@ class Message(db.Model, BaseModel):
     receiver = db.relationship('User', foreign_keys=[receiver_id], backref='inbox')
 
 class MessageSchema(ma.ModelSchema, BaseSchema):
-    sender = fields.Nested('UserSchema', only=('username', ))
-    receiver = fields.Nested('UserSchema', only=('username', ))
+    sender = fields.Nested('UserSchema', only=('username', 'id' ))
+    receiver = fields.Nested('UserSchema', only=('username', 'id' ))
+
     class Meta:
         model = Message
