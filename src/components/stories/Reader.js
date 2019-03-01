@@ -66,7 +66,7 @@ class Reader extends React.Component{
           <Header as='h2'> {this.props.story.title}</Header>
           <Divider section hidden/>
           {this.state.newStory.map((storyPart, index) =>
-              <p key={index} className='content-text'> {storyPart} </p>
+            <p key={index} className='content-text'> {storyPart} </p>
           )}
           <Divider hidden />
         </Segment>

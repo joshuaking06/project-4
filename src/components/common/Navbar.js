@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { Menu, Icon, Button } from 'semantic-ui-react'
+import { Menu, Icon } from 'semantic-ui-react'
 import Auth from '../../lib/Auth'
 
 class Navbar extends React.Component{
@@ -76,13 +76,23 @@ class Navbar extends React.Component{
               <Menu.Menu position='right'>
 
 
-                {!Auth.isAuthenticated() &&
+                {!Auth.isAuthenticated() || Auth.isAuthenticated() &&
                 <Menu.Item
                   name='Stories'
                   onClick={this.handleItemClick} >
                   <Icon name='book'/>
                   Stories
                 </Menu.Item>
+                }
+
+                {Auth.isAuthenticated() &&
+                  <Menu.Item
+                    name='New'
+                    as='a'
+                    onClick={this.handleItemClick}>
+                    <Icon name='pencil alternate' />
+                    Add New Story
+                  </Menu.Item>
                 }
 
                 {!Auth.isAuthenticated() &&
