@@ -5,6 +5,9 @@ import axios from 'axios'
 import LoadingPage from '../common/LoadingPage'
 import { Segment, Header, Divider, Container, Button, Icon, Grid } from 'semantic-ui-react'
 import DesktopIndex from './DesktopIndex'
+import Auth from '../../lib/Auth'
+
+const headers = {headers: { Authorization: Auth.getToken() }}
 
 
 const style = {
@@ -27,12 +30,17 @@ class StoriesIndex extends React.Component{
     }
 
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this)
-    this.handleItemClick = this.handleItemClick.bind(this)
     this.loadMore = this.loadMore.bind(this)
+    this.addToReadList = this.addToReadList.bind(this)
   }
 
-  handleItemClick(){
-    console.log('clicked me')
+  addToReadList(e, story){
+    console.log(story.id)
+    if(!this.state.reddit && Auth.isAuthenticated()){
+      axios.post(`/api/save/${story.id}`,{data:'ok'}, headers)
+        .then(res => console.log(res))
+        .catch(err => console.log(err.response))
+    }
   }
 
   // get stories depending on whether user is on reddit page or discover stories page
@@ -109,7 +117,7 @@ class StoriesIndex extends React.Component{
                 <Divider section hidden />
                 <Grid stackable columns={3}>
                   <Grid.Column width={16}>
-                  <Button fluid secondary icon='add' content='Save' />
+                  <Button onClick={(e)=>this.addToReadList(e,story)} fluid secondary icon='add' content='Save' />
                   </Grid.Column>
 
                   <Grid.Column width={16}>

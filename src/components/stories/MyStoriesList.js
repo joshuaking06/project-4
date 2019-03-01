@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Card, Header, Button, Icon } from 'semantic-ui-react'
+import { Segment, Card, Header, Button, Icon, Grid } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 const MyStoriesList = ({ stories }) => {
@@ -13,12 +13,12 @@ const MyStoriesList = ({ stories }) => {
             state: {
               reddit: false,
               storyId: story.id
-        }}}>
+      }}}>
           <Card fluid>
-             <Card.Content>
-               <Card.Header content={story.title}/>
-               <Card.Description content={story.description} />
-             </Card.Content>
+            <Card.Content>
+              <Card.Header content={story.title}/>
+              <Card.Description content={story.description} />
+            </Card.Content>
           </Card>
         </Link>
       )}

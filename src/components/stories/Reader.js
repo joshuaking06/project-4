@@ -54,7 +54,7 @@ class Reader extends React.Component{
           {this.state.newStory.map((storyPart, index) =>
             <Segment style={style} key={index} textAlign='center' color='red'>
               <Header as='h2'> {this.props.story.title} <Header.Subheader> Page {index} </Header.Subheader></Header>
-              <Divider section hidden/>
+              <Divider section/>
               <p className='content-text'> {`${storyPart}`} </p>
               <Divider hidden />
             </Segment>
@@ -66,7 +66,7 @@ class Reader extends React.Component{
       <div>
         <Segment style={style}  id='reader' textAlign='center' color='red'>
           <Header as='h2'> {this.props.story.title}</Header>
-          <Divider section hidden/>
+          <Divider section />
           {this.state.newStory.map((storyPart, index) =>
               <p key={index} className='content-text'> {storyPart} </p>
           )}

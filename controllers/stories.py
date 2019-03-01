@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify, g
 from models.story import Story, StorySchema
+from models.user import User, UserSchema
 from models.comment import CommentSchema, Comment
 from lib.secure_route import secure_route
 
@@ -8,6 +9,7 @@ api = Blueprint('stories', __name__)
 stories_schema = StorySchema(many=True, exclude=('content', ))
 story_schema = StorySchema()
 comment_schema = CommentSchema()
+user_schema = UserSchema(exclude=('stories_written', ))
 
 
 # ================= *** STORY *** =================
@@ -51,7 +53,7 @@ def update(story_id):
 
     if errors:
         return jsonify(errors), 422
-        
+
     story.creator = g.current_user
     story.save()
 
@@ -69,6 +71,18 @@ def delete(story_id):
 
     return '', 204
 
+
+@api.route('/save/<int:story_id>', methods=['POST'])
+@secure_route
+def save_story(story_id):
+    story = Story.query.get(story_id)
+
+    user = g.current_user
+    user.read_list.append(story)
+
+    user.save()
+
+    return user_schema.jsonify(user), 201
 
 # ================= *** COMMENT *** ======================
 
