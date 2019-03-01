@@ -52,10 +52,13 @@ class Navbar extends React.Component{
                 <Menu.Item
                   onClick={this.props.handleShowClick} >
 
+
                   <Icon name='bars'/>
 
                 </Menu.Item>
               </Menu>
+
+
         }
 
         {!isMobile &&
@@ -108,6 +111,7 @@ class Navbar extends React.Component{
 
             </Menu>
         }
+
 
       </div>
     )

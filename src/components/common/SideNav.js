@@ -84,14 +84,14 @@ class SideNav extends React.Component{
             Message
         </Menu.Item>
 
-        {!Auth.isAuthenticated() &&
+        {Auth.isAuthenticated() &&
             <Menu.Item as='a' >
               <Icon name='pencil alternate' />
               Add New Story
             </Menu.Item>
         }
 
-        {!Auth.isAuthenticated() &&
+        {Auth.isAuthenticated() &&
             <Menu.Item as='a'>
               <Icon name='file alternate outline' />
               Reding List
@@ -108,7 +108,7 @@ class SideNav extends React.Component{
             About Us
         </Menu.Item>
 
-        {!Auth.isAuthenticated() &&
+        {Auth.isAuthenticated() &&
             <Menu.Item as='a' onClick={this.logout}>
               <Icon name='log out' />
               Log Out
