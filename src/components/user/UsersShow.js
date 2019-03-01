@@ -24,28 +24,27 @@ class UsersShow extends React.Component{
   }
 
   handleFollowEvent(){
-    axios.post(`/api/users/${this.props.match.params.id}/follow/${Auth.getUserID()}`)
-      .then( res =>{
-        //this.setState({ usersDetail: res.data})
-        console.log('followig', res.data)
-      })
+    if(Auth.isAuthenticated()){
+      axios.post(`/api/users/${this.props.match.params.id}/follow/${Auth.getUserID()}`)
+        .then( res =>{
+          this.setState({ usersDetail: res.data})
+        })
+    }
   }
 
   handleUnfollowEvent(){
-    axios.post(`/api/users/${this.props.match.params.id}/unfollow/${Auth.getUserID()}`)
-      .then( res =>{
-        //this.setState({ usersDetail: res.data})
-        console.log('un-follow', res.data)
-
-      })
+    if(Auth.isAuthenticated()){
+      axios.post(`/api/users/${this.props.match.params.id}/unfollow/${Auth.getUserID()}`)
+        .then( res =>{
+          this.setState({ usersDetail: res.data})
+        })
+    }
   }
 
 
 
   render(){
     if(!this.state.usersDetail ) return <LoadingPage />
-    {console.log(this.state.usersDetail.followers.filter((elem) =>  elem.id !== Auth.getUserID() ))}
-
     return(
       <Container>
         <Segment>
