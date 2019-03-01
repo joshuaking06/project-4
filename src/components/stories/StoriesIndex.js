@@ -3,7 +3,7 @@ import FlipPage from 'react-flip-page'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import LoadingPage from '../common/LoadingPage'
-import { Segment, Header, Divider, Container, Button, Icon, Grid } from 'semantic-ui-react'
+import { Segment, Header, Divider, Container, Button, Grid } from 'semantic-ui-react'
 import DesktopIndex from './DesktopIndex'
 
 
@@ -21,7 +21,7 @@ class StoriesIndex extends React.Component{
 
     this.state={
       count: 20,
-      reddit: (this.props.match.path === "/reddit"),
+      reddit: (this.props.match.path === '/reddit'),
       width: window.innerWidth,
       stories: []
     }
@@ -110,18 +110,18 @@ class StoriesIndex extends React.Component{
                 <Divider section hidden />
                 <Grid stackable columns={3}>
                   <Grid.Column width={16}>
-                  <Button fluid secondary icon='add' content='Save' />
+                    <Button fluid secondary icon='add' content='Save' />
                   </Grid.Column>
 
                   <Grid.Column width={16}>
-                  <Link to ={{
-                    pathname: `/stories/${story.id}`,
-                    state: {
-                      reddit: this.state.reddit,
-                      storyId: story.id
-                    }}} >
-                    <Button size='small' fluid secondary icon='book' content='Read' />
-                  </Link>
+                    <Link to ={{
+                      pathname: `/stories/${story.id}`,
+                      state: {
+                        reddit: this.state.reddit,
+                        storyId: story.id
+                      }}} >
+                      <Button size='small' fluid secondary icon='book' content='Read' />
+                    </Link>
                   </Grid.Column>
 
                   <Grid.Column width={16}>

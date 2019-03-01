@@ -13,7 +13,7 @@ class Reader extends React.Component{
     super(props)
 
     this.state={
-      width: window.innerWidth,
+      width: window.innerWidth
     }
   }
 

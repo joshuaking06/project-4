@@ -11,7 +11,7 @@ import FlashMessages from './components/common/FlashMessages'
 import Login from './components/Auth/Login'
 import UsersShow from './components/user/UsersShow'
 import LoadingPage from './components/common/LoadingPage'
-
+import Home from './components/common/Home'
 
 import 'semantic-ui-css/semantic.min.css'
 import './style.scss'
@@ -32,7 +32,6 @@ class App extends React.Component{
 
   handleShowClick(){
     this.setState({ sidebarVisible: true })
-    console.log('HANDLING SHOW CLICK')
   }
 
   handleSidebarHide(){
@@ -60,6 +59,7 @@ class App extends React.Component{
                   <Route path="/stories/:id" component={StoriesShow} />
                   <Route path="/stories" component={StoriesIndex} />
                   <Route path="/reddit" component={StoriesIndex} />
+                  <Route path="/home" component={Home} />
                 </Switch>
 
               </Sidebar.Pusher>
