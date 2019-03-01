@@ -41,7 +41,6 @@ class Navbar extends React.Component{
   render(){
     const isMobile = (this.state.width <= 500)
     const { activeItem } = this.state
-    console.log(this.props.handleShowClick)
 
     return(
       <div>

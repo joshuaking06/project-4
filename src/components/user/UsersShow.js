@@ -5,7 +5,6 @@ import { Segment, Container } from 'semantic-ui-react'
 import UsersDetail from './UsersDetail'
 import LoadingPage from '../common/LoadingPage'
 import Auth from '../../lib/Auth'
-import Messages from './Messages'
 
 
 class UsersShow extends React.Component{
@@ -46,7 +45,7 @@ class UsersShow extends React.Component{
 
   handleUsersMessagingEvent(){
     if(Auth.isAuthenticated()){
-      console.log('here')
+      this.props.history.push(`/users/${this.props.match.params.id}/message`)
     }
   }
 
