@@ -3,16 +3,17 @@ import axios from 'axios'
 import { Container, Segment, Grid, Form, Input, Divider, Button, TextArea, Icon } from 'semantic-ui-react'
 // import Flash from '../../lib/Flash'
 
-// import LoadingPage from '../common/LoadingPage'
+import LoadingPage from '../common/LoadingPage'
 // import Auth from '../../lib/Auth'
 
 
-class UsersShow extends React.Component{
+class Message extends React.Component{
 
   constructor(){
     super()
     this.state = {}
-
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount(){
@@ -24,20 +25,23 @@ class UsersShow extends React.Component{
 
   // taking the value and name of input to set in state, before making post request to register
   handleChange({ target: { name, value }}) {
-    console.log(name, value)
+    const postData = {...this.state.postData, [name]: value }
+    this.setState({ postData })
   }
 
 
   // submitting the data to back end register route
   handleSubmit(e){
     e.preventDefault()
-    console.log('here')
+    if(!this.state.postData ) return <LoadingPage />
+    
 
   }
 
 
 
   render(){
+    if(!this.state.usersDetail ) return <LoadingPage />
     return(
       <Container>
         <Segment>
@@ -55,7 +59,10 @@ class UsersShow extends React.Component{
                       onChange={this.handleChange}
                       placeholder='Username'
                       required
+                      readOnly
                       name='username'
+                      value={this.state.usersDetail.username}
+
                     />
                   </Form.Field>
 
@@ -64,9 +71,9 @@ class UsersShow extends React.Component{
                     <TextArea
                       icon='envelope'
                       onChange={this.handleChange}
-                      placeholder='Email'
-                      type='email'
-                      name='email'
+                      placeholder='Message'
+                      type='text'
+                      name='content'
                       style={{ minHeight: 200 }}
                     />
                   </Form.Field>
@@ -85,4 +92,4 @@ class UsersShow extends React.Component{
 }
 
 
-export default UsersShow
+export default Message
