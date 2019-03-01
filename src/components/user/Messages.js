@@ -28,7 +28,7 @@ class Messages extends React.Component{
 
   render(){
     if(!this.state.usersDetail ) return <LoadingPage />
-
+    console.log(this.state.usersDetail)
     const panes = [
       { menuItem: 'Recieved', render: () => <Tab.Pane attached={false}><UsersInbox  inbox={this.state.usersDetail.inbox}/></Tab.Pane> },
       { menuItem: 'Sent', render: () => <Tab.Pane attached={false}><UsersOutbox outbox={this.state.usersDetail.outbox}/></Tab.Pane> }

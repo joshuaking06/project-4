@@ -13,6 +13,7 @@ import UsersShow from './components/user/UsersShow'
 import LoadingPage from './components/common/LoadingPage'
 import UsersMessages from './components/user/UsersMessages'
 import Messages from './components/user/Messages'
+import MessagesShow from './components/user/MessagesShow'
 
 
 import 'semantic-ui-css/semantic.min.css'
@@ -58,6 +59,8 @@ class App extends React.Component{
                   <Route path="/loading" component={LoadingPage} />
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
+                  <Route path="/messages/:id/show" component={MessagesShow} />
+
                   <Route path="/messages" component={Messages} />
                   <Route path="/users/:id/message" component={UsersMessages} />
                   <Route path="/users/:id" component={UsersShow} />
