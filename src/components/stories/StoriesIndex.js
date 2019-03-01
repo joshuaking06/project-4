@@ -12,7 +12,7 @@ const headers = {headers: { Authorization: Auth.getToken() }}
 
 const style = {
   width: '100%',
-  height: '500px',
+  height: '100vh',
   backgroundImage: 'url(https://previews.123rf.com/images/ke77kz/ke77kz1701/ke77kz170100026/69863051-old-paper-background-rustic-paper-texture-for-the-design-.jpg)',
   backgroundSize: 'cover'
 }
