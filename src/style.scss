@@ -3,6 +3,10 @@ html{
     height: 100vh;
   }
   main{
+    .library-list{
+      overflow: scroll;
+      height: 75vh;
+    }
     #reader{
       height: 85vh;
       overflow: scroll;

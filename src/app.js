@@ -12,6 +12,7 @@ import FlashMessages from './components/common/FlashMessages'
 import Login from './components/Auth/Login'
 import UsersShow from './components/user/UsersShow'
 import LoadingPage from './components/common/LoadingPage'
+import MyLibrary from './components/stories/MyLibrary'
 
 
 import 'semantic-ui-css/semantic.min.css'
@@ -55,6 +56,7 @@ class App extends React.Component{
                 <FlashMessages />
                 <Switch>
                   <Route path="/loading" component={LoadingPage} />
+                  <Route path='/library' component={MyLibrary} />
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
                   <Route path="/users/:id" component={UsersShow} />
