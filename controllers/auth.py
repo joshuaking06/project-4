@@ -143,8 +143,7 @@ def follow_users(user_id, follower_id):
     follower = User.query.get(follower_id)
     follower.following.append(user)
     user.save()
-
-    return 'done', 201
+    return user_schema.jsonify(user), 200
 
 
 @api.route('/users/<int:user_id>/unfollow/<int:unfollow_id>', methods=['POST'])
@@ -153,5 +152,4 @@ def unfollow_users(user_id, unfollow_id):
     unfollow = User.query.get(unfollow_id)
     unfollow.following.remove(user)
     user.save()
-
-    return '', 204
+    return user_schema.jsonify(User.query.get(user_id)), 200

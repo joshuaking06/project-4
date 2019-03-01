@@ -27,8 +27,7 @@ class UsersShow extends React.Component{
     axios.post(`/api/users/${this.props.match.params.id}/follow/${Auth.getUserID()}`)
       .then( res =>{
         //this.setState({ usersDetail: res.data})
-        console.log('followig', res)
-
+        console.log('followig', res.data)
       })
   }
 
@@ -36,7 +35,7 @@ class UsersShow extends React.Component{
     axios.post(`/api/users/${this.props.match.params.id}/unfollow/${Auth.getUserID()}`)
       .then( res =>{
         //this.setState({ usersDetail: res.data})
-        console.log('un-follow', res)
+        console.log('un-follow', res.data)
 
       })
   }
@@ -45,7 +44,8 @@ class UsersShow extends React.Component{
 
   render(){
     if(!this.state.usersDetail ) return <LoadingPage />
-    {console.log(this.state.usersDetail.followers)}
+    {console.log(this.state.usersDetail.followers.filter((elem) =>  elem.id !== Auth.getUserID() ))}
+
     return(
       <Container>
         <Segment>
