@@ -4,7 +4,7 @@ import { Container, Segment, Grid, Form, Input, Divider, Button, TextArea, Icon 
 // import Flash from '../../lib/Flash'
 
 import LoadingPage from '../common/LoadingPage'
-// import Auth from '../../lib/Auth'
+import Auth from '../../lib/Auth'
 
 
 class Message extends React.Component{
@@ -34,7 +34,16 @@ class Message extends React.Component{
   handleSubmit(e){
     e.preventDefault()
     if(!this.state.postData ) return <LoadingPage />
-    
+    const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
+    const body = this.state.postData
+    console.log({body: body})
+    axios.post(`/api/users/${this.props.match.params.id}/inbox`,  body, {headers: headers}
+    )
+      .then( res =>{
+        console.log(res)
+      }
+
+      )
 
   }
 

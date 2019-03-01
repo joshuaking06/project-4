@@ -8,8 +8,9 @@ from models.story import Story, StorySchema
 api = Blueprint('auth', __name__)
 user_schema = UserSchema()
 message_schema = MessageSchema()
-users_schema = UserSchema(many=True, exclude=('followers', 'following'))
+users_schema = UserSchema(many=True, exclude=('followers', 'following', 'inbox', 'outbox'))
 story_schema = StorySchema()
+# user_schema = UserSchema(exclude=('inbox', 'outbox'))
 user_schema = UserSchema()
 
 
@@ -58,17 +59,13 @@ def users_show(user_id):
 @api.route('/users/<int:user_id>/inbox', methods=['POST'])
 @secure_route
 def send_message(user_id):
-
     message, errors = message_schema.load(request.get_json())
     message.sender = g.current_user
     message.receiver = User.query.get(user_id)
-
     if errors:
         return jsonify(errors), 422
-
     message.save()
     return message_schema.jsonify(message)
-
 
 # === ME ===
 @api.route('/me', methods=['GET'])

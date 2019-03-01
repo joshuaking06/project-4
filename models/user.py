@@ -29,6 +29,7 @@ class User(db.Model, BaseModel):
     email = db.Column(db.String(128), nullable=True, unique=True)
     password_hash = db.Column(db.String(128), nullable=True)
 
+
     following = db.relationship(
         'User',
         secondary=followers,
@@ -71,6 +72,10 @@ class UserSchema(ma.ModelSchema, BaseSchema):
     read_list = fields.Nested('StorySchema', many=True, only=('id', 'title'))
     following = fields.Nested('UserSchema', many=True, only=('username', 'id'))
     followers = fields.Nested('UserSchema', many=True, only=('username', 'id'))
+
+    inbox = fields.Nested('MessageSchema', many=True, exclude=('receiver', ))
+    outbox = fields.Nested('MessageSchema', many=True, exclude=('sender', ))
+
     # pylint: disable=C0301
     stories_written = fields.Nested('StorySchema', many=True, only=('title', 'genre', 'description', 'id'))
     @validates_schema
