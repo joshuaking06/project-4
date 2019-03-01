@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Segment, Container } from 'semantic-ui-react'
 
 import UsersDetail from './UsersDetail'
+import LoadingPage from '../common/LoadingPage'
+import Auth from '../../lib/Auth'
 
 
 class UsersShow extends React.Component{
@@ -10,6 +12,8 @@ class UsersShow extends React.Component{
   constructor(){
     super()
     this.state = {}
+    this.handleFollowEvent = this.handleFollowEvent.bind(this)
+    this.handleUnfollowEvent = this.handleUnfollowEvent.bind(this)
   }
 
   componentDidMount(){
@@ -19,13 +23,36 @@ class UsersShow extends React.Component{
       })
   }
 
+  handleFollowEvent(){
+    if(Auth.isAuthenticated()){
+      axios.post(`/api/users/${this.props.match.params.id}/follow/${Auth.getUserID()}`)
+        .then( res =>{
+          this.setState({ usersDetail: res.data})
+        })
+    }
+  }
+
+  handleUnfollowEvent(){
+    if(Auth.isAuthenticated()){
+      axios.post(`/api/users/${this.props.match.params.id}/unfollow/${Auth.getUserID()}`)
+        .then( res =>{
+          this.setState({ usersDetail: res.data})
+        })
+    }
+  }
+
+
 
   render(){
-    if(!this.state.usersDetail ) return(<h1>Loadinng...</h1>)
+    if(!this.state.usersDetail ) return <LoadingPage />
     return(
       <Container>
         <Segment>
-          <UsersDetail  usersDetail={this.state.usersDetail}/>
+          <UsersDetail
+            usersDetail={this.state.usersDetail}
+            handleFollowEvent={this.handleFollowEvent}
+            handleUnfollowEvent={this.handleUnfollowEvent}
+          />
         </Segment>
       </Container>
 
