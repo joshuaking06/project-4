@@ -6,21 +6,13 @@ const MyReadingList = ({ stories }) => {
   return(
     <Segment className='library-list'>
       {stories.slice().reverse().map(story =>
-        <Link
-          key={story.id}
-          to ={{
-            pathname: `/stories/${story.id}`,
-            state: {
-              reddit: !(story.id % 1 === 0),
-              storyId: story.id
-      }}}>
-          <Card fluid>
-            <Card.Content>
-              <Card.Header content={story.title}/>
-              <Card.Description content={story.description} />
-            </Card.Content>
-          </Card>
-        </Link>
+        <Card key={story.id} fluid>
+          <Card.Content>
+            <Card.Header content={story.title}/>
+            <Card.Description content={story.description} />
+            <Link to={`/stories/${story.id}`}> Read </Link>
+          </Card.Content>
+        </Card>
       )}
     </Segment>
   )
