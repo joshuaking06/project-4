@@ -13,7 +13,7 @@ class Reader extends React.Component{
     super(props)
 
     this.state={
-      width: window.innerWidth,
+      width: window.innerWidth
     }
   }
 
@@ -68,7 +68,7 @@ class Reader extends React.Component{
           <Header as='h2'> {this.props.story.title}</Header>
           <Divider section />
           {this.state.newStory.map((storyPart, index) =>
-              <p key={index} className='content-text'> {storyPart} </p>
+            <p key={index} className='content-text'> {storyPart} </p>
           )}
           <Divider hidden />
         </Segment>

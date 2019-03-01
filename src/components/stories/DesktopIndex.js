@@ -28,13 +28,13 @@ class DesktopIndex extends React.Component{
             >
               {this.props.stories.map(story =>
                 <Link key={story.id} to ={{
-                    pathname: `/stories/${story.id}`,
-                    state: {
-                        reddit: this.props.reddit,
-                        storyId: story.id
-                }}}> <Segment
-                        className='desktop-index'
-                        style={style}
+                  pathname: `/stories/${story.id}`,
+                  state: {
+                    reddit: this.props.reddit,
+                    storyId: story.id
+                  }}}> <Segment
+                    className='desktop-index'
+                    style={style}
                   > <Divider hidden />
                     <Header as='h1'> {story.title} </Header>
                     <Divider section hidden />

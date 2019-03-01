@@ -11,7 +11,10 @@ class Register extends React.Component{
     super()
 
     this.state = {
-      postData: {},
+      postData: {
+        email: '',
+        password: ''
+      },
       errors: {}
     }
 
