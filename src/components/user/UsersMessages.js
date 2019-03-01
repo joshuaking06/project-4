@@ -51,40 +51,37 @@ class UsersMessage extends React.Component{
           <Grid columns={1} stackable textAlign='center'>
             <Grid.Column width={8}>
               <Divider hidden />
-              <Segment>
-                <Icon name='mail' size='huge' />
-                <Form onSubmit={this.handleSubmit} >
-                  <Form.Field required>
-                    <label>Send message to:</label>
-                    <Input
-                      icon='user'
-                      iconPosition='left'
-                      onChange={this.handleChange}
-                      placeholder='Username'
-                      required
-                      readOnly
-                      name='username'
-                      value={this.state.usersDetail.username}
+              <Icon name='mail' size='huge' />
+              <Form onSubmit={this.handleSubmit} >
+                <Form.Field required>
+                  <label>Send message to:</label>
+                  <Input
+                    icon='user'
+                    iconPosition='left'
+                    onChange={this.handleChange}
+                    placeholder='Username'
+                    required
+                    readOnly
+                    name='username'
+                    value={this.state.usersDetail.username}
 
-                    />
-                  </Form.Field>
+                  />
+                </Form.Field>
 
-                  <Form.Field required>
-                    <label>Enter Your Message</label>
-                    <TextArea
-                      icon='envelope'
-                      onChange={this.handleChange}
-                      placeholder='Message'
-                      type='text'
-                      name='content'
-                      style={{ minHeight: 200 }}
-                    />
-                  </Form.Field>
+                <Form.Field required>
+                  <label>Enter Your Message</label>
+                  <TextArea
+                    icon='envelope'
+                    onChange={this.handleChange}
+                    placeholder='Message'
+                    type='text'
+                    name='content'
+                    style={{ minHeight: 200 }}
+                  />
+                </Form.Field>
+                <Button fluid content="Submit" primary icon='send' />
 
-                  <Button fluid content="Submit" primary icon='send' />
-
-                </Form>
-              </Segment>
+              </Form>
             </Grid.Column>
           </Grid>
         </Segment>
