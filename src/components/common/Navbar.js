@@ -63,11 +63,7 @@ class Navbar extends React.Component{
 
         {!isMobile &&
             <Menu inverted>
-              <Menu.Item
-                onClick={this.props.handleShowClick}
-              >
-                <Icon name='bars'/>
-              </Menu.Item>
+
 
               <Menu.Item
                 name='home'
