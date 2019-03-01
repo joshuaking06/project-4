@@ -59,7 +59,7 @@ class App extends React.Component{
                   <Route path="/stories/:id" component={StoriesShow} />
                   <Route path="/stories" component={StoriesIndex} />
                   <Route path="/reddit" component={StoriesIndex} />
-                  <Route path="/home" component={Home} />
+                  <Route path="/" component={Home} />
                 </Switch>
 
               </Sidebar.Pusher>
