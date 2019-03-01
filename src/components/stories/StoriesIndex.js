@@ -149,6 +149,7 @@ class StoriesIndex extends React.Component{
       <div>
         <Divider />
         <DesktopIndex
+          addToReadList={this.addToReadList}
           loadMore={this.loadMore}
           reddit={this.state.reddit}
           stories={this.state.stories}
