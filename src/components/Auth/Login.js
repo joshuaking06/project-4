@@ -53,7 +53,7 @@ class Login extends React.Component{
     })
     const { postData } = this.state
     return(
-      <Grid columns={2} textAlign='center'>
+      <Grid columns={1} stackable textAlign='center'>
         <Grid.Column width={8}>
           <Divider hidden/>
           <Segment color="blue">

@@ -2,7 +2,7 @@ import React from 'react'
 import { Segment, Grid, Form, Input, Divider, Button, TextArea, Message, Icon } from 'semantic-ui-react'
 
 
-const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
+const RegisterForm = ({ handleChange, handleSubmit, errors }) => {
 
   // function made to return error messages from the error response from server, putting them in array to be passed into message
   const errorMessages = Object.keys(errors).map(errorKey => {
@@ -15,9 +15,6 @@ const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
         <Divider hidden />
         <Segment color='blue'>
           <Icon name='user plus' size='huge' />
-          {imageSuccess && <Message
-            success> Image Successfully Uploaded </Message>
-          }
 
           {/* displaying any error messages the user has received */}
           {errorMessages.length >0 && <Message
