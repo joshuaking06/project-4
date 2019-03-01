@@ -52,7 +52,7 @@ class App extends React.Component{
                 visible={this.state.sidebarVisible}
               />
               <Sidebar.Pusher>
-                <Navbar handleShowClick={this.handleShowClick} />
+                <Navbar hideSidebar={this.handleSidebarHide} handleShowClick={this.handleShowClick} />
                 <FlashMessages />
                 <Switch>
                   <Route path="/loading" component={LoadingPage} />

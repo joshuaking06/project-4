@@ -28,7 +28,7 @@ class MyLibrary extends React.Component{
 
 
   render(){
-    if(!this.state.myData)return null
+    if(!this.state.myData) return null
     const { activeItem } = this.state
     return(
       <Container>

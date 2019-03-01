@@ -33,7 +33,7 @@ class Reader extends React.Component{
         base +=1000
       }
     }
-    if (newStory.length === 0) return this.props.story.content
+    if (newStory.length === 0) return [this.props.story.content]
     return newStory
   }
 
@@ -43,6 +43,7 @@ class Reader extends React.Component{
 
   render(){
     if(!this.state.newStory)return null
+    console.log(this.state.newStory)
     if(this.state.width < 500)return(
       <div id='flippertwo'>
         <FlipPage
