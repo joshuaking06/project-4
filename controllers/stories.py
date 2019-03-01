@@ -36,6 +36,7 @@ def create():
     if errors:
         return jsonify(errors), 422
 
+    story.creator = g.current_user
     story.save()
 
     return story_schema.jsonify(story)
@@ -95,13 +96,13 @@ def create_comment(story_id):
 @secure_route
 def delete_comment(story_id, comment_id):
 
-    comment = Story.query.get(story_id)
+    comment = Comment.query.get(comment_id)
     comment, errors = comment_schema.load(request.get_json(), instance=comment)
 
     if errors:
         return jsonify(errors), 422
 
-    comment.story = Story.query.get(comment_id)
+    comment.story = Story.query.get(story_id)
     comment.user = g.current_user
 
     comment.remove()
@@ -116,12 +117,13 @@ def delete_comment(story_id, comment_id):
 
 def update_comment(story_id, comment_id):
 
+    comment = Comment.query.get(comment_id)
     comment, errors = comment_schema.load(request.get_json())
 
     if errors:
         return jsonify(errors), 422
 
-    comment.story = Story.query.get(comment_id)
+    comment.story = Story.query.get(story_id)
     comment.user = g.current_user
 
     comment.save()

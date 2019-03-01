@@ -13,12 +13,7 @@ class StoriesNewEdit extends React.Component{
     this.state={
       errors: {},
       isNew: (this.props.match.path === '/stories/new'),
-      storyData: {
-        title: '',
-        description: '',
-        content: '',
-        genre: ''
-      }
+      storyData: {}
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -28,7 +23,7 @@ class StoriesNewEdit extends React.Component{
 
   // handle the changing of form data
   handleChange({ target: { name, value }}) {
-    const postData = {...this.state.storyData, [name]: value }
+    const storyData = {...this.state.storyData, [name]: value }
     const errors= {}
     this.setState({ storyData, errors })
   }
@@ -74,7 +69,7 @@ class StoriesNewEdit extends React.Component{
   }
 
   render(){
-    console.log(this.state)
+    console.log(this.state.storyData)
     return(
       <StoryForm
         storyData={this.state.storyData}
