@@ -33,6 +33,7 @@ class Reader extends React.Component{
         base +=1000
       }
     }
+    if (newStory.length === 0) return this.props.story.content
     return newStory
   }
 
