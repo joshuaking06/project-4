@@ -39,7 +39,9 @@ class StoriesIndex extends React.Component{
     if(!this.state.reddit && Auth.isAuthenticated()){
       axios.post(`/api/save/${story.id}`,{data:'ok'}, headers)
         .then(res => console.log(res))
-        .catch(err => console.log(err.response))
+    } else if(this.state.reddit && Auth.isAuthenticated()){
+      axios.post(`/api/reddit/save/${story.id}`, {data:'ok'}, headers)
+        .then(res => console.log(res))
     }
   }
 
