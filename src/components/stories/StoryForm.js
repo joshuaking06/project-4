@@ -10,22 +10,36 @@ const StoryForm = ({ storyData, handleSaveDraft, handleChange, handleSubmit }) =
       <Grid>
         <Grid.Column>
           <Divider section hidden />
-          <Segment textAlign='center'>
+          <Segment color='red' textAlign='center'>
             <Form>
               <Form.Field required>
                 <label>Story Title</label>
-                <Input maxLength="150" value={storyData.title} onChange={handleChange} placeholder='Story Title' />
+                <Input name='title' maxLength="150" value={storyData.title} onChange={handleChange} placeholder='Story Title' />
               </Form.Field>
 
               <Form.Field required>
                 <label>Genre</label>
-                <Input maxLength="40" value={storyData.genre} onChange={handleChange} placeholder='Enter Genre' />
+                <Input name='genre' maxLength="40" value={storyData.genre} onChange={handleChange} placeholder='Enter Genre' />
               </Form.Field>
 
               <Form.Field required>
                 <label>Story Description</label>
-                <TextArea maxLength="100" value={storyData.description} onChange={handleChange} placeholder='Please write a brief description' />
+                <TextArea name='description' maxLength="100" value={storyData.description} onChange={handleChange} placeholder='Please write a brief description' />
               </Form.Field>
+
+
+              <Form.Field required>
+                <label>Story Description</label>
+                <TextArea
+                  name='content'
+                  autoHeight
+                  style={{ minHeight: 300 }}
+                  value={storyData.content}
+                  onChange={handleChange}
+                  placeholder='Story Content' />
+              </Form.Field>
+              <Button onClick={handleSubmit} primary>Publish Story</Button>
+              <Button onClick={handleSaveDraft} positive> Save Story </Button>
             </Form>
           </Segment>
         </Grid.Column>

@@ -30,7 +30,6 @@ def show(story_id):
 @api.route('/stories', methods=['POST'])
 @secure_route
 def create():
-
     story, errors = story_schema.load(request.get_json())
 
     if errors:
@@ -46,14 +45,14 @@ def create():
 @api.route('/stories/<int:story_id>', methods=['PUT'])
 @secure_route
 def update(story_id):
-
     story = Story.query.get(story_id)
-    story, errors = story_schema.load(request.get_json(), instance=story)
 
+    story, errors = story_schema.load(request.get_json(), instance=story)
 
     if errors:
         return jsonify(errors), 422
-
+        
+    story.creator = g.current_user
     story.save()
 
     return story_schema.jsonify(story)

@@ -24,7 +24,9 @@ class Story(db.Model, BaseModel):
     read_list = db.relationship('User', secondary=reading_list, backref='read_list')
 
 class StorySchema(ma.ModelSchema, BaseSchema):
-    creator = fields.Nested('UserSchema')
+    creator = fields.Nested('UserSchema', exclude=('stories_written', ))
 
     class Meta:
         model = Story
+
+        exclude=('read_list', )

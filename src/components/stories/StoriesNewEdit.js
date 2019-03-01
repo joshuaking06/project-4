@@ -4,6 +4,8 @@ import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Flash from '../../lib/Flash'
 
+const headers = { headers: { Authorization: `Bearer ${Auth.getToken()}` } }
+
 // component will make axios request based on whether or not url is stories/new or stories/edit/storyid
 
 class StoriesNewEdit extends React.Component{
@@ -11,9 +13,14 @@ class StoriesNewEdit extends React.Component{
     super(props)
 
     this.state={
-      errors: {},
+      errors: true,
       isNew: (this.props.match.path === '/stories/new'),
-      storyData: {}
+      storyData: {
+        title: '',
+        description: '',
+        content: '',
+        genre: ''
+      }
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -30,36 +37,44 @@ class StoriesNewEdit extends React.Component{
 
   handleSaveDraft(e){
       e.preventDefault()
-      axios.post('/api/stories', {...this.state.storyData, finished: false},
-        { headers: { Authorization: `Bearer ${Auth.getToken()}` } }
-      )
-        .then(() => {
-          Flash.setMessage('success', 'Story Successfully Saved' )
+      if(this.state.isNew) this.handleSubmitOrSave(true, 'save').then(() => {
+          console.log('popup message goes here')
         })
-        .catch(err => this.setState({ errors: err.response.data }))
+      else this.handleSubmitOrSave(false)
+        .then(() => this.props.history.push(`${this.props.match.params.id}`))
+      Flash.setMessage('success', 'Story Successfully Saved' )
+  }
+
+  // determine which axios request to make
+  async handleSubmitOrSave(isNew, type){
+    if(isNew && type === 'submit') return await axios.post('/api/stories', {...this.state.storyData}, headers)
+    if(isNew && type === 'save') return await axios.post('/api/stories', {...this.state.storyData, finished: false}, headers)
+    if(!isNew) return await axios.put(`/api/stories/${this.props.match.params.id}`, this.state.storyData, headers )
   }
 
   // submit the form data
   handleSubmit(e){
     e.preventDefault()
-    axios.post('/api/stories', {...this.state.storyData, finished: true},
-      { headers: { Authorization: `Bearer ${Auth.getToken()}` } }
-    )
-      .then(() => {
-        Flash.setMessage('success', 'Story Successfully Submitted' )
-        this.props.history.push('/stories')
-      })
-      .catch(err => this.setState({ errors: err.response.data }))
+    if(this.state.isNew) this.handleSubmitOrSave(true, 'submit').then(() => this.props.history.push('/stories'))
+    else this.handleSubmitOrSave(false).then(() => this.props.history.push(`/stories`))
+    Flash.setMessage('success', 'Story Successfully Updated' )
   }
 
 
   // keeps state the same if on stories new page, otherwise get story data to populate the form
   getStoryData(isNew){
-    console.log('on /new?', isNew)
     if(isNew) return null
     else {
       axios.get(`/api/stories/${this.props.match.params.id}`)
-        .then(res => this.setState({ storyData: res.data }))
+        .then(res => this.setState({
+            storyData: {
+              title: res.data.title,
+              content: res.data.content,
+              description: res.data.description,
+              genre: res.data.genre
+            }
+          })
+        )
     }
   }
 
