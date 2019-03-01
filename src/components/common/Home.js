@@ -19,7 +19,7 @@ class Home extends React.Component {
     return(
 
       <div>
-        <Favicon url="https://www.freeiconspng.com/uploads/book-icon-blue-background-vector-free-vector-in-adobe-illustrator-ai--3.jpg"
+        <Favicon url="https://dash.readme.io/favicon.ico"
         />
 
         <Header className='background'>
