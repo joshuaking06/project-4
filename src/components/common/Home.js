@@ -1,5 +1,4 @@
 import React from 'react'
-import Favicon from 'react-favicon'
 import  { Header, Container } from 'semantic-ui-react'
 
 
@@ -19,9 +18,6 @@ class Home extends React.Component {
     return(
 
       <div>
-        <Favicon url="https://dash.readme.io/favicon.ico"
-        />
-
         <Header className='background'>
 
           <Container className='homepage-margin'>
