@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Segment, Sidebar } from 'semantic-ui-react'
 import StoriesIndex from './components/stories/StoriesIndex'
 import StoriesShow from './components/stories/StoriesShow'
+import StoriesNewEdit from './components/stories/StoriesNewEdit'
 import Navbar from './components/common/Navbar'
 import SideNav from './components/common/SideNav'
 import Register from './components/Auth/Register'
@@ -57,6 +58,8 @@ class App extends React.Component{
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
                   <Route path="/users/:id" component={UsersShow} />
+                  <Route path="/stories/edit/:id" component={StoriesNewEdit} />
+                  <Route path="/stories/new" component={StoriesNewEdit} />
                   <Route path="/stories/:id" component={StoriesShow} />
                   <Route path="/stories" component={StoriesIndex} />
                   <Route path="/reddit" component={StoriesIndex} />
