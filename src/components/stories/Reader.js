@@ -45,6 +45,7 @@ class Reader extends React.Component{
     if(this.state.width < 500)return(
       <div id='flippertwo'>
         <FlipPage
+          orientation='horizontal'
           responsive
           style={{ touchAction: 'none' }}
         >

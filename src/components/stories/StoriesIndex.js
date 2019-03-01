@@ -78,7 +78,6 @@ class StoriesIndex extends React.Component{
           <Divider section hidden />
           <FlipPage
             style={{ touchAction: 'none' }}
-            orientation='horizontal'
           >
             {this.state.stories.map(story =>
               <Segment
