@@ -15,7 +15,7 @@ const UsersOutbox = ({outbox}) => {
   return(
 
     <Grid columns={1} stackable textAlign='center'>
-      <Grid.Column width={16}  >
+      <Grid.Column width={13}  >
 
         {
           outbox.length> 0 ? (

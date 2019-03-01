@@ -12,7 +12,7 @@ const UsersInbox = ({inbox}) => {
   console.log(inbox)
   return(
     <Grid columns={1} stackable textAlign='center'>
-      <Grid.Column width={8}  >
+      <Grid.Column width={13}  >
 
         {
           inbox.length> 0 ? (
