@@ -15,7 +15,7 @@ comment_schema = CommentSchema()
 # === INDEX ===
 @api.route('/stories', methods=['GET'])
 def index():
-    stories = Story.query.all()
+    stories = Story.query.filter_by(finished=True).all()
     return stories_schema.jsonify(stories)
 
 
