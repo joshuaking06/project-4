@@ -5,6 +5,7 @@ import { Segment, Container } from 'semantic-ui-react'
 import UsersDetail from './UsersDetail'
 import LoadingPage from '../common/LoadingPage'
 import Auth from '../../lib/Auth'
+import Messages from './Messages'
 
 
 class UsersShow extends React.Component{
@@ -14,6 +15,8 @@ class UsersShow extends React.Component{
     this.state = {}
     this.handleFollowEvent = this.handleFollowEvent.bind(this)
     this.handleUnfollowEvent = this.handleUnfollowEvent.bind(this)
+    this.handleUsersMessagingEvent = this.handleUsersMessagingEvent.bind(this)
+
   }
 
   componentDidMount(){
@@ -41,6 +44,11 @@ class UsersShow extends React.Component{
     }
   }
 
+  handleUsersMessagingEvent(){
+    if(Auth.isAuthenticated()){
+      console.log('here')
+    }
+  }
 
 
   render(){
@@ -52,6 +60,7 @@ class UsersShow extends React.Component{
             usersDetail={this.state.usersDetail}
             handleFollowEvent={this.handleFollowEvent}
             handleUnfollowEvent={this.handleUnfollowEvent}
+            handleUsersMessagingEvent={this.handleUsersMessagingEvent}
           />
         </Segment>
       </Container>

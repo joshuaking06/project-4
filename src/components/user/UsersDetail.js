@@ -8,7 +8,7 @@ import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-re
 
 
 
-const UsersDetail = ({usersDetail, handleUnfollowEvent, handleFollowEvent}) => {
+const UsersDetail = ({usersDetail, handleUnfollowEvent, handleFollowEvent, handleUsersMessagingEvent}) => {
 
   const { username, followers, following, stories_written,id } = usersDetail // eslint-disable-line
 
@@ -38,7 +38,7 @@ const UsersDetail = ({usersDetail, handleUnfollowEvent, handleFollowEvent}) => {
         {
           id !== Auth.getUserID() &&
           (
-            <Button primary className='detail'> <Icon name='comments'/>Message User</Button>
+            <Button primary className='detail' onClick={handleUsersMessagingEvent}> <Icon name='comments'/>Message User</Button>
           )
         }
 
