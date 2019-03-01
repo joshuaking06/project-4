@@ -31,6 +31,7 @@ class Navbar extends React.Component{
     if(name === 'home')this.props.history.push('/')
     if(name === 'Login')this.props.history.push('/login')
     if(name === 'Sign Up')this.props.history.push('/register')
+    if(name === 'Stories')this.props.history.push('/reddit')
   }
 
   logout(){
@@ -73,6 +74,17 @@ class Navbar extends React.Component{
               </Menu.Item>
 
               <Menu.Menu position='right'>
+
+
+                {!Auth.isAuthenticated() &&
+                <Menu.Item
+                  name='Stories'
+                  onClick={this.handleItemClick} >
+                  <Icon name='book'/>
+                  Stories
+                </Menu.Item>
+                }
+
                 {!Auth.isAuthenticated() &&
 
                 <Menu.Item
