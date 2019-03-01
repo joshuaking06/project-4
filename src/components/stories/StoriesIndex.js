@@ -3,14 +3,14 @@ import FlipPage from 'react-flip-page'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import LoadingPage from '../common/LoadingPage'
-import { Segment, Header, Divider, Container, Button, Icon } from 'semantic-ui-react'
+import { Segment, Header, Divider, Container, Button, Icon, Grid } from 'semantic-ui-react'
 import DesktopIndex from './DesktopIndex'
 
 
 const style = {
   width: '100%',
   height: '500px',
-  backgroundImage: 'url(https://marketplace.canva.com/MABdzJjyLYc/1/thumbnail_large/canva-student-writing-paper-lined--MABdzJjyLYc.png)',
+  backgroundImage: 'url(https://previews.123rf.com/images/ke77kz/ke77kz1701/ke77kz170100026/69863051-old-paper-background-rustic-paper-texture-for-the-design-.jpg)',
   backgroundSize: 'cover'
 }
 
@@ -39,7 +39,7 @@ class StoriesIndex extends React.Component{
   async getStories(count){
     let stories
     this.state.reddit ? stories = await axios.get(`/api/reddit/count/${count}`) :
-       stories = await axios.get(`/api/stories`)
+      stories = await axios.get('/api/stories')
     return await stories.data
   }
 
@@ -69,18 +69,15 @@ class StoriesIndex extends React.Component{
 
 
   render(){
-    console.log(this.state)
     if(this.state.stories.length < 1) return <LoadingPage />
     const { width } = this.state
     const isMobile = width <= 500
-    console.log(this.state.stories)
     if(isMobile){
       return(
         <div id='flipper'>
           <Divider section hidden />
           <FlipPage
             style={{ touchAction: 'none' }}
-            loopForever
             orientation='horizontal'
           >
             {this.state.stories.map(story =>
@@ -111,24 +108,33 @@ class StoriesIndex extends React.Component{
 
                 </Container>
                 <Divider section hidden />
-                <Button size='small' color='black' circular icon='add' />
+                <Grid stackable columns={3}>
+                  <Grid.Column width={16}>
+                  <Button fluid secondary icon='add' content='Save' />
+                  </Grid.Column>
 
-                <Link to ={{
+                  <Grid.Column width={16}>
+                  <Link to ={{
                     pathname: `/stories/${story.id}`,
                     state: {
-                        reddit: this.state.reddit,
-                        storyId: story.id
-                }}} >
-                    <Button size='small' secondary> Read Now </Button>
-                </Link>
+                      reddit: this.state.reddit,
+                      storyId: story.id
+                    }}} >
+                    <Button size='small' fluid secondary icon='book' content='Read' />
+                  </Link>
+                  </Grid.Column>
 
-                {this.state.reddit &&
-                  <Button
-                    size='small'
-                    onClick={this.loadMore}
-                    primary> Load More
-                  </Button>
-                }
+                  <Grid.Column width={16}>
+                    {this.state.reddit &&
+                      <Button
+                        fluid
+                        size='small'
+                        onClick={this.loadMore}
+                        primary> Load More
+                      </Button>
+                    }
+                  </Grid.Column>
+                </Grid>
               </Segment>
 
             )}
@@ -136,12 +142,14 @@ class StoriesIndex extends React.Component{
         </div>
       )
     } else return(
-      <Segment>
+      <div>
+        <Divider />
         <DesktopIndex
+          loadMore={this.loadMore}
           reddit={this.state.reddit}
           stories={this.state.stories}
         />
-      </Segment>
+      </div>
     )
   }
 }

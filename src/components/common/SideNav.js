@@ -22,10 +22,10 @@ class SideNav extends React.Component{
 
   handleItemClick(e, { name }){
     this.setState({ activeItem: name })
-    console.log('name is',name)
     if(name === 'home')this.props.history.push('/')
     if(name === 'Login')this.props.history.push('/login')
     if(name === 'Sign Up')this.props.history.push('/register')
+    if(name === 'Stories')this.props.history.push('/reddit')
   }
 
   logout(){
@@ -36,82 +36,88 @@ class SideNav extends React.Component{
   render(){
     return(
 
-        <Sidebar
-          as={Menu}
-          animation='overlay'
-          icon='labeled'
-          inverted
-          onHide={this.props.handleSidebarHide}
-          vertical
-          visible={this.props.visible}
-          width='thin'>
-          <Divider hidden />
+      <Sidebar
+        id='sidebar'
+        as={Menu}
+        animation='overlay'
+        icon='labeled'
+        inverted
+        onHide={this.props.handleSidebarHide}
+        vertical
+        visible={this.props.visible}
+        width='thin'>
 
-          <Menu.Item as='a'
-            name='home'
-            onClick={this.handleItemClick} >
-              <Icon name='home' />
-              Home
-          </Menu.Item>
+        <Menu.Item as='a'
+          name='home'
+          onClick={this.handleItemClick} >
+          <Icon name='home' />
+            Home
+        </Menu.Item>
 
-          {!Auth.isAuthenticated() &&
-            <Menu.Item as='a' onClick={this.handleItemClick}>
+        {!Auth.isAuthenticated() &&
+            <Menu.Item as='a'
+              name='Sign Up'
+              onClick={this.handleItemClick}>
               <Icon name='add user' />
               Sign Up
             </Menu.Item>
-          }
+        }
 
-          {!Auth.isAuthenticated() &&
-            <Menu.Item name='user' as='a' onClick={this.handleItemClick}>
+        {!Auth.isAuthenticated() &&
+            <Menu.Item as='a'
+              name='Login'
+              onClick={this.handleItemClick}>
               <Icon name='user' />
               Login
             </Menu.Item>
-          }
+        }
 
-          <Menu.Item as='a'>
-            <Icon name='book' />
+        <Menu.Item as='a'
+          name='Stories'
+          onClick={this.handleItemClick} >
+          <Icon name='book' />
             Stories
-          </Menu.Item>
+        </Menu.Item>
 
-          <Menu.Item as='a'>
-            <Icon name='envelope' />
+        <Menu.Item as='a'>
+          <Icon name='envelope' />
             Message
-          </Menu.Item>
+        </Menu.Item>
 
-          {!Auth.isAuthenticated() &&
-            <Menu.Item as='a'>
+        {!Auth.isAuthenticated() &&
+            <Menu.Item as='a' >
               <Icon name='pencil alternate' />
               Add New Story
             </Menu.Item>
-          }
+        }
 
-          {!Auth.isAuthenticated() &&
+        {!Auth.isAuthenticated() &&
             <Menu.Item as='a'>
               <Icon name='file alternate outline' />
               Reding List
             </Menu.Item>
-          }
+        }
 
-          <Menu.Item as='a'>
-            <Icon name='cogs' />
+        <Menu.Item as='a'>
+          <Icon name='cogs' />
             Setting
-          </Menu.Item>
+        </Menu.Item>
 
-          <Menu.Item as='a'>
-            <Icon name='question circle outline' />
+        <Menu.Item as='a'>
+          <Icon name='question circle outline' />
             About Us
-          </Menu.Item>
+        </Menu.Item>
 
-          {!Auth.isAuthenticated() &&
+        {!Auth.isAuthenticated() &&
             <Menu.Item as='a' onClick={this.logout}>
               <Icon name='log out' />
               Log Out
             </Menu.Item>
-          }
-        </Sidebar>
-      )
-    }
-
+        }
+      </Sidebar>
+    )
   }
+
+}
 
 export default withRouter(SideNav)

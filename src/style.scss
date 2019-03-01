@@ -1,8 +1,28 @@
 html{
+  #sidebar{
+    height: 100vh;
+  }
   main{
+    #reader{
+      height: 85vh;
+      overflow: scroll;
+    }
+    #index-reader{
+      height: 85vh;
+      overflow: scroll;
+    }
+    .content-text{
+      padding-left: 2%;
+      padding-right: 2%;
+      line-height: 1.6;
+    }
+    #nav{
+      position: fixed !important; /* Set the navbar to fixed position */
+      top: 0 !important; /* Position the navbar at the top of the page */
+    }
     height: 100vh;
     .ui.segment .index-card{
-      background-color: darkgrey;
+      background-color: #E9E3B4;
       .card-text{
         text-align: center;
       }
@@ -10,14 +30,24 @@ html{
     .desktop-index{
       text-align: center;
     }
+    #flippertwo{
+      background-color: #E9E3B4;
+      display: flex;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      height: 90vh;
+      background-image: url(https://previews.123rf.com/images/ke77kz/ke77kz1701/ke77kz170100026/69863051-old-paper-background-rustic-paper-texture-for-the-design-.jpg);
+      background-position: cover;
+    }
     #flipper{
-      background-color: darkgrey;
+      background-color: #E9E3B4;
       display: flex;
       justify-content: center;
       padding-top: 10%;
       margin-left: auto;
       margin-right: auto;
-      height: 100vh;
+      height: 90vh;
     }
   }
 }

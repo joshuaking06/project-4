@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Segment, Grid, Divider, Header } from 'semantic-ui-react'
+import { Container, Segment, Grid, Divider, Header, Button } from 'semantic-ui-react'
 
 const style = {
   height: '400px',
@@ -22,6 +22,7 @@ class DesktopIndex extends React.Component{
           <Grid.Column width={3}></Grid.Column>
           <Grid.Column width={10}>
             <Segment
+              id='index-reader'
               className='desktop-index'
               raised
             >
@@ -56,10 +57,15 @@ class DesktopIndex extends React.Component{
                       </Header>
                     }
 
+
+
                   </Segment>
                   <Divider />
                 </Link>
               )}
+              {this.props.reddit &&
+                <Button onClick={this.props.loadMore} primary fluid> Load More Stories </Button>
+              }
             </Segment>
           </Grid.Column>
           <Grid.Column width={3}></Grid.Column>

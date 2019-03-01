@@ -15,7 +15,7 @@ class Story(db.Model, BaseModel):
     __tablename__ = 'stories'
 
     title = db.Column(db.String(255), nullable=False)
-    description = db.Column(db.String(255), nullable=True)
+    description = db.Column(db.String(120), nullable=True)
     content = db.Column(db.Text(), nullable=False)
     genre = db.Column(db.String(40), nullable=True)
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))

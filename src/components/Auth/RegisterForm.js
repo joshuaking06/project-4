@@ -1,8 +1,5 @@
 import React from 'react'
-import { Segment, Grid, Form, Input, Divider, Button, TextArea, Message, Image, Icon } from 'semantic-ui-react'
-
-
-
+import { Segment, Grid, Form, Input, Divider, Button, TextArea, Message, Icon } from 'semantic-ui-react'
 
 
 const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
@@ -14,11 +11,10 @@ const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
 
   return(
     <Grid columns={1} stackable textAlign='center'>
-      <Grid.Column width={7}>
+      <Grid.Column width={8}>
         <Divider hidden />
         <Segment color='blue'>
           <Icon name='user plus' size='huge' />
-          {/*<Image src="https://digitalsynopsis.com/wp-content/uploads/2016/06/loading-animations-preloader-gifs-ui-ux-effects-19.gif" />*/}
           {imageSuccess && <Message
             success> Image Successfully Uploaded </Message>
           }
@@ -96,7 +92,7 @@ const RegisterForm = ({ handleChange, handleSubmit, errors, imageSuccess }) => {
                 onChange={handleChange}
                 placeholder='Password'
                 type='password'
-                name='passwordConfirmation'
+                name='password_confirmation'
               />
             </Form.Field>
 

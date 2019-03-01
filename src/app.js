@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { Segment, Sidebar, Menu, Image } from 'semantic-ui-react'
+import { Segment, Sidebar } from 'semantic-ui-react'
 import StoriesIndex from './components/stories/StoriesIndex'
 import StoriesShow from './components/stories/StoriesShow'
 import Navbar from './components/common/Navbar'
