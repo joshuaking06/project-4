@@ -22,10 +22,13 @@ class SideNav extends React.Component{
 
   handleItemClick(e, { name }){
     this.setState({ activeItem: name })
+    this.props.handleSidebarHide()
     if(name === 'home')this.props.history.push('/')
     if(name === 'Login')this.props.history.push('/login')
     if(name === 'Sign Up')this.props.history.push('/register')
     if(name === 'Stories')this.props.history.push('/reddit')
+    if(name === 'New')this.props.history.push('/stories/new')
+    if(name === 'Library')this.props.history.push('/library')
   }
 
   logout(){
@@ -84,17 +87,20 @@ class SideNav extends React.Component{
             Message
         </Menu.Item>
 
-        {!Auth.isAuthenticated() &&
-            <Menu.Item as='a' >
-              <Icon name='pencil alternate' />
-              Add New Story
-            </Menu.Item>
+        {Auth.isAuthenticated() &&
+          <Menu.Item
+            name='New'
+            as='a'
+            onClick={this.handleItemClick}>
+            <Icon name='pencil alternate' />
+            Add New Story
+          </Menu.Item>
         }
 
-        {!Auth.isAuthenticated() &&
-            <Menu.Item as='a'>
-              <Icon name='file alternate outline' />
-              Reding List
+        {Auth.isAuthenticated() &&
+            <Menu.Item onClick={this.handleItemClick} name='Library' as='a'>
+              <Icon name='book' />
+              My Library
             </Menu.Item>
         }
 
@@ -108,7 +114,7 @@ class SideNav extends React.Component{
             About Us
         </Menu.Item>
 
-        {!Auth.isAuthenticated() &&
+        {Auth.isAuthenticated() &&
             <Menu.Item as='a' onClick={this.logout}>
               <Icon name='log out' />
               Log Out

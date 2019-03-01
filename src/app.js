@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Segment, Sidebar } from 'semantic-ui-react'
 import StoriesIndex from './components/stories/StoriesIndex'
 import StoriesShow from './components/stories/StoriesShow'
+import StoriesNewEdit from './components/stories/StoriesNewEdit'
 import Navbar from './components/common/Navbar'
 import SideNav from './components/common/SideNav'
 import Register from './components/Auth/Register'
@@ -15,6 +16,8 @@ import UsersMessages from './components/user/UsersMessages'
 import Messages from './components/user/Messages'
 import MessagesShow from './components/user/MessagesShow'
 
+import MyLibrary from './components/stories/MyLibrary'
+import Home from './components/common/Home'
 
 import 'semantic-ui-css/semantic.min.css'
 import './style.scss'
@@ -35,7 +38,6 @@ class App extends React.Component{
 
   handleShowClick(){
     this.setState({ sidebarVisible: true })
-    console.log('HANDLING SHOW CLICK')
   }
 
   handleSidebarHide(){
@@ -53,10 +55,11 @@ class App extends React.Component{
                 visible={this.state.sidebarVisible}
               />
               <Sidebar.Pusher>
-                <Navbar handleShowClick={this.handleShowClick} />
+                <Navbar hideSidebar={this.handleSidebarHide} handleShowClick={this.handleShowClick} />
                 <FlashMessages />
                 <Switch>
                   <Route path="/loading" component={LoadingPage} />
+                  <Route path='/library' component={MyLibrary} />
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
                   <Route path="/messages/:id/show" component={MessagesShow} />
@@ -64,9 +67,12 @@ class App extends React.Component{
                   <Route path="/messages" component={Messages} />
                   <Route path="/users/:id/message" component={UsersMessages} />
                   <Route path="/users/:id" component={UsersShow} />
+                  <Route path="/stories/edit/:id" component={StoriesNewEdit} />
+                  <Route path="/stories/new" component={StoriesNewEdit} />
                   <Route path="/stories/:id" component={StoriesShow} />
                   <Route path="/stories" component={StoriesIndex} />
                   <Route path="/reddit" component={StoriesIndex} />
+                  <Route path="/" component={Home} />
                 </Switch>
 
               </Sidebar.Pusher>

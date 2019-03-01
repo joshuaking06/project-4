@@ -1,5 +1,5 @@
 import React from 'react'
-import { Divider, Button, Grid, Form, Input, Segment, Icon, Message, Image } from 'semantic-ui-react'
+import { Divider, Button, Grid, Form, Input, Segment, Message, Image } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import Auth from '../../lib/Auth'
 import Flash from '../../lib/Flash'
@@ -11,7 +11,11 @@ class Login extends React.Component{
     super()
     // data to be sent to back end login route, errors displayed as  message on form
     this.state={
-      postData: {},
+      postData: {
+        email: '',
+        password: ''
+      },
+
       errors: {}
     }
     this.handleChange = this.handleChange.bind(this)
@@ -21,7 +25,6 @@ class Login extends React.Component{
 
   // taking the value and name of target input and setting them in postData in state
   handleChange({ target: {name, value }}) {
-    console.log(this.state)
     const postData = {...this.state.postData, [name]: value }
     this.setState({ postData })
   }
@@ -33,7 +36,7 @@ class Login extends React.Component{
       .then(res => {
         Auth.setToken(res.data.token)
         Flash.setMessage('success', res.data.message)
-        this.props.history.push('/')
+        this.props.history.push('/reddit')
       })
       .catch(err => this.setState({ errors: err.response.data }))
   }
@@ -50,12 +53,11 @@ class Login extends React.Component{
     })
     const { postData } = this.state
     return(
-      <Grid columns={2} textAlign='center'>
+      <Grid columns={1} stackable textAlign='center'>
         <Grid.Column width={8}>
           <Divider hidden/>
           <Segment color="blue">
             <Image src="https://d2lp05f39ek59n.cloudfront.net/uploads/ReadMe_product_img_690313098_readme.png" />
-            {/* <Icon name='user circle' size='huge' /> */}
             <p> Welcome back!</p>
 
             {/* displaying error messages when they exist, passing in list  of error messages */}

@@ -13,7 +13,7 @@ class Reader extends React.Component{
     super(props)
 
     this.state={
-      width: window.innerWidth,
+      width: window.innerWidth
     }
   }
 
@@ -33,6 +33,7 @@ class Reader extends React.Component{
         base +=1000
       }
     }
+    if (newStory.length === 0) return [this.props.story.content]
     return newStory
   }
 
@@ -42,16 +43,18 @@ class Reader extends React.Component{
 
   render(){
     if(!this.state.newStory)return null
+    console.log(this.state.newStory)
     if(this.state.width < 500)return(
       <div id='flippertwo'>
         <FlipPage
+          orientation='horizontal'
           responsive
           style={{ touchAction: 'none' }}
         >
           {this.state.newStory.map((storyPart, index) =>
             <Segment style={style} key={index} textAlign='center' color='red'>
               <Header as='h2'> {this.props.story.title} <Header.Subheader> Page {index} </Header.Subheader></Header>
-              <Divider section hidden/>
+              <Divider section/>
               <p className='content-text'> {`${storyPart}`} </p>
               <Divider hidden />
             </Segment>
@@ -63,9 +66,9 @@ class Reader extends React.Component{
       <div>
         <Segment style={style}  id='reader' textAlign='center' color='red'>
           <Header as='h2'> {this.props.story.title}</Header>
-          <Divider section hidden/>
+          <Divider section />
           {this.state.newStory.map((storyPart, index) =>
-              <p key={index} className='content-text'> {storyPart} </p>
+            <p key={index} className='content-text'> {storyPart} </p>
           )}
           <Divider hidden />
         </Segment>

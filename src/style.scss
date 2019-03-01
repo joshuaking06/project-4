@@ -3,6 +3,10 @@ html{
     height: 100vh;
   }
   main{
+    .library-list{
+      overflow: scroll;
+      height: 75vh;
+    }
     #reader{
       height: 85vh;
       overflow: scroll;
@@ -16,10 +20,12 @@ html{
       padding-right: 2%;
       line-height: 1.6;
     }
+
     #nav{
       position: fixed !important; /* Set the navbar to fixed position */
       top: 0 !important; /* Position the navbar at the top of the page */
     }
+
     height: 100vh;
     .ui.segment .index-card{
       background-color: #E9E3B4;
@@ -27,9 +33,11 @@ html{
         text-align: center;
       }
     }
+
     .desktop-index{
       text-align: center;
     }
+
     #flippertwo{
       background-color: #E9E3B4;
       display: flex;
@@ -133,4 +141,31 @@ opacity: 0.2;
   margin-left: auto;
   margin-right: auto;
   width: auto;
+}
+.ui.header.heading {
+  text-align: center;
+  font-size: 100px;
+  font-family: 'Cabin Sketch', monospace;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-top: 200px;
+}
+
+.ui.header.heading2 {
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Fredericka the Great', monospace;
+}
+
+.background {
+  height: 92vh;
+  background-image:url('https://st2.depositphotos.com/1020509/8150/i/950/depositphotos_81506536-stock-photo-vintage-background-with-old-books.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.read-me {
+  justify-content: center;
+  display: flex;
 }
