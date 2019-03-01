@@ -121,12 +121,7 @@ class StoriesIndex extends React.Component{
                   </Grid.Column>
 
                   <Grid.Column width={16}>
-                    <Link to ={{
-                      pathname: `/stories/${story.id}`,
-                      state: {
-                        reddit: this.state.reddit,
-                        storyId: story.id
-                      }}} >
+                    <Link to ={`/stories/${story.id}`} >
                       <Button size='small' fluid secondary icon='book' content='Read' />
                     </Link>
                   </Grid.Column>

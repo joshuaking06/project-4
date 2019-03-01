@@ -9,14 +9,14 @@ class StoriesShow extends React.Component{
     super(props)
 
     this.state={
-      reddit: this.props.location.state.reddit,
-      storyId: this.props.location.state.storyId
+      isReddit: !(this.props.match.params.id % 1 === 0 || this.props.match.params.id % 1 === 1 ),
+      storyId: this.props.match.params.id
     }
   }
 
   async getStory(count){
     let story
-    this.state.reddit ? story = await axios.get(`/api/reddit/${this.state.storyId}`) :
+    this.state.isReddit ? story = await axios.get(`/api/reddit/${this.state.storyId}`) :
       story = await axios.get(`/api/stories/${this.state.storyId}`)
     return await story.data
   }
