@@ -11,7 +11,10 @@ class Login extends React.Component{
     super()
     // data to be sent to back end login route, errors displayed as  message on form
     this.state={
-      postData: {},
+      postData: {
+        email:'',
+        password: ''
+      },
       errors: {}
     }
     this.handleChange = this.handleChange.bind(this)
