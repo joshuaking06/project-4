@@ -4,6 +4,9 @@ import { Container, Segment, Tab} from 'semantic-ui-react'
 // import Flash from '../../lib/Flash'
 
 import LoadingPage from '../common/LoadingPage'
+import UsersInbox from './UsersInbox'
+import UsersOutbox from './UsersOutbox'
+
 import Auth from '../../lib/Auth'
 
 
@@ -25,9 +28,10 @@ class Messages extends React.Component{
 
   render(){
     if(!this.state.usersDetail ) return <LoadingPage />
+
     const panes = [
-      { menuItem: 'Recieved', render: () => <Tab.Pane attached={false}><LoadingPage /></Tab.Pane> },
-      { menuItem: 'Sent', render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane> }
+      { menuItem: 'Recieved', render: () => <Tab.Pane attached={false}><UsersInbox  inbox={this.state.usersDetail.inbox}/></Tab.Pane> },
+      { menuItem: 'Sent', render: () => <Tab.Pane attached={false}><UsersOutbox outbox={this.state.usersDetail.outbox}/></Tab.Pane> }
     ]
 
     return(
