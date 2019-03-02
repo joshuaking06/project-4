@@ -3,19 +3,26 @@ import React from 'react'
 // import Auth from '../../lib/Auth'
 // import { Link } from 'react-router-dom'
 
-// import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-react'
+import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-react'
 // import { List, Image} from 'semantic-ui-react'
 
 
 
 const MessageShow = (props) => {
-  console.log(props)
+  // console.log(props)
   const {content,  created_at, receiver,sender} = props.location.state.message
   const {id, username} = sender || receiver
-  console.log(username)
+  // if(sender)
+  // const
+  // console.log(username)
 
   return(
-    <h1>{props.location.state.message.content}</h1>
+    <Grid columns={1} stackable textAlign='center'>
+      <Grid.Column width={13}  >
+        <h1>{username}</h1>
+        <p>{content}</p>
+      </Grid.Column>
+    </Grid>
   )
 
 }

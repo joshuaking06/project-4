@@ -8,21 +8,22 @@ import {Grid,List} from 'semantic-ui-react'
 
 
 
-const UsersInbox = ({inbox}) => {
+const MessageComponent = ({inbox, outbox, info}) => {
+  const usersMessage = inbox || outbox
   return(
     <Grid columns={1} stackable textAlign='center'>
       <Grid.Column width={13}  >
 
         {
-          inbox.length> 0 ? (
+          usersMessage.length> 0 ? (
             <List divided relaxed>
-              <p>You have sent {inbox.length} messages</p>
+              <p>{info} {usersMessage.length} messages</p>
               {
-                inbox.map(message =>
+                usersMessage.map(message =>
                   <Link
                     key={message.id}
                     to={{
-                      pathname: `/messages/${message.id}/show`,
+                      pathname: `/me/messages/${message.id}/show`,
                       state: {
                         message: message
                       }
@@ -43,7 +44,7 @@ const UsersInbox = ({inbox}) => {
             </List>
 
           ) : (
-            <p>You have {inbox.length} messages</p>
+            <p>You have {usersMessage.length} messages</p>
 
           )
         }
@@ -55,4 +56,4 @@ const UsersInbox = ({inbox}) => {
 
 }
 
-export default UsersInbox
+export default MessageComponent

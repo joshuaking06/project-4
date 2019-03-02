@@ -8,7 +8,6 @@ import { List, Image} from 'semantic-ui-react'
 
 const MessageList = ({ messageData, information }) => {
   const {created_at, receiver,sender, content } = messageData// eslint-disable-line
-  // const {id, username } = receiver
   const {username } = sender || receiver
   console.log(content)
   return(
