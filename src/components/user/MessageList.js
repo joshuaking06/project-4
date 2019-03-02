@@ -7,27 +7,32 @@ const MessageList = ({ messageData, information }) => {
   const {username,id } = sender || receiver
   return(
     <List.Item>
-      <Image avatar src='https://react.semantic-ui.com/images/avatar/small/helen.jpg' />
-      <List.Content>
-        <List.Header>Helen</List.Header>
-        <Link
-          to={`/me/messages/${id}/show`}>Here</Link>
-      </List.Content>
+      <Link
+        to={{
+          pathname: `/me/messages/${id}/show`,
+          state: {
+            message: messageData,
+            info: information
+          }
+        } }>
+        <Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />
+        <List.Content>
+          <List.Header  as='p'>{username}</List.Header>
+          <List.Description as='p'>{`Message was ${information} at :  ${created_at}`}</List.Description>{/*  eslint-disable-line*/}
+
+        </List.Content>
+
+
+      </Link>
     </List.Item>
+
   )
 
 }
-{/*  eslint-disable-line*/}
 
 
 
-{/* <List.Item>
-<Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />
-<List.Content>
-  <List.Header>{username}</List.Header>
-  <List.Description>{`Message was ${information} at :  ${created_at}`}</List.Description>
-</List.Content>
-</List.Item>*/}
+{/* */}
 
 
 
