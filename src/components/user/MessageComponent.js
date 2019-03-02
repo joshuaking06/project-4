@@ -16,27 +16,15 @@ const MessageComponent = ({inbox, outbox, info}) => {
 
         {
           usersMessage.length> 0 ? (
-            <List divided relaxed>
+            <List  selection verticalAlign='middle' >
               <p>You have {info} {usersMessage.length} messages</p>
               {
                 usersMessage.map(message =>
-                  <Link
+                  <MessageList
                     key={message.id}
-                    to={{
-                      pathname: `/me/messages/${message.id}/show`,
-                      state: {
-                        message: message,
-                        info: info
-                      }
-                    }
-                    }
-                  >
-                    <MessageList
-                      key={message.id}
-                      messageData={message}
-                      information={'Message was recieved at'}
-                    />
-                  </Link>
+                    messageData={message}
+                    information={info}
+                  />
                 )
               }
 
@@ -49,7 +37,23 @@ const MessageComponent = ({inbox, outbox, info}) => {
           )
         }
       </Grid.Column>
-
+      {/* <Link
+        key={message.id}
+        to={{
+          pathname: `/me/messages/${message.id}/show`,
+          state: {
+            message: message,
+            info: info
+          }
+        }
+        }
+      >
+        <MessageList
+          key={message.id}
+          messageData={message}
+          information={info}
+        />
+      </Link>*/}
     </Grid>
 
   )

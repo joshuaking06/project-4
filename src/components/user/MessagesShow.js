@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom'
 import {Segment, Grid, Container, Header,Divider,Icon} from 'semantic-ui-react'
 
 const MessageShow = (props) => {
-  // console.log(props)
-  const {content,  created_at, receiver,sender} = props.location.state.message
+  const {content,  created_at, receiver,sender} = props.location.state.message // eslint-disable-line
   const {info} = props.location.state
   const {id, username} = sender || receiver
 
@@ -17,7 +16,7 @@ const MessageShow = (props) => {
 
       <Segment>
 
-        <Grid celled='internally'>
+        <Grid celled='internally' stackable>
           <Grid.Row>
             <Grid.Column width={16} textAlign='center'>
               <Icon name='mail' size='huge' />
@@ -46,7 +45,7 @@ const MessageShow = (props) => {
           <Grid.Row>
             <Grid.Column width={16} textAlign='center'>
 
-              <p>This message was {info} at {created_at}</p>
+              <p>This message was {info} at {created_at}</p>{/*  eslint-disable-line*/}
 
               <Link className='ui button positive'
                 to={'/me/messages'}
