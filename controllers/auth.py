@@ -44,6 +44,37 @@ def login():
     })
 
 
+# === RESET PASSWORD ===
+@api.route('/resetpassword', methods=['POST'])
+def resetpassword():
+
+    data = request.get_json()
+    user = User.query.filter_by(email=data.get('email')).first()
+
+    # if not user or not user.validate_email(data.get('email', '', verify=True)):
+    #     return jsonify({'message': 'Email does not exist'}), 401
+
+    return jsonify({'message': 'Welcome back {}!'.format(user.username)})
+
+
+
+# === ENTER NEW PASSWORD ===
+# @api.route('/newpassord/:id', metohds=['POST'])
+# def newpassword():
+#
+#     data = request.get_json()
+#     user = User.query.filter_by(email=data.get('email')).first()
+#
+#     if not user or not user.validate_password(data.get('password', '')):
+#         return jsonify({'message': 'Unauthorized'}), 401
+#
+#     return jsonify({
+#         'message': 'Welcome back {}!'.format(user.username),
+#         'token': user.generate_token()
+#     })
+
+
+
 # === INDEX USERS ===
 @api.route('/users', methods=['GET'])
 def index():

@@ -7,6 +7,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from marshmallow import validates_schema, fields, ValidationError, validate
 from .base import BaseModel, BaseSchema
 
+
 # Base = declarative_base()
 
 # users_users = db.Table('users_users', Base.metadata,

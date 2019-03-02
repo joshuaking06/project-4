@@ -15,6 +15,8 @@ import LoadingPage from './components/common/LoadingPage'
 import UsersMessages from './components/user/UsersMessages'
 import Messages from './components/user/Messages'
 import MessagesShow from './components/user/MessagesShow'
+import ResetPassword from './components/Auth/ResetPassword'
+import NewPassword from './components/Auth/NewPassword'
 
 import MyLibrary from './components/stories/MyLibrary'
 import Home from './components/common/Home'
@@ -62,6 +64,8 @@ class App extends React.Component{
                   <Route path='/library' component={MyLibrary} />
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
+                  <Route path="/resetpassword" component={ResetPassword} />
+                  <Route path="/newpassword/:id" component={NewPassword} />
                   <Route path="/messages/:id/show" component={MessagesShow} />
 
                   <Route path="/messages" component={Messages} />

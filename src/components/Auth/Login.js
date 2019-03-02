@@ -21,6 +21,7 @@ class Login extends React.Component{
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.goToRegister = this.goToRegister.bind(this)
+    this.goToResetPassword = this.goToResetPassword.bind(this)
   }
 
   // taking the value and name of target input and setting them in postData in state
@@ -44,6 +45,10 @@ class Login extends React.Component{
 
   goToRegister(){
     this.props.history.push('/register')
+  }
+
+  goToResetPassword() {
+    this.props.history.push('/resetpassword')
   }
 
 
@@ -97,6 +102,9 @@ class Login extends React.Component{
             </Form>
             <Divider hidden />
             <a href='#' onClick={this.goToRegister}> Need have an account? Click Here to Sign Up. </a>
+            <br />
+            <a href='#' onClick={this.goToResetPassword}> Having trouble logging in?
+            </a>
           </Segment>
         </Grid.Column>
       </Grid>
