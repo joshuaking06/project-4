@@ -36,13 +36,13 @@ class StoriesNewEdit extends React.Component{
   }
 
   handleSaveDraft(e){
-      e.preventDefault()
-      if(this.state.isNew) this.handleSubmitOrSave(true, 'save').then(() => {
-          console.log('popup message goes here')
-        })
-      else this.handleSubmitOrSave(false)
-        .then(() => this.props.history.push(`${this.props.match.params.id}`))
-      Flash.setMessage('success', 'Story Successfully Saved' )
+    e.preventDefault()
+    if(this.state.isNew) this.handleSubmitOrSave(true, 'save').then(() => {
+      console.log('popup message goes here')
+    })
+    else this.handleSubmitOrSave(false)
+      .then(() => this.props.history.push(`${this.props.match.params.id}`))
+    Flash.setMessage('success', 'Story Successfully Saved' )
   }
 
   // determine which axios request to make
@@ -56,7 +56,7 @@ class StoriesNewEdit extends React.Component{
   handleSubmit(e){
     e.preventDefault()
     if(this.state.isNew) this.handleSubmitOrSave(true, 'submit').then(() => this.props.history.push('/stories'))
-    else this.handleSubmitOrSave(false).then(() => this.props.history.push(`/stories`))
+    else this.handleSubmitOrSave(false).then(() => this.props.history.push('/stories'))
     Flash.setMessage('success', 'Story Successfully Updated' )
   }
 
@@ -67,13 +67,13 @@ class StoriesNewEdit extends React.Component{
     else {
       axios.get(`/api/stories/${this.props.match.params.id}`)
         .then(res => this.setState({
-            storyData: {
-              title: res.data.title,
-              content: res.data.content,
-              description: res.data.description,
-              genre: res.data.genre
-            }
-          })
+          storyData: {
+            title: res.data.title,
+            content: res.data.content,
+            description: res.data.description,
+            genre: res.data.genre
+          }
+        })
         )
     }
   }
@@ -91,7 +91,7 @@ class StoriesNewEdit extends React.Component{
         handleSaveDraft={this.handleSaveDraft}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
-     />
+      />
     )
   }
 }

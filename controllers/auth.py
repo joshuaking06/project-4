@@ -8,6 +8,7 @@ from models.story import Story, StorySchema
 api = Blueprint('auth', __name__)
 user_schema = UserSchema()
 message_schema = MessageSchema()
+# pylint: disable=C0301
 users_schema = UserSchema(many=True, exclude=('followers', 'following', 'inbox', 'outbox', 'read_list'))
 story_schema = StorySchema()
 user_schema = UserSchema(exclude=('inbox', 'outbox', 'read_list'))
@@ -120,7 +121,7 @@ def add_new(user_id, story_id):
 
     return user_schema.jsonify(user)
 
-
+# === DELETE STORY ===
 @api.route('/users/<int:user_id>/stories/<int:story_id>', methods=['DELETE'])
 def delete_from_reading_list(user_id, story_id):
     user = User.query.get(user_id)
@@ -133,6 +134,7 @@ def delete_from_reading_list(user_id, story_id):
     return '', 204
 
 
+# === FOLLOW ROUTE ===
 @api.route('/users/<int:user_id>/follow/<int:follower_id>', methods=['POST'])
 def follow_users(user_id, follower_id):
     user = User.query.get(user_id)
@@ -141,7 +143,7 @@ def follow_users(user_id, follower_id):
     user.save()
     return user_schema.jsonify(user), 201
 
-
+# === UNFOLLOW ROUTE ===
 @api.route('/users/<int:user_id>/unfollow/<int:unfollow_id>', methods=['POST'])
 def unfollow_users(user_id, unfollow_id):
     user = User.query.get(user_id)
