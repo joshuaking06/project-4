@@ -33,14 +33,16 @@ class UsersMessage extends React.Component{
   // submitting the data to back end register route
   handleSubmit(e){
     e.preventDefault()
-    if(!this.state.postData ) return <LoadingPage />
-    const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
-    const body = this.state.postData
-    axios.post(`/api/users/${this.props.match.params.id}/inbox`,  body, {headers: headers}
-    )
-      .then(
-        this.props.history.push(`/users/${this.props.match.params.id}`)
+    if(Auth.isAuthenticated()){
+      if(!this.state.postData ) return <LoadingPage />
+      const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
+      const body = this.state.postData
+      axios.post(`/api/users/${this.props.match.params.id}/inbox`,  body, {headers: headers}
       )
+        .then(
+          this.props.history.push(`/users/${this.props.match.params.id}`)
+        )
+    }
   }
 
   render(){

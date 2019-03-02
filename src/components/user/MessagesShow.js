@@ -4,9 +4,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import {Segment, Grid, Container,Header,Divider, Button,Icon} from 'semantic-ui-react'
-// import { List, Image} from 'semantic-ui-react'
-
-
 
 const MessageShow = (props) => {
   // console.log(props)
@@ -25,7 +22,7 @@ const MessageShow = (props) => {
             <p>{content}</p>
             <p>This message was {info} at {created_at}</p>
 
-            <Link className='ui button primary'
+            <Link className='ui button positive'
               to={'/me/messages'}
             >
               <i className='arrow alternate circle left icon' aria-hidden='true' />
