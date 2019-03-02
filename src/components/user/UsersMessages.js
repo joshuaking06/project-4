@@ -47,10 +47,11 @@ class UsersMessage extends React.Component{
     if(!this.state.usersDetail ) return <LoadingPage />
     return(
       <Container>
+        <Divider section hidden />
+
         <Segment>
           <Grid columns={1} stackable textAlign='center'>
             <Grid.Column width={8}>
-              <Divider hidden />
               <Icon name='mail' size='huge' />
               <Form onSubmit={this.handleSubmit} >
                 <Form.Field required>

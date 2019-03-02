@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Container, Segment, Tab} from 'semantic-ui-react'
+import { Container, Segment, Tab, Divider} from 'semantic-ui-react'
 // import Flash from '../../lib/Flash'
 
 import LoadingPage from '../common/LoadingPage'
@@ -35,6 +35,8 @@ class Messages extends React.Component{
     ]
     return(
       <Container>
+        <Divider section hidden />
+
         <Segment>
           <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
         </Segment>

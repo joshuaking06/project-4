@@ -16,21 +16,31 @@ const MessageShow = (props) => {
 
   return(
     <Container>
+      <Divider section hidden />
+
       <Segment>
         <Grid columns={1} stackable textAlign='center'>
           <Grid.Column width={9}  >
             <p>{username}</p>
             <p>{content}</p>
             <p>This message was {info} at {created_at}</p>
+
+            <Link className='ui button primary'
+              to={'/me/messages'}
+            >
+              <i className='arrow alternate circle left icon' aria-hidden='true' />
+              Go Back
+            </Link>
+
             {
               info==='recieved' &&
-              <Link className='ui button'
+              <Link className='ui button primary'
                 to={`/users/${id}/message`}
               >
+                <i className='reply icon' aria-hidden='true' />
                 Reply Back
               </Link>
             }
-
 
           </Grid.Column>
         </Grid>
