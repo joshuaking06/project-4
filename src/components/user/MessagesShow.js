@@ -23,10 +23,8 @@ const MessageShow = (props) => {
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row>
-            <Grid.Column width={3}>
+          <Grid.Row centered>
 
-            </Grid.Column>
             <Grid.Column width={10}>
               <Header size='medium' as='h2'>User Name:</Header>
 
@@ -37,9 +35,7 @@ const MessageShow = (props) => {
               <p>{content}</p>
 
             </Grid.Column>
-            <Grid.Column width={3}>
 
-            </Grid.Column>
           </Grid.Row>
 
           <Grid.Row>

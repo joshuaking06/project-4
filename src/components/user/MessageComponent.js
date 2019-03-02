@@ -10,12 +10,12 @@ import {Grid,List} from 'semantic-ui-react'
 const MessageComponent = ({inbox, outbox, info}) => {
   const usersMessage = inbox || outbox
   return(
-    <Grid columns={1} stackable >
+    <Grid columns={1} stackable  centered>
       <Grid.Column width={13}  >
 
         {
           usersMessage.length> 0 ? (
-            <List   divided relaxed='very'  animated selection >
+            <List   divided relaxed='very'  animated selection  >
               <p>You have {info} {usersMessage.length} messages</p>
               {
                 usersMessage.map(message =>
