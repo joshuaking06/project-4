@@ -38,7 +38,7 @@ class Messages extends React.Component{
         <Divider section hidden />
 
         <Segment>
-          <Header size='medium'>Your Messages</Header>
+          <Header size='medium' as='h1'>Your Messages</Header>
 
           <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
         </Segment>
