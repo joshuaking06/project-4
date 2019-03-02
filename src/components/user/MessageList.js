@@ -1,15 +1,9 @@
 import React from 'react'
-// import StoryCard from './StoryCard'
-// import Auth from '../../lib/Auth'
-// import { Link } from 'react-router-dom'
-
-// import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-react'
 import { List, Image} from 'semantic-ui-react'
 
 const MessageList = ({ messageData, information }) => {
   const {created_at, receiver,sender, content } = messageData// eslint-disable-line
   const {username } = sender || receiver
-  console.log(content)
   return(
     <List.Item>
       <Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />

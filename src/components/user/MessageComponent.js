@@ -17,7 +17,7 @@ const MessageComponent = ({inbox, outbox, info}) => {
         {
           usersMessage.length> 0 ? (
             <List divided relaxed>
-              <p>{info} {usersMessage.length} messages</p>
+              <p>You have {info} {usersMessage.length} messages</p>
               {
                 usersMessage.map(message =>
                   <Link
@@ -25,10 +25,10 @@ const MessageComponent = ({inbox, outbox, info}) => {
                     to={{
                       pathname: `/me/messages/${message.id}/show`,
                       state: {
-                        message: message
+                        message: message,
+                        info: info
                       }
                     }
-
                     }
                   >
                     <MessageList
