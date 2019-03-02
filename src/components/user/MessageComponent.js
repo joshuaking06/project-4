@@ -8,7 +8,8 @@ import {Grid,List} from 'semantic-ui-react'
 
 
 const MessageComponent = ({inbox, outbox, info}) => {
-  const usersMessage = inbox || outbox
+  let usersMessage = inbox || outbox
+  usersMessage = usersMessage.sort((a, b) => b.id - a.id )
   return(
     <Grid columns={1} stackable  centered>
       <Grid.Column width={13}  >
