@@ -18,11 +18,20 @@ const MessageShow = (props) => {
     <Container>
       <Segment>
         <Grid columns={1} stackable textAlign='center'>
-          <Grid.Column width={13}  >
+          <Grid.Column width={9}  >
             <p>{username}</p>
             <p>{content}</p>
             <p>This message was {info} at {created_at}</p>
-            <Link className='ui button'   to={}>Click Here</Link>
+            {
+              info==='recieved' &&
+              <Link className='ui button'
+                to={`/users/${id}/message`}
+              >
+                Reply Back
+              </Link>
+            }
+
+
           </Grid.Column>
         </Grid>
       </Segment>
