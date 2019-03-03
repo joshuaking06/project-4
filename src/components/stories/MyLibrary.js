@@ -2,6 +2,7 @@ import React from 'react'
 import { Menu, Segment, Container, Input, Divider } from 'semantic-ui-react'
 import MyReadingList from './MyReadingList'
 import MyStoriesList from './MyStoriesList'
+import FollowingList from './FollowingList'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Settings from '../../lib/Settings'
@@ -39,8 +40,13 @@ class MyLibrary extends React.Component{
         <Menu inverted={nightMode} attached='top' tabular>
           <Menu.Item name='My Stories' active={activeItem === 'My Stories'} onClick={this.handleItemClick} />
           <Menu.Item
-            name='My Reading List'
-            active={activeItem === 'My Reading List'}
+            name='Reading List'
+            active={activeItem === 'Reading List'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name='Following'
+            active={activeItem === 'Following'}
             onClick={this.handleItemClick}
           />
         </Menu>
@@ -51,9 +57,15 @@ class MyLibrary extends React.Component{
           />
         }
 
-        {activeItem === 'My Reading List' &&
+        {activeItem === 'Reading List' &&
           <MyReadingList
             stories={this.state.myData.read_list}
+          />
+        }
+
+        {activeItem === 'Following' &&
+          <FollowingList
+            following={this.state.myData.following}
           />
         }
 
