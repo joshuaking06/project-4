@@ -44,6 +44,7 @@ class Reader extends React.Component{
   }
 
   render(){
+    console.log(this.props)
     const { nightMode } = this.state
     console.log('nightmode is',nightMode)
     if(!this.state.newStory)return null
