@@ -29,6 +29,8 @@ class SideNav extends React.Component{
     if(name === 'Stories')this.props.history.push('/reddit')
     if(name === 'New')this.props.history.push('/stories/new')
     if(name === 'Library')this.props.history.push('/library')
+    if(name === 'Message')this.props.history.push('/messages')
+
   }
 
   logout(){
@@ -82,7 +84,11 @@ class SideNav extends React.Component{
             Stories
         </Menu.Item>
 
-        <Menu.Item as='a'>
+        <Menu.Item
+          as='a'
+          name='Message'
+          onClick={this.handleItemClick}
+        >
           <Icon name='envelope' />
             Message
         </Menu.Item>

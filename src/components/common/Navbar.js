@@ -83,7 +83,7 @@ class Navbar extends React.Component{
                   <Icon name='book'/>
                   Stories
                 </Menu.Item>
-                
+
 
                 {Auth.isAuthenticated() &&
                   <Menu.Item
