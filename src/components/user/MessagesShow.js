@@ -44,7 +44,7 @@ const MessageShow = (props) => {
               <p>This message was {info} at {created_at}</p>{/*  eslint-disable-line*/}
 
               <Link className='ui button positive'
-                to={'/me/messages'}
+                to={'/messages'}
               >
                 <i className='arrow alternate circle left icon' aria-hidden='true' />
               Go Back

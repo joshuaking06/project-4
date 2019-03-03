@@ -40,7 +40,7 @@ class UsersMessage extends React.Component{
       axios.post(`/api/users/${this.props.match.params.id}/inbox`,  body, {headers: headers}
       )
         .then(
-          this.props.history.push(`/users/${this.props.match.params.id}`)
+          this.props.history.push('/messages')
         )
     }
   }

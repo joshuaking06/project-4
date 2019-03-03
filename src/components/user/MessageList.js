@@ -9,7 +9,7 @@ const MessageList = ({ messageData, information }) => {
     <List.Item>
       <Link
         to={{
-          pathname: `/me/messages/${id}/show`,
+          pathname: `/messages/${id}/show`,
           state: {
             message: messageData,
             info: information

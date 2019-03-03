@@ -62,8 +62,8 @@ class App extends React.Component{
                   <Route path='/library' component={MyLibrary} />
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
-                  <Route path="/me/messages/:id/show" component={MessagesShow} />
-                  <Route path="/me/messages" component={Messages} />
+                  <Route path="/messages/:id/show" component={MessagesShow} />
+                  <Route path="/messages" component={Messages} />
                   <Route path="/users/:id/message" component={UsersMessages} />
                   <Route path="/users/:id" component={UsersShow} />
                   <Route path="/stories/edit/:id" component={StoriesNewEdit} />

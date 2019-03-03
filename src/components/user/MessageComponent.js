@@ -37,23 +37,6 @@ const MessageComponent = ({inbox, outbox, info}) => {
           )
         }
       </Grid.Column>
-      {/* <Link
-        key={message.id}
-        to={{
-          pathname: `/me/messages/${message.id}/show`,
-          state: {
-            message: message,
-            info: info
-          }
-        }
-        }
-      >
-        <MessageList
-          key={message.id}
-          messageData={message}
-          information={info}
-        />
-      </Link>*/}
     </Grid>
 
   )
