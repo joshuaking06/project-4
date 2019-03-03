@@ -29,6 +29,7 @@ class MyLibrary extends React.Component{
 
 
   render(){
+    console.log('mydata is', this.state)
     if(!this.state.myData) return null
     const nightMode = Settings.isNightMode()
     const { activeItem } = this.state
