@@ -51,25 +51,22 @@ def resetpassword():
     data = request.get_json()
     user = User.query.filter_by(email=data.get('email')).first()
 
-    # if not user or not user.validate_email(data.get('email', '', verify=True)):
-    #     return jsonify({'message': 'Email does not exist'}), 401
-
     return jsonify({'message': 'Welcome back {}!'.format(user.username)})
 
 
 
-# === ENTER NEW PASSWORD ===
-# @api.route('/newpassord/:id', metohds=['POST'])
-# def newpassword():
+# # === ENTER NEW PASSWORD ===
+# @api.route('/users/newpassword/<int:user_id>', methods=['PUT'])
+# def validate_password():
 #
 #     data = request.get_json()
-#     user = User.query.filter_by(email=data.get('email')).first()
+#     user = User.query.get(user=data.get('user'))
 #
-#     if not user or not user.validate_password(data.get('password', '')):
+#     if user or not user.validate_password(data.get('password', '')):
 #         return jsonify({'message': 'Unauthorized'}), 401
 #
 #     return jsonify({
-#         'message': 'Welcome back {}!'.format(user.username),
+#         'message': 'Welcome back {}!',
 #         'token': user.generate_token()
 #     })
 

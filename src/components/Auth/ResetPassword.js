@@ -16,7 +16,6 @@ class ResetPassword extends React.Component{
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.goToResetPassword = this.goToResetPassword.bind(this)
   }
 
   handleChange({ target: {name, value }}) {
@@ -27,17 +26,14 @@ class ResetPassword extends React.Component{
   handleSubmit(e){
     e.preventDefault()
     axios.post('/api/resetpassword', this.state.postData)
-      .then(() =>  {
-        Flash.setMessage('success', 'Email Confirmed')
+      .then((res) =>  {
+        Flash.setMessage('success', res.data.message)
         this.props.history.push('/newpassword/:id')
       })
-      .catch(err => this.setState({ errors: err.response.data }))
+      .catch(() => this.setState({ message: 'Email does not exist!' }))
 
   }
 
-  goToResetPassword(){
-    this.props.history.push('/restepassword/:id')
-  }
 
 
   render(){
