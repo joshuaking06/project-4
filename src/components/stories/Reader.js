@@ -49,6 +49,7 @@ class Reader extends React.Component{
     if(!this.state.newStory)return null
     if(this.state.width < 500)return(
       <div id='flippertwo'>
+        <Divider hidden/>
         <FlipPage
           orientation='horizontal'
           responsive
