@@ -1,5 +1,6 @@
 import React from 'react'
 import {Icon,Card  } from 'semantic-ui-react'
+import Settings from '../../lib/Settings'
 
 const StoryCard = (story) => {
 

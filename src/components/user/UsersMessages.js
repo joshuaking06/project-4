@@ -5,6 +5,7 @@ import { Container, Segment, Grid, Form, Input, Divider, Button, TextArea, Icon 
 
 import LoadingPage from '../common/LoadingPage'
 import Auth from '../../lib/Auth'
+import Settings from '../../lib/Settings'
 
 
 class UsersMessage extends React.Component{
@@ -44,15 +45,16 @@ class UsersMessage extends React.Component{
   }
 
   render(){
+    const nightMode = Settings.isNightMode()
     if(!this.state.usersDetail ) return <LoadingPage />
     return(
       <Container>
-        <Segment>
+        <Segment inverted={nightMode}>
           <Grid columns={1} stackable textAlign='center'>
             <Grid.Column width={8}>
               <Divider hidden />
               <Icon name='mail' size='huge' />
-              <Form onSubmit={this.handleSubmit} >
+              <Form inverted={nightMode} onSubmit={this.handleSubmit} >
                 <Form.Field required>
                   <label>Send message to:</label>
                   <Input
