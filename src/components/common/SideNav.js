@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Sidebar, Menu, Divider } from 'semantic-ui-react'
+import { Icon, Sidebar, Menu } from 'semantic-ui-react'
 import Auth from '../../lib/Auth'
 import { Link, withRouter } from 'react-router-dom'
 
