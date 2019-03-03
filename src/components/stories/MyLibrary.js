@@ -4,6 +4,7 @@ import MyReadingList from './MyReadingList'
 import MyStoriesList from './MyStoriesList'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import Settings from '../../lib/Settings'
 
 const headers = { headers: { Authorization: Auth.getToken() }}
 
@@ -29,11 +30,12 @@ class MyLibrary extends React.Component{
 
   render(){
     if(!this.state.myData) return null
+    const nightMode = Settings.isNightMode()
     const { activeItem } = this.state
     return(
       <Container>
         <Divider hidden />
-        <Menu attached='top' tabular>
+        <Menu inverted={nightMode} attached='top' tabular>
           <Menu.Item name='My Stories' active={activeItem === 'My Stories'} onClick={this.handleItemClick} />
           <Menu.Item
             name='My Reading List'

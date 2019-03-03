@@ -1,6 +1,6 @@
 import React from 'react'
 import Settings from '../../lib/Settings'
-import { Button } from 'semantic-ui-react'
+import { Button, Container, Checkbox, Segment, Header, Divider, Grid } from 'semantic-ui-react'
 
 class SettingsPage extends React.Component{
   constructor(){
@@ -16,6 +16,7 @@ class SettingsPage extends React.Component{
     const nightMode = this.state.nightMode
     Settings.setNightMode(!nightMode)
     this.setState({ nightMode: !this.state.nightMode })
+    window.location.reload()
   }
 
 
@@ -24,15 +25,23 @@ class SettingsPage extends React.Component{
     const { nightMode }= this.state
     console.log(nightMode)
     return(
-      <div>
-        {!nightMode &&
-          <Button onClick={this.toggleNightMode} primary > Not night </Button>
-        }
+      <Container>
+        <Divider hidden section />
+        <Segment inverted={nightMode}>
+          <Grid columns={2}>
+              <Grid.Column width={12}>
+                <Header inverted={nightMode}> Night Mode</Header>
+                <Header inverted={nightMode}> Text-to-speech</Header>
+              </Grid.Column>
 
-        {nightMode &&
-          <Button onClick={this.toggleNightMode} secondary > Night </Button>
-        }
-      </div>
+            <Grid.Column width={4}>
+              <Checkbox onChange={this.toggleNightMode} toggle checked={nightMode}/>
+              <Divider />
+              <Checkbox toggle />
+            </Grid.Column>
+          </Grid>
+        </Segment>
+      </Container>
     )
   }
 }
