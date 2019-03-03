@@ -1,5 +1,6 @@
 import React from 'react'
 import { Segment, Divider, Header, Image } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 import FlipPage from 'react-flip-page'
 import Settings from '../../lib/Settings'
 
@@ -44,9 +45,7 @@ class Reader extends React.Component{
   }
 
   render(){
-    console.log(this.props)
     const { nightMode } = this.state
-    console.log('nightmode is',nightMode)
     if(!this.state.newStory)return null
     if(this.state.width < 500)return(
       <div id='flippertwo'>
@@ -59,6 +58,7 @@ class Reader extends React.Component{
           {this.state.newStory.map((storyPart, index) =>
             <Segment inverted={nightMode} style={style} key={index} textAlign='center'>
               <Header as='h2'> {`${this.props.story.title}(${index+1})`}  </Header>
+              <Link to={`info/${this.props.story.id}`}> Info </Link>
               <Divider section/>
               <p className='content-text'> {`${storyPart}`} </p>
               <Divider hidden />
@@ -71,6 +71,7 @@ class Reader extends React.Component{
       <div>
         <Segment inverted={nightMode} style={style}  id='reader' textAlign='center'>
           <Header as='h2'> {this.props.story.title}</Header>
+          <Link to={`info/${this.props.story.id}`}> Info </Link>
           <Divider section />
           {this.state.newStory.map((storyPart, index) =>
             <p key={index} className='content-text'> {storyPart} </p>
