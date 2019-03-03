@@ -23,12 +23,7 @@ class SideNav extends React.Component{
   handleItemClick(e, { name }){
     this.setState({ activeItem: name })
     this.props.handleSidebarHide()
-    if(name === 'home')this.props.history.push('/')
-    if(name === 'Login')this.props.history.push('/login')
-    if(name === 'Sign Up')this.props.history.push('/register')
-    if(name === 'Stories')this.props.history.push('/reddit')
-    if(name === 'New')this.props.history.push('/stories/new')
-    if(name === 'Library')this.props.history.push('/library')
+    this.props.history.push(`/${name}`)
   }
 
   logout(){
@@ -59,7 +54,7 @@ class SideNav extends React.Component{
 
         {!Auth.isAuthenticated() &&
             <Menu.Item as='a'
-              name='Sign Up'
+              name='register'
               onClick={this.handleItemClick}>
               <Icon name='add user' />
               Sign Up
@@ -68,7 +63,7 @@ class SideNav extends React.Component{
 
         {!Auth.isAuthenticated() &&
             <Menu.Item as='a'
-              name='Login'
+              name='login'
               onClick={this.handleItemClick}>
               <Icon name='user' />
               Login
@@ -76,20 +71,20 @@ class SideNav extends React.Component{
         }
 
         <Menu.Item as='a'
-          name='Stories'
+          name='reddit'
           onClick={this.handleItemClick} >
           <Icon name='book' />
             Stories
         </Menu.Item>
 
-        <Menu.Item as='a'>
+        <Menu.Item name='messages' onClick={this.handleItemClick} as='a'>
           <Icon name='envelope' />
-            Message
+            Messages
         </Menu.Item>
 
         {Auth.isAuthenticated() &&
           <Menu.Item
-            name='New'
+            name='stories/new'
             as='a'
             onClick={this.handleItemClick}>
             <Icon name='pencil alternate' />
@@ -98,20 +93,20 @@ class SideNav extends React.Component{
         }
 
         {Auth.isAuthenticated() &&
-            <Menu.Item onClick={this.handleItemClick} name='Library' as='a'>
+            <Menu.Item onClick={this.handleItemClick} name='library' as='a'>
               <Icon name='book' />
               My Library
             </Menu.Item>
         }
 
-        <Menu.Item as='a'>
+        <Menu.Item onClick={this.handleItemClick} name='settings' as='a'>
           <Icon name='cogs' />
-            Setting
+            Settings
         </Menu.Item>
 
         <Menu.Item as='a'>
-          <Icon name='question circle outline' />
-            About Us
+          <Icon name='user' />
+            My Profile
         </Menu.Item>
 
         {Auth.isAuthenticated() &&

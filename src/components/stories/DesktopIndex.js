@@ -15,6 +15,7 @@ class DesktopIndex extends React.Component{
 
 
   render(){
+    const { addToReadList } = this.props
     console.log(this.props.stories)
     return(
       <Container>
@@ -27,12 +28,7 @@ class DesktopIndex extends React.Component{
               raised
             >
               {this.props.stories.map(story =>
-                <Link key={story.id} to ={{
-                  pathname: `/stories/${story.id}`,
-                  state: {
-                    reddit: this.props.reddit,
-                    storyId: story.id
-                  }}}> <Segment
+                 <Segment key={story.id}
                     className='desktop-index'
                     style={style}
                   > <Divider hidden />
@@ -58,10 +54,15 @@ class DesktopIndex extends React.Component{
                     }
 
 
+                    <Button onClick={(e)=> addToReadList(e,story)}  positive icon='add' content='Save to Reading List' />
+
+
+                    <Link to ={`/stories/${story.id}`} >
+                      <Button primary icon='book' content='Read This Story' />
+                    </Link>
+
 
                   </Segment>
-                  <Divider />
-                </Link>
               )}
               {this.props.reddit &&
                 <Button onClick={this.props.loadMore} primary fluid> Load More Stories </Button>
