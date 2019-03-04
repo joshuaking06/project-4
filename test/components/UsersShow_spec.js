@@ -2,7 +2,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
-import UsersDetail from '../../src/components/user/UsersDetail'
+import UsersShow from '../../src/components/user/UsersDetail'
 
 const usersDetail = {
   _id: 1,
