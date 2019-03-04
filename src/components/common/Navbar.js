@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Menu, Icon } from 'semantic-ui-react'
 import Auth from '../../lib/Auth'
 
@@ -16,6 +16,7 @@ class Navbar extends React.Component{
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this)
     this.handleItemClick = this.handleItemClick.bind(this)
     this.logout = this.logout.bind(this)
+    this.myprofile = this.myprofile.bind(this)
   }
 
   componentDidMount() {
@@ -37,13 +38,12 @@ class Navbar extends React.Component{
   }
 
   myprofile() {
-    Auth.getUserId()
-    this.props.history.push('/users/:id')
+    this.props.history.push(`/users/${Auth.getUserID()}`)
   }
 
   render(){
     const isMobile = (this.state.width <= 500)
-    const { activeItem } = this.state
+    // const { activeItem } = this.state
 
     return(
       <div>
@@ -59,8 +59,6 @@ class Navbar extends React.Component{
 
                 </Menu.Item>
               </Menu>
-
-
         }
 
         {!isMobile &&
@@ -83,15 +81,12 @@ class Navbar extends React.Component{
 
               <Menu.Menu position='right'>
 
-
-
                 <Menu.Item
                   name='stories'
                   onClick={this.handleItemClick} >
                   <Icon name='book'/>
                   Stories
                 </Menu.Item>
-
 
                 {Auth.isAuthenticated() &&
                   <Menu.Item
@@ -164,7 +159,6 @@ class Navbar extends React.Component{
 
             </Menu>
         }
-
 
       </div>
     )

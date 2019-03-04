@@ -1,7 +1,6 @@
 import React from 'react'
 import { Divider, Button, Grid, Form, Input, Segment, Icon } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
-import Flash from '../../lib/Flash'
 import axios from 'axios'
 
 
