@@ -164,21 +164,21 @@ def delete_from_reading_list(user_id, story_id):
 
 
 # === FOLLOW ROUTE ===
-@api.route('/users/<int:user_id>/follow/<int:follower_id>', methods=['POST'])
+@api.route('/users/<int:user_id>/follow', methods=['POST'])
 @secure_route
-def follow_users(user_id, follower_id):
+def follow_users(user_id):
     user = User.query.get(user_id)
-    follower = User.query.get(follower_id)
+    follower = g.current_user
     follower.following.append(user)
     user.save()
     return user_schema.jsonify(user), 201
 
 # === UNFOLLOW ROUTE ===
-@api.route('/users/<int:user_id>/unfollow/<int:unfollow_id>', methods=['POST'])
+@api.route('/users/<int:user_id>/unfollow', methods=['POST'])
 @secure_route
-def unfollow_users(user_id, unfollow_id):
+def unfollow_users(user_id):
     user = User.query.get(user_id)
-    unfollow = User.query.get(unfollow_id)
+    unfollow = g.current_user
     unfollow.following.remove(user)
     user.save()
     return user_schema.jsonify(User.query.get(user_id)), 201
