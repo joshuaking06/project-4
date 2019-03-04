@@ -4,6 +4,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import {Segment, Grid, Container, Header,Divider,Icon} from 'semantic-ui-react'
+import moment from 'moment'
 
 const MessageShow = (props) => {
   const {content,  created_at, receiver,sender} = props.location.state.message // eslint-disable-line
@@ -41,7 +42,7 @@ const MessageShow = (props) => {
           <Grid.Row>
             <Grid.Column width={16} textAlign='center'>
 
-              <p>This message was {info} at {created_at}</p>{/*  eslint-disable-line*/}
+              <p>This message was {info} at {moment(created_at).format('dddd HH:mm')}</p>{/*  eslint-disable-line*/}
 
               <Link className='ui button positive'
                 to={'/messages'}

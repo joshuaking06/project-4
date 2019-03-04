@@ -32,8 +32,8 @@ class Messages extends React.Component{
   render(){
     if(!this.state.usersDetail ) return <LoadingPage />
     const panes = [
-      { menuItem: 'Recieved', render: () => <Tab.Pane attached={false}><MessageComponent  inbox={this.state.usersDetail.inbox} info={'recieved'}/></Tab.Pane> },
-      { menuItem: 'Sent', render: () => <Tab.Pane attached={false}><MessageComponent outbox={this.state.usersDetail.outbox} info={'sent'}/></Tab.Pane> }
+      { menuItem: 'Recieved', render: () => <Tab.Pane inverted={Settings.isNightMode()} attached={false}><MessageComponent  inbox={this.state.usersDetail.inbox} info={'recieved'}/></Tab.Pane> },
+      { menuItem: 'Sent', render: () => <Tab.Pane inverted={Settings.isNightMode()} attached={false}><MessageComponent outbox={this.state.usersDetail.outbox} info={'sent'}/></Tab.Pane> }
     ]
     return(
       <Container>
@@ -42,7 +42,7 @@ class Messages extends React.Component{
         <Segment inverted={Settings.isNightMode()}>
           <Header size='medium' as='h1'>Your Messages</Header>
 
-          <Tab menu={{ secondary: true, pointing: true,  inverted: Settings.isNightMode() }} panes={panes} />
+          <Tab menu={{ secondary: true, pointing: true,  inverted: true }} panes={panes} />
 
 
         </Segment>

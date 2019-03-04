@@ -1,9 +1,9 @@
 import React from 'react'
 import MessageList from './MessageList'
-// import Auth from '../../lib/Auth'
+import Settings from '../../lib/Settings'
 
 // import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-react'
-import {Grid,List} from 'semantic-ui-react'
+import {Grid, List, Segment} from 'semantic-ui-react'
 
 
 
@@ -16,7 +16,7 @@ const MessageComponent = ({inbox, outbox, info}) => {
 
         {
           usersMessage.length> 0 ? (
-            <List   divided relaxed='very'  animated selection  >
+            <List inverted={Settings.isNightMode()}  divided relaxed='very'  animated selection  >
               <p>You have {info} {usersMessage.length} messages</p>
               {
                 usersMessage.map(message =>

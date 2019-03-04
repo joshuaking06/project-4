@@ -2,6 +2,7 @@ import React from 'react'
 import { Comment, Header, Form, Button, Segment, List, Divider, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/Auth'
+import moment from 'moment'
 
 const CommentFeed = ({ data, nightMode, postComment, handleChange, commentData , deleteComment }) => {
   console.log(data)
@@ -30,7 +31,7 @@ const CommentFeed = ({ data, nightMode, postComment, handleChange, commentData ,
           }
 
             <List.Content>
-            <List.Header as='h4'> <Link to={`/users/${comment.user.id}`}>{comment.user.username}</Link></List.Header>
+            <List.Header as='h4'> <Link to={`/users/${comment.user.id}`}>{comment.user.username} posted on {moment(comment.created_at).format('dddd HH:mm')}</Link></List.Header>
               <List.Description> {comment.text} </List.Description>
             </List.Content>
             <Divider />

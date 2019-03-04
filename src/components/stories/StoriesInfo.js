@@ -6,6 +6,7 @@ import Settings from '../../lib/Settings'
 import CommentFeed from './CommentFeed'
 import Auth from '../../lib/Auth'
 import axios from 'axios'
+import moment from 'moment'
 
 const headers = { headers: { Authorization: `Bearer ${Auth.getToken()}` } }
 
@@ -80,8 +81,8 @@ class StoriesInfo extends React.Component{
           <Segment.Group>
             <Segment inverted={nightMode}> <strong>Genre:</strong> {data.genre}</Segment>
             <Segment inverted={nightMode}> <strong>Description:</strong> {data.description}</Segment>
-            <Segment inverted={nightMode}> <strong>Posted:</strong> {data.created_at}</Segment>
-            <Segment inverted={nightMode}> <strong>Last Updated:</strong> {data.updated_at}</Segment>
+            <Segment inverted={nightMode}> <strong>Posted:</strong> {moment(data.created_at).format('dddd HH:mm')}</Segment>
+            <Segment inverted={nightMode}> <strong>Last Updated:</strong> {moment(data.updated_at).format('dddd HH:mm')}</Segment>
           </Segment.Group>
           <Divider />
           {data.creator &&
