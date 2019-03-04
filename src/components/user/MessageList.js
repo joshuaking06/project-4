@@ -1,6 +1,7 @@
 import React from 'react'
 import { List, Image} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import Settings from '../../lib/Settings'
 
 const MessageList = ({ messageData, information }) => {
   const {created_at, receiver,sender, content } = messageData// eslint-disable-line
