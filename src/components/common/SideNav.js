@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon, Sidebar, Menu } from 'semantic-ui-react'
 import Auth from '../../lib/Auth'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 
 
@@ -16,6 +16,7 @@ class SideNav extends React.Component{
 
     this.handleItemClick = this.handleItemClick.bind(this)
     this.logout = this.logout.bind(this)
+    this.myprofile = this.myprofile.bind(this)
   }
 
 
@@ -24,6 +25,10 @@ class SideNav extends React.Component{
     this.setState({ activeItem: name })
     this.props.handleSidebarHide()
     this.props.history.push(`/${name}`)
+  }
+
+  myprofile() {
+    this.props.history.push(`/users/${Auth.getUserID()}`)
   }
 
   logout(){
@@ -107,7 +112,7 @@ class SideNav extends React.Component{
         </Menu.Item>
 
         {Auth.isAuthenticated() &&
-            <Menu.Item onClick={this.handleItemClick} name='myprofile' as='a'>
+            <Menu.Item onClick={this.myprofile} name='myprofile' as='a'>
               <Icon name='address card' />
               My Profile
             </Menu.Item>

@@ -106,7 +106,7 @@ def me():
 
 # == UPDATE THE USER ===
 @api.route('/users/<int:user_id>', methods=['PUT'])
-# @secure_route
+@secure_route
 def update(user_id):
 
     user = User.query.get(user_id)
@@ -123,7 +123,7 @@ def update(user_id):
 
 # === DELETE THE USER ===
 @api.route('/users/<int:user_id>', methods=['DELETE'])
-# @secure_route
+@secure_route
 def delete(user_id):
     user = User.query.get(user_id)
     user, errors = user_schema.load(request.get_json(), instance=user)
@@ -139,7 +139,7 @@ def delete(user_id):
 # === ADD TO USER READ LIST ===
 
 @api.route('/users/<int:user_id>/stories/<int:story_id>', methods=['POST'])
-# @secure_route
+@secure_route
 def add_new(user_id, story_id):
     user = User.query.get(user_id)
     story = Story.query.get(story_id)
@@ -151,6 +151,7 @@ def add_new(user_id, story_id):
 
 # === DELETE STORY ===
 @api.route('/users/<int:user_id>/stories/<int:story_id>', methods=['DELETE'])
+@secure_route
 def delete_from_reading_list(user_id, story_id):
     user = User.query.get(user_id)
     story = Story.query.get(story_id)
@@ -164,6 +165,7 @@ def delete_from_reading_list(user_id, story_id):
 
 # === FOLLOW ROUTE ===
 @api.route('/users/<int:user_id>/follow/<int:follower_id>', methods=['POST'])
+@secure_route
 def follow_users(user_id, follower_id):
     user = User.query.get(user_id)
     follower = User.query.get(follower_id)
@@ -173,6 +175,7 @@ def follow_users(user_id, follower_id):
 
 # === UNFOLLOW ROUTE ===
 @api.route('/users/<int:user_id>/unfollow/<int:unfollow_id>', methods=['POST'])
+@secure_route
 def unfollow_users(user_id, unfollow_id):
     user = User.query.get(user_id)
     unfollow = User.query.get(unfollow_id)

@@ -28,9 +28,8 @@ class NewPassword extends React.Component{
         Flash.setMessage('succes', res.data.message)
         this.props.history.push('/login')
       })
-      .catch(err => this.setState({ errors: err.response.data}))
-      // .then(() => this.props.history.push('/login'))
-      // .catch(err => this.setState({ errors: err }))
+      .catch(() => this.setState({ message: 'Email does not exist'}))
+
   }
 
   handleChange({ target: { name, value } }) {
