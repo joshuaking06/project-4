@@ -44,6 +44,34 @@ def login():
     })
 
 
+# === RESET PASSWORD ===
+@api.route('/resetpassword', methods=['POST'])
+def resetpassword():
+
+    data = request.get_json()
+    user = User.query.filter_by(email=data.get('email')).first()
+    return user_schema.jsonify(user)
+
+
+
+# === ENTER NEW PASSWORD ===
+@api.route('/users/<int:user_id>/newpassword', methods=['PUT'])
+def validate_password(user_id):
+
+    data = request.get_json()
+    user = User.query.get(user_id)
+
+    user, errors = user_schema.load(data, instance=user, partial=True)
+
+    if errors:
+        return jsonify(errors), 422
+
+    user.save()
+
+    return jsonify({'message': 'Password successfully changed'})
+
+
+
 # === INDEX USERS ===
 @api.route('/users', methods=['GET'])
 def index():

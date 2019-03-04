@@ -1,11 +1,13 @@
 import React from 'react'
 import axios from 'axios'
-import { Container, Segment, Tab} from 'semantic-ui-react'
+import { Container, Segment, Tab, Divider, Header} from 'semantic-ui-react'
 // import Flash from '../../lib/Flash'
 
 import LoadingPage from '../common/LoadingPage'
-import UsersInbox from './UsersInbox'
-import UsersOutbox from './UsersOutbox'
+// import UsersInbox from './UsersInbox'
+// import UsersOutbox from './UsersOutbox'
+import MessageComponent from './MessageComponent'
+
 import Settings from '../../lib/Settings'
 
 import Auth from '../../lib/Auth'
@@ -29,16 +31,20 @@ class Messages extends React.Component{
 
   render(){
     if(!this.state.usersDetail ) return <LoadingPage />
-    console.log(this.state.usersDetail)
     const panes = [
-      { menuItem: 'Recieved', render: () => <Tab.Pane attached={false}><UsersInbox  inbox={this.state.usersDetail.inbox}/></Tab.Pane> },
-      { menuItem: 'Sent', render: () => <Tab.Pane attached={false}><UsersOutbox outbox={this.state.usersDetail.outbox}/></Tab.Pane> }
+      { menuItem: 'Recieved', render: () => <Tab.Pane attached={false}><MessageComponent  inbox={this.state.usersDetail.inbox} info={'recieved'}/></Tab.Pane> },
+      { menuItem: 'Sent', render: () => <Tab.Pane attached={false}><MessageComponent outbox={this.state.usersDetail.outbox} info={'sent'}/></Tab.Pane> }
     ]
-
     return(
       <Container>
+        <Divider section hidden />
+
         <Segment inverted={Settings.isNightMode()}>
-          <Tab menu={{ secondary: true, pointing: true, inverted: Settings.isNightMode() }} panes={panes} />
+          <Header size='medium' as='h1'>Your Messages</Header>
+
+          <Tab menu={{ secondary: true, pointing: true,  inverted: Settings.isNightMode() }} panes={panes} />
+
+
         </Segment>
       </Container>
     )

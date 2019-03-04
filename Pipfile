@@ -16,6 +16,8 @@ requests = "*"
 pyjwt = "*"
 flask-bcrypt = "*"
 praw = "*"
+validate-email = "*"
+pydns = "*"
 
 [requires]
 python_version = "3.7"

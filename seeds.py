@@ -32,7 +32,7 @@ with app.app_context():
     inter = Story(
         title='inter',
         description='a short story about inter',
-        content='I always love inter and hated chleseas',
+        content='I always love inter forever',
         genre='fantasy',
         creator=alessandro
     )

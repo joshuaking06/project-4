@@ -77,10 +77,12 @@ class SideNav extends React.Component{
             Stories
         </Menu.Item>
 
+        {Auth.isAuthenticated() &&
         <Menu.Item name='messages' onClick={this.handleItemClick} as='a'>
-          <Icon name='envelope' />
+          <Icon name='facebook messenger' />
             Messages
         </Menu.Item>
+        }
 
         {Auth.isAuthenticated() &&
           <Menu.Item
@@ -94,7 +96,7 @@ class SideNav extends React.Component{
 
         {Auth.isAuthenticated() &&
             <Menu.Item onClick={this.handleItemClick} name='library' as='a'>
-              <Icon name='book' />
+              <Icon name='bookmark outline' />
               My Library
             </Menu.Item>
         }
@@ -104,10 +106,12 @@ class SideNav extends React.Component{
             Settings
         </Menu.Item>
 
-        <Menu.Item as='a'>
-          <Icon name='user' />
-            My Profile
-        </Menu.Item>
+        {Auth.isAuthenticated() &&
+            <Menu.Item onClick={this.handleItemClick} name='myprofile' as='a'>
+              <Icon name='address card' />
+              My Profile
+            </Menu.Item>
+        }
 
         {Auth.isAuthenticated() &&
             <Menu.Item as='a' onClick={this.logout}>

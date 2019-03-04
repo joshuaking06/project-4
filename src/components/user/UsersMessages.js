@@ -34,14 +34,16 @@ class UsersMessage extends React.Component{
   // submitting the data to back end register route
   handleSubmit(e){
     e.preventDefault()
-    if(!this.state.postData ) return <LoadingPage />
-    const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
-    const body = this.state.postData
-    axios.post(`/api/users/${this.props.match.params.id}/inbox`,  body, {headers: headers}
-    )
-      .then(
-        this.props.history.push(`/users/${this.props.match.params.id}`)
+    if(Auth.isAuthenticated()){
+      if(!this.state.postData ) return <LoadingPage />
+      const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
+      const body = this.state.postData
+      axios.post(`/api/users/${this.props.match.params.id}/inbox`,  body, {headers: headers}
       )
+        .then(
+          this.props.history.push('/messages')
+        )
+    }
   }
 
   render(){
@@ -49,10 +51,11 @@ class UsersMessage extends React.Component{
     if(!this.state.usersDetail ) return <LoadingPage />
     return(
       <Container>
+        <Divider section hidden />
+
         <Segment inverted={nightMode}>
           <Grid columns={1} stackable textAlign='center'>
             <Grid.Column width={8}>
-              <Divider hidden />
               <Icon name='mail' size='huge' />
               <Form inverted={nightMode} onSubmit={this.handleSubmit} >
                 <Form.Field required>

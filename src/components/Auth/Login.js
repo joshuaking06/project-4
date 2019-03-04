@@ -1,6 +1,6 @@
 import React from 'react'
 import { Divider, Button, Grid, Form, Input, Segment, Message, Image } from 'semantic-ui-react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import Auth from '../../lib/Auth'
 import Flash from '../../lib/Flash'
 import axios from 'axios'
@@ -20,7 +20,6 @@ class Login extends React.Component{
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.goToRegister = this.goToRegister.bind(this)
   }
 
   // taking the value and name of target input and setting them in postData in state
@@ -44,6 +43,10 @@ class Login extends React.Component{
 
   goToRegister(){
     this.props.history.push('/register')
+  }
+
+  goToResetPassword() {
+    this.props.history.push('/resetpassword')
   }
 
 
@@ -96,7 +99,9 @@ class Login extends React.Component{
               <Button fluid content="Log In" primary icon='send' />
             </Form>
             <Divider hidden />
-            <a href='#' onClick={this.goToRegister}> Need have an account? Click Here to Sign Up. </a>
+            <Link to="/register">Need have an account? Click Here to Sign Up.</Link>
+            <br />
+            <Link to="/resetpassword"> Having trouble logging in?</Link>
           </Segment>
         </Grid.Column>
       </Grid>
