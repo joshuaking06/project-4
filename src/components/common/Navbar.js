@@ -16,6 +16,7 @@ class Navbar extends React.Component{
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this)
     this.handleItemClick = this.handleItemClick.bind(this)
     this.logout = this.logout.bind(this)
+    this.myprofile = this.myprofile.bind(this)
   }
 
   componentDidMount() {
@@ -37,8 +38,7 @@ class Navbar extends React.Component{
   }
 
   myprofile() {
-    Auth.getUserId()
-    this.props.history.push('/users/:id')
+    this.props.history.push(`/users/${Auth.getUserID()}`)
   }
 
   render(){
