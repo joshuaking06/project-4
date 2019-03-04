@@ -3,6 +3,7 @@ import { Segment, Container, Divider, Button, Input, Feed, Header } from 'semant
 import SuccessModal from '../common/SuccessModal'
 import { Link } from 'react-router-dom'
 import Settings from '../../lib/Settings'
+import CommentFeed from './CommentFeed'
 import Auth from '../../lib/Auth'
 import axios from 'axios'
 
@@ -16,9 +17,14 @@ class StoriesInfo extends React.Component{
     this.state={
       saved: false,
       nightMode: Settings.isNightMode(),
-      isReddit: !(this.props.match.params.id % 1 === 0 || this.props.match.params.id % 1 === 1 )
+      isReddit: !(this.props.match.params.id % 1 === 0 || this.props.match.params.id % 1 === 1 ),
+      commentData: {
+        text: ''
+      }
     }
     this.addToReadList = this.addToReadList.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.postComment = this.postComment.bind(this)
   }
 
   addToReadList(e, id){
@@ -31,6 +37,16 @@ class StoriesInfo extends React.Component{
     }
   }
 
+  handleChange({ target: { name, value }}) {
+    const commentData = {...this.state.commentData, [name]: value }
+    this.setState({ commentData })
+  }
+
+  postComment(){
+    axios.post(`/api/stories/${this.props.match.params.id}/comments`, this.state.commentData, headers)
+      .then(res => this.setState({ data: res.data, commentData: {text:''} }))
+      .catch(err => console.log(err.response))
+  }
 
 
   componentDidMount(){
@@ -43,8 +59,9 @@ class StoriesInfo extends React.Component{
 
 
   render(){
+    console.log(this.state)
     if(!this.state.data) return null
-    const { nightMode, data, saved } = this.state
+    const {commentData, nightMode, data, saved } = this.state
     return(
       <Container textAlign='center'>
         <Divider hidden />
@@ -72,7 +89,16 @@ class StoriesInfo extends React.Component{
               <Segment inverted={nightMode}><strong>Followers:</strong> {data.creator.followers.length}</Segment>
             </Segment.Group>
           }
-          <CommentFeed data={data} />
+          <Divider />
+          {!this.state.isReddit &&
+            <CommentFeed
+              commentData={commentData}
+              postComment={this.postComment}
+              handleChange={this.handleChange}
+              nightMode={nightMode}
+              data={data}
+            />
+          }
         </Segment.Group>
         {<SuccessModal saved={saved} />}
       </Container>
