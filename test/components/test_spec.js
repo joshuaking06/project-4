@@ -27,12 +27,30 @@ describe('Semantic UI tests', () => {
           'genre': 'fantasy',
           'id': 1,
           'title': 'inter'
+        },
+        {
+          'description': 'a short story about inter',
+          'genre': 'fantasy',
+          'id': 1,
+          'title': 'inter'
         }
       ]
     }
 
     wrapper = shallow(<UsersDetail usersDetail={usersDetail} />)
     done()
-    console.log(wrapper)
+  })
+
+  it('component rednder properly', done => {
+    console.log(wrapper.debug())
+    
+    ///HeaderContent
+    expect(wrapper.find('HeaderContent').length).to.eq(1)
+    expect(wrapper.find('Statistic').length).to.eq(3)
+    expect(wrapper.find('HeaderContent').text()).to.eq('<HeaderContent />')
+    expect(wrapper.find('StoryCard').length).to.eq(2)
+
+    //<HeaderContent />
+    done()
   })
 })
