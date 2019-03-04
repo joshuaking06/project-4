@@ -23,19 +23,7 @@ class Reader extends React.Component{
   modifyStory(){
     const newStory = []
     let base = 0
-    if(this.state.width < 400){
-      const storySentences = this.props.story.content.split('')
-      for(let i = 800; i < storySentences.length+799; i+=800){
-        newStory.push(storySentences.slice(base,i).join(''))
-        base +=800
-      }
-    } else if(this.state.width < 350){
-      const storySentences = this.props.story.content.split('')
-      for(let i = 650; i < storySentences.length+649; i+=650){
-        newStory.push(storySentences.slice(base,i).join(''))
-        base +=650
-      }
-    } else if(this.state.width > 500){
+    if(this.state.width > 500){
       const storySentences = this.props.story.content.split('.')
       for(let i = 10; i < storySentences.length+9; i+=10){
         newStory.push(storySentences.slice(base,i).join('.'))
@@ -58,7 +46,6 @@ class Reader extends React.Component{
 
   render(){
     const { nightMode } = this.state
-    console.log(this.state)
     if(!this.state.newStory)return null
     if(this.state.width < 500)return(
       <div id='flippertwo'>
