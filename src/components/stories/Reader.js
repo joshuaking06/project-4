@@ -23,7 +23,13 @@ class Reader extends React.Component{
   modifyStory(){
     const newStory = []
     let base = 0
-    if(this.state.width > 500){
+    if(this.state.width < 450){
+      const storySentences = this.props.story.content.split('')
+      for(let i = 800; i < storySentences.length+799; i+=800){
+        newStory.push(storySentences.slice(base,i).join(''))
+        base +=800
+      }
+    } else if(this.state.width > 500){
       const storySentences = this.props.story.content.split('.')
       for(let i = 10; i < storySentences.length+9; i+=10){
         newStory.push(storySentences.slice(base,i).join('.'))
@@ -46,10 +52,29 @@ class Reader extends React.Component{
 
   render(){
     const { nightMode } = this.state
+    console.log(this.state)
     if(!this.state.newStory)return null
+    if(this.state.width < 450)return(
+      <div id='flippertwo'>
+        <FlipPage
+          orientation='horizontal'
+          responsive
+          style={{ touchAction: 'none' }}
+        >
+          {this.state.newStory.map((storyPart, index) =>
+            <Segment inverted={nightMode} style={style} key={index} textAlign='center'>
+              <Header as='h2'> {`${this.props.story.title}(${index+1})`}  </Header>
+              <Link to={`info/${this.props.story.id}`}> Info </Link>
+              <Divider section/>
+              <p className='content-text'> {`${storyPart}`} </p>
+              <Divider hidden />
+            </Segment>
+          )}
+        </FlipPage>
+      </div>
+    )
     if(this.state.width < 500)return(
       <div id='flippertwo'>
-        <Divider hidden/>
         <FlipPage
           orientation='horizontal'
           responsive
@@ -72,7 +97,7 @@ class Reader extends React.Component{
         <Segment inverted={nightMode} style={style}  id='reader' textAlign='center'>
           <Header as='h2'> {this.props.story.title}</Header>
           <Link to={`info/${this.props.story.id}`}> Info </Link>
-          <Divider section />
+          <Divider />
           {this.state.newStory.map((storyPart, index) =>
             <p key={index} className='content-text'> {storyPart} </p>
           )}
