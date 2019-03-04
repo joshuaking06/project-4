@@ -28,7 +28,7 @@ class Login extends React.Component{
     this.setState({ postData })
   }
 
-  // submitting the data and making a flash message, then redirecting to home
+  // submitting the data and making a flash message, then redirecting to reddit
   handleSubmit(e){
     e.preventDefault()
     axios.post('/api/login', this.state.postData)
