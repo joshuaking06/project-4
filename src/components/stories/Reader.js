@@ -23,11 +23,17 @@ class Reader extends React.Component{
   modifyStory(){
     const newStory = []
     let base = 0
-    if(this.state.width < 450){
+    if(this.state.width < 400){
       const storySentences = this.props.story.content.split('')
       for(let i = 800; i < storySentences.length+799; i+=800){
         newStory.push(storySentences.slice(base,i).join(''))
         base +=800
+      }
+    } else if(this.state.width < 350){
+      const storySentences = this.props.story.content.split('')
+      for(let i = 650; i < storySentences.length+649; i+=650){
+        newStory.push(storySentences.slice(base,i).join(''))
+        base +=650
       }
     } else if(this.state.width > 500){
       const storySentences = this.props.story.content.split('.')
@@ -37,9 +43,9 @@ class Reader extends React.Component{
       }
     } else {
       const storySentences = this.props.story.content.split('')
-      for(let i = 1000; i < storySentences.length+999; i+=1000){
+      for(let i = 950; i < storySentences.length+949; i+=950){
         newStory.push(storySentences.slice(base,i).join(''))
-        base +=1000
+        base +=950
       }
     }
     if (newStory.length === 0) return [this.props.story.content]
@@ -54,25 +60,6 @@ class Reader extends React.Component{
     const { nightMode } = this.state
     console.log(this.state)
     if(!this.state.newStory)return null
-    if(this.state.width < 450)return(
-      <div id='flippertwo'>
-        <FlipPage
-          orientation='horizontal'
-          responsive
-          style={{ touchAction: 'none' }}
-        >
-          {this.state.newStory.map((storyPart, index) =>
-            <Segment inverted={nightMode} style={style} key={index} textAlign='center'>
-              <Header as='h2'> {`${this.props.story.title}(${index+1})`}  </Header>
-              <Link to={`info/${this.props.story.id}`}> Info </Link>
-              <Divider section/>
-              <p className='content-text'> {`${storyPart}`} </p>
-              <Divider hidden />
-            </Segment>
-          )}
-        </FlipPage>
-      </div>
-    )
     if(this.state.width < 500)return(
       <div id='flippertwo'>
         <FlipPage
