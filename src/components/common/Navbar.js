@@ -36,6 +36,11 @@ class Navbar extends React.Component{
     this.props.history.push('/')
   }
 
+  myprofile() {
+    Auth.getUserId()
+    this.props.history.push('/users/:id')
+  }
+
   render(){
     const isMobile = (this.state.width <= 500)
     const { activeItem } = this.state
@@ -61,6 +66,12 @@ class Navbar extends React.Component{
         {!isMobile &&
             <Menu inverted>
 
+              <Menu.Item
+                name='settings'
+                onClick={this.handleItemClick} >
+                <Icon name='cogs'/>
+                Settings
+              </Menu.Item>
 
               <Menu.Item
                 name='home'
@@ -68,6 +79,7 @@ class Navbar extends React.Component{
                 onClick={this.handleItemClick} >
                 <Icon name='home' /> Home
               </Menu.Item>
+
 
               <Menu.Menu position='right'>
 
@@ -83,11 +95,41 @@ class Navbar extends React.Component{
 
                 {Auth.isAuthenticated() &&
                   <Menu.Item
+                    name='user/:id'
+                    as='a'
+                    onClick={this.myprofile}>
+                    <Icon name='address card' />
+                    My Profile
+                  </Menu.Item>
+                }
+
+                {Auth.isAuthenticated() &&
+                  <Menu.Item
+                    name='messages'
+                    as='a'
+                    onClick={this.handleItemClick}>
+                    <Icon name='facebook messenger' />
+                    My Messages
+                  </Menu.Item>
+                }
+
+                {Auth.isAuthenticated() &&
+                  <Menu.Item
                     name='stories/new'
                     as='a'
                     onClick={this.handleItemClick}>
                     <Icon name='pencil alternate' />
                     Add New Story
+                  </Menu.Item>
+                }
+
+                {Auth.isAuthenticated() &&
+                  <Menu.Item
+                    name='library'
+                    as='a'
+                    onClick={this.handleItemClick}>
+                    <Icon name='bookmark' />
+                    My Library
                   </Menu.Item>
                 }
 
