@@ -16,7 +16,7 @@ describe('Semantic UI tests', () => {
   before(done => {
     response = Promise.resolve({
       data: {
-        _id: 1,
+        id: 1,
         username: 'SiddantGurung',
         followers: [],
         following: [
@@ -69,7 +69,7 @@ describe('Semantic UI tests', () => {
     response.then(() => {
       wrapper.update()
       expect(wrapper.find('UsersShow').state().usersDetail).to.be.an('object')
-      // expect(wrapper.find('UsersShow').state().usersDetail.id).to.eq(1)
+      expect(wrapper.find('UsersShow').state().usersDetail.id).to.eq(1)
       done()
     })
   })

@@ -5,7 +5,7 @@ import { shallow } from 'enzyme'
 import UsersDetail from '../../src/components/user/UsersDetail'
 
 const usersDetail = {
-  _id: 1,
+  id: 1,
   username: 'SiddantGurung',
   followers: [],
   following: [
