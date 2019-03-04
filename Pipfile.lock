@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "71c06b60bf98fcdd4ab894787085dd06f3533b024e0716daf116bb61116d75bb"
+            "sha256": "e41436db59c68dce948ecb19bbcc7ccc30a46ab9e462a607f316f1ee0ccecb8a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -146,13 +146,6 @@
             ],
             "version": "==2.10"
         },
-        "jsonify": {
-            "hashes": [
-                "sha256:f340032753577575e9777835809b283fdc9b251867d5d5600389131647f8bfe1"
-            ],
-            "index": "pypi",
-            "version": "==0.5"
-        },
         "markupsafe": {
             "hashes": [
                 "sha256:00bc623926325b26bb9605ae9eae8a215691f33cae5df11ca5424f06f2d1f473",
@@ -271,7 +264,6 @@
                 "sha256:502a824f31acdacb3a35b6690b5fbf0bc41d63a24a45c4004352b0242707598e",
                 "sha256:7bf2a778576d825600030a110f3c0e3e8edc51dfaafe1c146e39a2027784957b"
             ],
-            "index": "pypi",
             "version": "==2.21.0"
         },
         "six": {
@@ -300,13 +292,6 @@
                 "sha256:de9529817c93f27c8ccbfead6985011db27bd0ddfcdb2d86f3f663385c6a9c22"
             ],
             "version": "==1.24.1"
-        },
-        "validate-email": {
-            "hashes": [
-                "sha256:784719dc5f780be319cdd185dc85dd93afebdb6ebb943811bc4c7c5f9c72aeaf"
-            ],
-            "index": "pypi",
-            "version": "==1.3"
         },
         "websocket-client": {
             "hashes": [

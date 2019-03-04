@@ -1,5 +1,5 @@
 import React from 'react'
-import StoryForm from './Storyform'
+import StoryForm from './StoryForm'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Flash from '../../lib/Flash'
