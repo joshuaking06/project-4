@@ -11,11 +11,11 @@ class Comment(db.Model, BaseModel):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = db.relationship('User', backref='user_comment')
     story_id = db.Column(db.Integer, db.ForeignKey('stories.id'))
-    story = db.relationship('Story', backref='comment')
+    story = db.relationship('Story', backref='comments')
 
 class CommentSchema(ma.ModelSchema, BaseSchema):
     user = fields.Nested('UserSchema')
-    story = fields.Nested('StorySchema')
+    story = fields.Nested('StorySchema', exclude=('comments', ))
 
     class Meta:
         model = Comment

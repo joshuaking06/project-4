@@ -7,7 +7,7 @@ from lib.secure_route import secure_route
 api = Blueprint('stories', __name__)
 
 stories_schema = StorySchema(many=True, exclude=('content', ))
-story_schema = StorySchema()
+story_schema = StorySchema(exclude=('creator.read_list', ))
 comment_schema = CommentSchema()
 user_schema = UserSchema(exclude=('stories_written', ))
 
@@ -90,21 +90,23 @@ def save_story(story_id):
 
 
 # === CREATE A COMMENT ===
-@api.route('/stories/<int:story_id>/comment', methods=['POST'])
+@api.route('/stories/<int:story_id>/comments', methods=['POST'])
 @secure_route
 def create_comment(story_id):
+    print('RUNNING')
 
     comment, errors = comment_schema.load(request.get_json())
 
     if errors:
         return jsonify(errors), 422
 
-    comment.story = Story.query.get(story_id)
+    story = Story.query.get(story_id)
+    comment.story = story
     comment.user = g.current_user
 
     comment.save()
 
-    return comment_schema.jsonify(comment)
+    return story_schema.jsonify(story)
 
 # === DELETE COMMENT ===
 @api.route('/stories/<int:story_id>/comments/<int:comment_id>', methods=['DELETE'])
