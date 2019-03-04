@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Menu, Icon } from 'semantic-ui-react'
 import Auth from '../../lib/Auth'
 
@@ -16,6 +16,7 @@ class Navbar extends React.Component{
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this)
     this.handleItemClick = this.handleItemClick.bind(this)
     this.logout = this.logout.bind(this)
+    this.myprofile = this.myprofile.bind(this)
   }
 
   componentDidMount() {
@@ -36,9 +37,13 @@ class Navbar extends React.Component{
     this.props.history.push('/')
   }
 
+  myprofile() {
+    this.props.history.push(`/users/${Auth.getUserID()}`)
+  }
+
   render(){
     const isMobile = (this.state.width <= 500)
-    const { activeItem } = this.state
+    // const { activeItem } = this.state
 
     return(
       <div>
@@ -54,13 +59,17 @@ class Navbar extends React.Component{
 
                 </Menu.Item>
               </Menu>
-
-
         }
 
         {!isMobile &&
             <Menu inverted>
 
+              <Menu.Item
+                name='settings'
+                onClick={this.handleItemClick} >
+                <Icon name='cogs'/>
+                Settings
+              </Menu.Item>
 
               <Menu.Item
                 name='home'
@@ -69,9 +78,8 @@ class Navbar extends React.Component{
                 <Icon name='home' /> Home
               </Menu.Item>
 
+
               <Menu.Menu position='right'>
-
-
 
                 <Menu.Item
                   name='stories'
@@ -80,6 +88,25 @@ class Navbar extends React.Component{
                   Stories
                 </Menu.Item>
 
+                {Auth.isAuthenticated() &&
+                  <Menu.Item
+                    name='user/:id'
+                    as='a'
+                    onClick={this.myprofile}>
+                    <Icon name='address card' />
+                    My Profile
+                  </Menu.Item>
+                }
+
+                {Auth.isAuthenticated() &&
+                  <Menu.Item
+                    name='messages'
+                    as='a'
+                    onClick={this.handleItemClick}>
+                    <Icon name='facebook messenger' />
+                    My Messages
+                  </Menu.Item>
+                }
 
                 {Auth.isAuthenticated() &&
                   <Menu.Item
@@ -88,6 +115,16 @@ class Navbar extends React.Component{
                     onClick={this.handleItemClick}>
                     <Icon name='pencil alternate' />
                     Add New Story
+                  </Menu.Item>
+                }
+
+                {Auth.isAuthenticated() &&
+                  <Menu.Item
+                    name='library'
+                    as='a'
+                    onClick={this.handleItemClick}>
+                    <Icon name='bookmark' />
+                    My Library
                   </Menu.Item>
                 }
 
@@ -122,7 +159,6 @@ class Navbar extends React.Component{
 
             </Menu>
         }
-
 
       </div>
     )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon, Sidebar, Menu } from 'semantic-ui-react'
 import Auth from '../../lib/Auth'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 
 
@@ -16,6 +16,7 @@ class SideNav extends React.Component{
 
     this.handleItemClick = this.handleItemClick.bind(this)
     this.logout = this.logout.bind(this)
+    this.myprofile = this.myprofile.bind(this)
   }
 
 
@@ -24,6 +25,10 @@ class SideNav extends React.Component{
     this.setState({ activeItem: name })
     this.props.handleSidebarHide()
     this.props.history.push(`/${name}`)
+  }
+
+  myprofile() {
+    this.props.history.push(`/users/${Auth.getUserID()}`)
   }
 
   logout(){
@@ -77,10 +82,12 @@ class SideNav extends React.Component{
             Stories
         </Menu.Item>
 
+        {Auth.isAuthenticated() &&
         <Menu.Item name='messages' onClick={this.handleItemClick} as='a'>
-          <Icon name='envelope' />
+          <Icon name='facebook messenger' />
             Messages
         </Menu.Item>
+        }
 
         {Auth.isAuthenticated() &&
           <Menu.Item
@@ -94,7 +101,7 @@ class SideNav extends React.Component{
 
         {Auth.isAuthenticated() &&
             <Menu.Item onClick={this.handleItemClick} name='library' as='a'>
-              <Icon name='book' />
+              <Icon name='bookmark outline' />
               My Library
             </Menu.Item>
         }
@@ -104,10 +111,12 @@ class SideNav extends React.Component{
             Settings
         </Menu.Item>
 
-        <Menu.Item as='a'>
-          <Icon name='user' />
-            My Profile
-        </Menu.Item>
+        {Auth.isAuthenticated() &&
+            <Menu.Item onClick={this.myprofile} name='myprofile' as='a'>
+              <Icon name='address card' />
+              My Profile
+            </Menu.Item>
+        }
 
         {Auth.isAuthenticated() &&
             <Menu.Item as='a' onClick={this.logout}>

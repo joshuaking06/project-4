@@ -7,7 +7,7 @@ from lib.secure_route import secure_route
 api = Blueprint('stories', __name__)
 
 stories_schema = StorySchema(many=True, exclude=('content', ))
-story_schema = StorySchema()
+story_schema = StorySchema(exclude=('creator.read_list', ))
 comment_schema = CommentSchema()
 user_schema = UserSchema(exclude=('stories_written', ))
 
@@ -49,8 +49,10 @@ def create():
 def update(story_id):
     story = Story.query.get(story_id)
 
-    story, errors = story_schema.load(request.get_json(), instance=story)
+    if story.creator != g.current_user:
+        return jsonify({'message': 'Unauthorized'}), 401
 
+    story, errors = story_schema.load(request.get_json(), instance=story)
     if errors:
         return jsonify(errors), 422
 
@@ -88,40 +90,40 @@ def save_story(story_id):
 
 
 # === CREATE A COMMENT ===
-@api.route('/stories/<int:story_id>/comment', methods=['POST'])
+@api.route('/stories/<int:story_id>/comments', methods=['POST'])
 @secure_route
 def create_comment(story_id):
+    print('RUNNING')
 
     comment, errors = comment_schema.load(request.get_json())
 
     if errors:
         return jsonify(errors), 422
 
-    comment.story = Story.query.get(story_id)
+    story = Story.query.get(story_id)
+    comment.story = story
     comment.user = g.current_user
 
     comment.save()
 
-    return comment_schema.jsonify(comment)
+    return story_schema.jsonify(story)
 
 # === DELETE COMMENT ===
 @api.route('/stories/<int:story_id>/comments/<int:comment_id>', methods=['DELETE'])
 @secure_route
 def delete_comment(story_id, comment_id):
 
+
     comment = Comment.query.get(comment_id)
-    comment, errors = comment_schema.load(request.get_json(), instance=comment)
 
-    if errors:
-        return jsonify(errors), 422
-
-    comment.story = Story.query.get(story_id)
-    comment.user = g.current_user
+    if comment.user != g.current_user:
+        return jsonify({'message': 'Unauthorized'}), 401
 
     comment.remove()
+    story = Story.query.get(story_id)
 
-    return '', 204
 
+    return story_schema.jsonify(story), '200'
 
 # === EDIT COMMENT ===
 

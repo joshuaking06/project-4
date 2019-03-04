@@ -25,7 +25,7 @@ class Story(db.Model, BaseModel):
 
 class StorySchema(ma.ModelSchema, BaseSchema):
     creator = fields.Nested('UserSchema', exclude=('stories_written', ))
-
+    comments = fields.Nested('CommentSchema',many=True, exclude=('story','user.stories_written', 'user.user_comment'))
     class Meta:
         model = Story
 

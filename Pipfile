@@ -5,17 +5,18 @@ verify_ssl = true
 
 [dev-packages]
 
+
 [packages]
 flask = "*"
 flask-sqlalchemy = "*"
-psycopg2-binary = "*"
-flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
-jsonify = "*"
-requests = "*"
-pyjwt = "*"
-flask-bcrypt = "*"
 praw = "*"
+flask-bcrypt = "*"
+psycopg2-binary = "*"
+pyjwt = "*"
+flask-marshmallow = "*"
+
+
 
 [requires]
 python_version = "3.7"
