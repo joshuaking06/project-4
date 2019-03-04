@@ -77,10 +77,12 @@ class SideNav extends React.Component{
             Stories
         </Menu.Item>
 
+        {Auth.isAuthenticated() &&
         <Menu.Item name='messages' onClick={this.handleItemClick} as='a'>
           <Icon name='facebook messenger' />
             Messages
         </Menu.Item>
+        }
 
         {Auth.isAuthenticated() &&
           <Menu.Item
