@@ -16,16 +16,16 @@ class StoriesInfo extends React.Component{
     this.state={
       saved: false,
       nightMode: Settings.isNightMode(),
-      isReddit: !(this.props.match.params.id % 1 === 0 || this.props.match.params.id % 1 === 1 ),
+      isReddit: !(this.props.match.params.id % 1 === 0 || this.props.match.params.id % 1 === 1 )
     }
     this.addToReadList = this.addToReadList.bind(this)
   }
 
   addToReadList(e, id){
-    if(!this.state.reddit && Auth.isAuthenticated()){
+    if(!this.state.isReddit && Auth.isAuthenticated()){
       axios.post(`/api/save/${id}`,{data:'ok'}, headers)
         .then(res => this.setState({ saved: true }))
-    } else if(this.state.reddit && Auth.isAuthenticated()){
+    } else if(this.state.isReddit && Auth.isAuthenticated()){
       axios.post(`/api/reddit/save/${id}`, {data:'ok'}, headers)
         .then(res => this.setState({saved: true}))
     }
@@ -60,16 +60,19 @@ class StoriesInfo extends React.Component{
             <Segment inverted={nightMode}> <strong>Last Updated:</strong> {data.updated_at}</Segment>
           </Segment.Group>
           <Divider />
-          <Segment inverted={nightMode}><Header as='h2'> Author Info </Header> </Segment>
-          <Segment.Group>
-            <Segment inverted={nightMode}>
-              <strong>Username: </strong>
-              <Link to={`/users/${data.creator.id}`}>
-                {data.creator.username}
-              </Link>
-            </Segment>
-            <Segment inverted={nightMode}><strong>Followers:</strong> {data.creator.followers.length}</Segment>
-          </Segment.Group>
+          {data.creator &&
+            <Segment.Group>
+              <Segment inverted={nightMode}><Header as='h2'> Author Info </Header> </Segment>
+              <Segment inverted={nightMode}>
+                <strong>Username: </strong>
+                <Link to={`/users/${data.creator.id}`}>
+                  {data.creator.username}
+                </Link>
+              </Segment>
+              <Segment inverted={nightMode}><strong>Followers:</strong> {data.creator.followers.length}</Segment>
+            </Segment.Group>
+          }
+          <CommentFeed data={data} />
         </Segment.Group>
         {<SuccessModal saved={saved} />}
       </Container>

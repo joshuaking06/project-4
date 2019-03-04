@@ -30,8 +30,8 @@ class SettingsPage extends React.Component{
         <Segment inverted={nightMode}>
           <Grid columns={2}>
               <Grid.Column width={12}>
-                <Header inverted={nightMode}> Night Mode</Header>
-                <Header inverted={nightMode}> Text-to-speech</Header>
+                <Header inverted={nightMode}> Night Mode </Header>
+                <Header inverted={nightMode}> Text-to-speech </Header>
               </Grid.Column>
 
             <Grid.Column width={4}>
