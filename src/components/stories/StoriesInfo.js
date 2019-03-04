@@ -1,5 +1,6 @@
 import React from 'react'
 import { Segment, Container, Divider, Button, Input, Feed, Header } from 'semantic-ui-react'
+import SuccessModal from '../common/SuccessModal'
 import { Link } from 'react-router-dom'
 import Settings from '../../lib/Settings'
 import Auth from '../../lib/Auth'
@@ -23,10 +24,10 @@ class StoriesInfo extends React.Component{
   addToReadList(e, id){
     if(!this.state.reddit && Auth.isAuthenticated()){
       axios.post(`/api/save/${id}`,{data:'ok'}, headers)
-        .then(res => console.log(res))
+        .then(res => this.setState({ saved: true }))
     } else if(this.state.reddit && Auth.isAuthenticated()){
       axios.post(`/api/reddit/save/${id}`, {data:'ok'}, headers)
-        .then(res => console.log(res))
+        .then(res => this.setState({saved: true}))
     }
   }
 
@@ -42,18 +43,19 @@ class StoriesInfo extends React.Component{
 
 
   render(){
-    console.log(this.state)
-    const { nightMode } = this.state
     if(!this.state.data) return null
-    const { data } = this.state
+    const { nightMode, data, saved } = this.state
     return(
       <Container textAlign='center'>
+        <Divider hidden />
         <Segment.Group >
           <Segment inverted={nightMode}><Header as='h2'> {data.title} </Header> </Segment>
-          <Button onClick={(e)=>this.addToReadList(e, data.id)} fluid secondary icon='add' content='Save to your reading list' />
+          {!saved &&
+            <Button onClick={(e)=>this.addToReadList(e, data.id)} positive icon='add' content='Save to your reading list' />
+          }
           <Segment.Group>
-            <Segment inverted={nightMode}><strong>Genre:</strong> {data.genre}</Segment>
-            <Segment inverted={nightMode}><strong>Description:</strong> {data.description}</Segment>
+            <Segment inverted={nightMode}> <strong>Genre:</strong> {data.genre}</Segment>
+            <Segment inverted={nightMode}> <strong>Description:</strong> {data.description}</Segment>
             <Segment inverted={nightMode}> <strong>Posted:</strong> {data.created_at}</Segment>
             <Segment inverted={nightMode}> <strong>Last Updated:</strong> {data.updated_at}</Segment>
           </Segment.Group>
@@ -69,6 +71,7 @@ class StoriesInfo extends React.Component{
             <Segment inverted={nightMode}><strong>Followers:</strong> {data.creator.followers.length}</Segment>
           </Segment.Group>
         </Segment.Group>
+        {<SuccessModal saved={saved} />}
       </Container>
     )
   }
