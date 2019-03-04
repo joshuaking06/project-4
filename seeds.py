@@ -61,7 +61,7 @@ with app.app_context():
 
     message1 = Message(content='Hello Alex', receiver=josh, sender=alessandro)
     message2 = Message(content='Hello Josh', receiver=alessandro, sender=josh)
-    message3 = Message(content='I really eonjed reading your story', receiver=alessandro, sender=josh)
+    message3 = Message(content='I really enjoyed reading your story', receiver=alessandro, sender=josh)
     db.session.add(message1)
     db.session.add(message2)
     db.session.add(message3)

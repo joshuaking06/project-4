@@ -35,8 +35,8 @@ describe('Semantic UI tests', () => {
           {
             'description': 'a short story',
             'genre': 'fantasy',
-            'id': 1,
-            'title': 'inter'
+            'id': 2,
+            'title': 'My dreams'
           }
         ]
       }
@@ -65,7 +65,7 @@ describe('Semantic UI tests', () => {
     done()
   })
 
-  it('should create the correct state', done => {
+  it('should create the correct state (class component)', done => {
     response.then(() => {
       wrapper.update()
       expect(wrapper.find('UsersShow').state().usersDetail).to.be.an('object')
@@ -76,7 +76,7 @@ describe('Semantic UI tests', () => {
     })
   })
 
-  it('should render the correct HTML', done => {
+  it('should render the correct HTML (class component)', done => {
     response.then(() => {
       wrapper.update()
       expect(wrapper.find('.ui.icon.center.aligned.header .content').text()).to.be.eq('SiddantGurung')
@@ -84,6 +84,7 @@ describe('Semantic UI tests', () => {
       expect(wrapper.find('.ui .statistic .value').at(1).text()).to.be.eq('1')
       expect(wrapper.find('.ui .statistic .value').at(2).text()).to.be.eq('2')
       expect(wrapper.find('a .ui.card.users-profile-card .description').at(0).text()).to.be.eq('a short story about inter')
+      expect(wrapper.find('a .ui.card.users-profile-card .description').length).to.be.eq(2)
       done()
     })
   })
