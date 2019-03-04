@@ -8,10 +8,9 @@ api = Blueprint('message', __name__)
 
 message_schema = MessageSchema()
 
-
 # === message show ===
 @api.route('/messages/<int:message_id>', methods=['GET'])
 @secure_route
 def show(message_id):
     message = Message.query.get(message_id)
-    return message_schema.jsonify(message)
+    return message_schema.jsonify(message), 200

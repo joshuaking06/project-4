@@ -100,7 +100,7 @@ def send_message(user_id):
 @api.route('/me', methods=['GET'])
 @secure_route
 def me():
-    me_schema = UserSchema(exclude=('inbox.content', 'inbox.updated_at', 'outbox.updated_at', 'outbox.content', 'outbox.receiver.id', 'inbox.sender.id'))
+    me_schema = UserSchema(exclude=('inbox.content', 'inbox.updated_at', 'outbox.updated_at', 'outbox.content', 'outbox.receiver.id', 'inbox.sender.id', 'updated_at'))
     return me_schema.jsonify(g.current_user)
 
 
