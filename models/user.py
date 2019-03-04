@@ -77,8 +77,11 @@ class UserSchema(ma.ModelSchema, BaseSchema):
     inbox = fields.Nested('MessageSchema', many=True, exclude=('receiver', ))
     outbox = fields.Nested('MessageSchema', many=True, exclude=('sender', ))
 
+    email = fields.Email()
+
     # pylint: disable=C0301
     stories_written = fields.Nested('StorySchema', many=True, only=('title', 'genre', 'description', 'id'))
+
     @validates_schema
     # pylint: disable=R0201
     def check_passwords_match(self, data):
@@ -87,10 +90,12 @@ class UserSchema(ma.ModelSchema, BaseSchema):
                 'Passwords do not match',
                 'password_confirmation'
             )
+
     password = fields.String(
         required=True,
         validate=[validate.Length(min=8, max=50)]
     )
+
     password_confirmation = fields.String(required=True)
     # stories_written = fields.Nested('StorySchema', many=True, exclude=('creator',))
 

@@ -104,10 +104,12 @@ class SideNav extends React.Component{
             Settings
         </Menu.Item>
 
-        <Menu.Item as='a'>
-          <Icon name='user' />
-            My Profile
-        </Menu.Item>
+        {Auth.isAuthenticated() &&
+            <Menu.Item onClick={this.handleItemClick} name='myprofile' as='a'>
+              <Icon name='user' />
+              My Profile
+            </Menu.Item>
+        }
 
         {Auth.isAuthenticated() &&
             <Menu.Item as='a' onClick={this.logout}>

@@ -22,7 +22,7 @@ class NewPassword extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    axios.put('/api/users/:id/newpassword', this.state.postData)
+    axios.put(`/api/users/${this.props.match.params.id}/newpassword`, this.state.postData)
       .then(res => {
         Auth.setToken(res.data.token)
         Flash.setMessage('succes', res.data.message)

@@ -27,8 +27,7 @@ class ResetPassword extends React.Component{
     e.preventDefault()
     axios.post('/api/resetpassword', this.state.postData)
       .then((res) =>  {
-        Flash.setMessage('success', res.data.message)
-        this.props.history.push('/users/:id/newpassword')
+        this.props.history.push(`/users/${res.data.id}/newpassword`)
       })
       .catch(() => this.setState({ message: 'Email does not exist!' }))
 

@@ -50,24 +50,25 @@ def resetpassword():
 
     data = request.get_json()
     user = User.query.filter_by(email=data.get('email')).first()
-    return jsonify({'message': 'Welcome back {}!'.format(user.username)})
+    return user_schema.jsonify(user)
 
 
 
 # === ENTER NEW PASSWORD ===
 @api.route('/users/<int:user_id>/newpassword', methods=['PUT'])
-def validate_password():
+def validate_password(user_id):
 
     data = request.get_json()
-    user = User.query.get(user=data.get('user'))
+    user = User.query.get(user_id)
 
-    if user.validate_password(data.get('password', '')):
-        return jsonify({'message': 'Unauthorized'}), 401
+    user, errors = user_schema.load(data, instance=user, partial=True)
 
-    return jsonify({
-        'message': 'Welcome back {}!',
-        'token': user.generate_token()
-    })
+    if errors:
+        return jsonify(errors), 422
+
+    user.save()
+
+    return jsonify({'message': 'Password successfully changed'})
 
 
 
