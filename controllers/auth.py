@@ -78,6 +78,8 @@ def index():
     users = User.query.all()
     return users_schema.jsonify(users)
 
+    
+
 # === SHOW ===
 @api.route('/users/<int:user_id>', methods=['GET'])
 def users_show(user_id):
