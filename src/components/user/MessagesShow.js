@@ -17,14 +17,15 @@ class MessageShow extends React.Component{
       .then( res =>{
         this.setState({ messageDetail: res.data})
       })
-      .then(console.log(this.state))
   }
 
 
   render(){
     if(!this.state) return <LoadingPage />
     const {content,  created_at, receiver,sender} = this.state.messageDetail // eslint-disable-line
-    // if(sender.id === Auth.g)
+    let info
+    if(sender.id !== Auth.getUserID()) info = 'recieved'
+    else info = 'send'
     return(
       <Container>
         <Divider section hidden />
@@ -68,15 +69,15 @@ class MessageShow extends React.Component{
                 Go Back
                 </Link>
 
-                {/*
+                {
                   info==='recieved' &&
                 <Link className='ui button primary'
-                  to={`/users/${id}/message`}
+                  to={`/users/${sender.id}/message`}
                 >
                   <i className='reply icon' aria-hidden='true' />
                   Reply Back
                 </Link>
-                */}
+                }
 
               </Grid.Column>
 
