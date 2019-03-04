@@ -8,13 +8,7 @@ const MessageList = ({ messageData, information }) => {
   return(
     <List.Item>
       <Link
-        to={{
-          pathname: `/messages/${id}/show`,
-          state: {
-            message: messageData,
-            info: information
-          }
-        } }>
+        to={`/messages/${messageData.id}/show`}>
         <Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />
         <List.Content>
           <List.Header  as='p'>{username}</List.Header>

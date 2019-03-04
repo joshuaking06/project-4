@@ -2,72 +2,90 @@ import React from 'react'
 // import StoryCard from './StoryCard'
 // import Auth from '../../lib/Auth'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import Auth from '../../lib/Auth'
 
 import {Segment, Grid, Container, Header,Divider,Icon} from 'semantic-ui-react'
 
-const MessageShow = (props) => {
-  const {content,  created_at, receiver,sender} = props.location.state.message // eslint-disable-line
-  const {info} = props.location.state
-  const {id, username} = sender || receiver
+class MessageShow extends React.Component{
 
-  return(
-    <Container>
-      <Divider section hidden />
+  componentDidMount(){
+    const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
 
-      <Segment>
+    axios.get(`/api/messages/${this.props.match.params.id}`, {headers: headers})
+      .then( res =>{
+        this.setState({ messageDetail: res.data})
+      })
+      .then(console.log(this.state))
+  }
 
-        <Grid celled='internally' stackable>
-          <Grid.Row>
-            <Grid.Column width={16} textAlign='center'>
-              <Icon name='mail' size='huge' />
-            </Grid.Column>
-          </Grid.Row>
+  // const {content,  created_at, receiver,sender} = props.location.state.message // eslint-disable-line
+  // const {info} = props.location.state
+  // const {id, username} = sender || receiver
+  render(){
+    return(
+      <div>
+        {/*<Container>
+        <Divider section hidden />
 
-          <Grid.Row centered>
+        <Segment>
 
-            <Grid.Column width={10}>
-              <Header size='medium' as='h2'>User Name:</Header>
+          <Grid celled='internally' stackable>
+            <Grid.Row>
+              <Grid.Column width={16} textAlign='center'>
+                <Icon name='mail' size='huge' />
+              </Grid.Column>
+            </Grid.Row>
 
-              <p>{username}</p>
+            <Grid.Row centered>
 
-              <Header size='medium' as='h2'>Messages:</Header>
+              <Grid.Column width={10}>
+                <Header size='medium' as='h2'>User Name:</Header>
 
-              <p>{content}</p>
+                <p>{username}</p>
 
-            </Grid.Column>
+                <Header size='medium' as='h2'>Messages:</Header>
 
-          </Grid.Row>
+                <p>{content}</p>
 
-          <Grid.Row>
-            <Grid.Column width={16} textAlign='center'>
+              </Grid.Column>
 
-              <p>This message was {info} at {created_at}</p>{/*  eslint-disable-line*/}
+            </Grid.Row>
 
-              <Link className='ui button positive'
-                to={'/messages'}
-              >
-                <i className='arrow alternate circle left icon' aria-hidden='true' />
-              Go Back
-              </Link>
+            <Grid.Row>
+              <Grid.Column width={16} textAlign='center'>
 
-              {
-                info==='recieved' &&
-              <Link className='ui button primary'
-                to={`/users/${id}/message`}
-              >
-                <i className='reply icon' aria-hidden='true' />
-                Reply Back
-              </Link>
-              }
+                <p>This message was {info} at {created_at}</p>
 
-            </Grid.Column>
+                <Link className='ui button positive'
+                  to={'/messages'}
+                >
+                  <i className='arrow alternate circle left icon' aria-hidden='true' />
+                Go Back
+                </Link>
 
-          </Grid.Row>
-        </Grid>
+                {
+                  info==='recieved' &&
+                <Link className='ui button primary'
+                  to={`/users/${id}/message`}
+                >
+                  <i className='reply icon' aria-hidden='true' />
+                  Reply Back
+                </Link>
+                }
 
-      </Segment>
-    </Container>
-  )
+              </Grid.Column>
+
+            </Grid.Row>
+          </Grid>
+
+        </Segment>
+      </Container>*/}
+        here
+      </div>
+    )
+  }
+
 }
-
+{/*  eslint-disable-line*/}
 export default MessageShow
