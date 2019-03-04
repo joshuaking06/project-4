@@ -25,6 +25,7 @@ class StoriesInfo extends React.Component{
     this.addToReadList = this.addToReadList.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.postComment = this.postComment.bind(this)
+    this.deleteComment = this.deleteComment.bind(this)
   }
 
   addToReadList(e, id){
@@ -46,6 +47,12 @@ class StoriesInfo extends React.Component{
     axios.post(`/api/stories/${this.props.match.params.id}/comments`, this.state.commentData, headers)
       .then(res => this.setState({ data: res.data, commentData: {text:''} }))
       .catch(err => console.log(err.response))
+  }
+
+  deleteComment(e, id){
+    axios.delete(`/api/stories/${this.props.match.params.id}/comments/${id}`, headers)
+      .then(res => this.setState({ data: res.data }))
+      .catch(err => console.log(err.response, 'error here'))
   }
 
 
@@ -94,6 +101,7 @@ class StoriesInfo extends React.Component{
             <CommentFeed
               commentData={commentData}
               postComment={this.postComment}
+              deleteComment={this.deleteComment}
               handleChange={this.handleChange}
               nightMode={nightMode}
               data={data}
