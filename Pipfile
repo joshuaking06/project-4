@@ -5,8 +5,6 @@ verify_ssl = true
 
 [dev-packages]
 
-[requires]
-python_version = "3.7"
 
 [packages]
 flask = "*"
@@ -17,3 +15,8 @@ flask-bcrypt = "*"
 psycopg2-binary = "*"
 pyjwt = "*"
 flask-marshmallow = "*"
+
+
+
+[requires]
+python_version = "3.7"
