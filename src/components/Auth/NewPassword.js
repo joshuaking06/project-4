@@ -1,6 +1,8 @@
 import React from 'react'
 import { Divider, Button, Grid, Form, Input, Segment, Icon } from 'semantic-ui-react'
 import axios from 'axios'
+import Auth from '../../lib/Auth'
+import Flash from '../../lib/Flash'
 
 class NewPassword extends React.Component{
   constructor(props){
@@ -10,7 +12,8 @@ class NewPassword extends React.Component{
       postData: {
         password: '',
         password_confirmation: ''
-      }
+      },
+      errors: {}
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -19,9 +22,15 @@ class NewPassword extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    axios.put(`/api/users/${this.props.match.params.id}`, this.state.postData)
-      .then(() => this.props.history.push('/login'))
-      .catch(err => this.setState({ errors: err }))
+    axios.put('/api/users/:id/newpassword', this.state.postData)
+      .then(res => {
+        Auth.setToken(res.data.token)
+        Flash.setMessage('succes', res.data.message)
+        this.props.history.push('/login')
+      })
+      .catch(err => this.setState({ errors: err.response.data}))
+      // .then(() => this.props.history.push('/login'))
+      // .catch(err => this.setState({ errors: err }))
   }
 
   handleChange({ target: { name, value } }) {
@@ -42,6 +51,8 @@ class NewPassword extends React.Component{
               <Form.Field>
                 <label>New Password</label>
                 <Input
+                  icon='lock'
+                  iconPosition='left'
                   value={postData.password}
                   onChange={this.handleChange}
                   type='password'
@@ -52,6 +63,8 @@ class NewPassword extends React.Component{
               <Form.Field>
                 <label>Password Confirmation</label>
                 <Input
+                  icon='lock'
+                  iconPosition='left'
                   value={postData.password_confirmation}
                   onChange={this.handleChange}
                   type='password'
@@ -60,7 +73,7 @@ class NewPassword extends React.Component{
                 />
               </Form.Field>
               <Divider hidden/>
-              <Button fluid content="Submit" primary />
+              <Button fluid content="Submit" primary icon='send' />
             </Form>
           </Segment>
         </Grid.Column>

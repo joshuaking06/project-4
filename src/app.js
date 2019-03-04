@@ -76,7 +76,7 @@ class App extends React.Component{
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
                   <Route path="/resetpassword" component={ResetPassword} />
-                  <Route path="/newpassword" component={NewPassword} />
+                  <Route path="/users/:id/newpassword" component={NewPassword} />
                   <Route path="/messages/:id/show" component={MessagesShow} />
                   <Route path="/settings" component={SettingsPage} />
                   <Route path="/messages" component={Messages} />

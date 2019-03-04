@@ -28,7 +28,7 @@ class ResetPassword extends React.Component{
     axios.post('/api/resetpassword', this.state.postData)
       .then((res) =>  {
         Flash.setMessage('success', res.data.message)
-        this.props.history.push('/newpassword')
+        this.props.history.push('/users/:id/newpassword')
       })
       .catch(() => this.setState({ message: 'Email does not exist!' }))
 
@@ -49,6 +49,8 @@ class ResetPassword extends React.Component{
               <Form.Field>
                 <label>Please Confirm your Email Address</label>
                 <Input
+                  icon='envelope'
+                  iconPosition='left'
                   value={postData.email}
                   onChange={this.handleChange}
                   placeholder='Email'
@@ -56,7 +58,7 @@ class ResetPassword extends React.Component{
                 />
               </Form.Field>
               <Divider hidden/>
-              <Button fluid content="Click to Verify" primary />
+              <Button fluid content="Click to Verify" primary icon='send' />
             </Form>
           </Segment>
         </Grid.Column>

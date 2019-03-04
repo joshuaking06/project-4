@@ -54,20 +54,20 @@ def resetpassword():
 
 
 
-# # === ENTER NEW PASSWORD ===
-# @api.route('/users/newpassword/<int:user_id>', methods=['PUT'])
-# def validate_password():
-#
-#     data = request.get_json()
-#     user = User.query.get(user=data.get('user'))
-#
-#     if user or not user.validate_password(data.get('password', '')):
-#         return jsonify({'message': 'Unauthorized'}), 401
-#
-#     return jsonify({
-#         'message': 'Welcome back {}!',
-#         'token': user.generate_token()
-#     })
+# === ENTER NEW PASSWORD ===
+@api.route('/users/<int:user_id>/newpassword', methods=['PUT'])
+def validate_password():
+
+    data = request.get_json()
+    user = User.query.get(user=data.get('user'))
+
+    if user.validate_password(data.get('password', '')):
+        return jsonify({'message': 'Unauthorized'}), 401
+
+    return jsonify({
+        'message': 'Welcome back {}!',
+        'token': user.generate_token()
+    })
 
 
 
