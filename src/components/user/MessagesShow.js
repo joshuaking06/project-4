@@ -11,12 +11,13 @@ import {Segment, Grid, Container, Header,Divider,Icon} from 'semantic-ui-react'
 class MessageShow extends React.Component{
 
   componentDidMount(){
-    const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
-
-    axios.get(`/api/messages/${this.props.match.params.id}`, {headers: headers})
-      .then( res =>{
-        this.setState({ messageDetail: res.data})
-      })
+    if(Auth.isAuthenticated()){
+      const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
+      axios.get(`/api/messages/${this.props.match.params.id}`, {headers: headers})
+        .then( res =>{
+          this.setState({ messageDetail: res.data})
+        })
+    }
   }
 
 
