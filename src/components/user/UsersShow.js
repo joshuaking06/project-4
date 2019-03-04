@@ -27,8 +27,10 @@ class UsersShow extends React.Component{
   }
 
   handleFollowEvent(){
+    const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
+    const body = ''
     if(Auth.isAuthenticated()){
-      axios.post(`/api/users/${this.props.match.params.id}/follow/${Auth.getUserID()}`)
+      axios.post(`/api/users/${this.props.match.params.id}/follow/${Auth.getUserID()}`,body, {headers: headers})
         .then( res =>{
           this.setState({ usersDetail: res.data})
         })
@@ -36,8 +38,10 @@ class UsersShow extends React.Component{
   }
 
   handleUnfollowEvent(){
+    const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
+    const body = ''
     if(Auth.isAuthenticated()){
-      axios.post(`/api/users/${this.props.match.params.id}/unfollow/${Auth.getUserID()}`)
+      axios.post(`/api/users/${this.props.match.params.id}/unfollow/${Auth.getUserID()}`,body, {headers: headers})
         .then( res =>{
           this.setState({ usersDetail: res.data})
         })
