@@ -50,7 +50,6 @@ def resetpassword():
 
     data = request.get_json()
     user = User.query.filter_by(email=data.get('email')).first()
-
     return jsonify({'message': 'Welcome back {}!'.format(user.username)})
 
 
