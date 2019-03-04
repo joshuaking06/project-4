@@ -1,8 +1,10 @@
-/* global describe, it, beforeEach */
+/* global describe, it, beforeEach, beforeAll */
 import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
-import UsersDetail from '../../src/components/UsersDetail'
+import UsersDetail from '../../src/components/user/UsersDetail'
+import sinon from 'sinon'
+
 
 
 describe('Semantic UI tests', () => {
@@ -28,10 +30,9 @@ describe('Semantic UI tests', () => {
         }
       ]
     }
+
     wrapper = shallow(<UsersDetail usersDetail={usersDetail} />)
     done()
+    console.log(wrapper)
   })
-
-
-
 })

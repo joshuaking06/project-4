@@ -9,7 +9,25 @@ const { window } = new JSDOM(`
   <html>
   <body></body>
   </html>
-`)
+`, {
+  url: 'http://localhost'
+})
+
+window.localStorage = (function() {
+  const store = {}
+
+  return {
+    getItem(key) {
+      return store[key]
+    },
+    setItem(key, value) {
+      store[key] = value
+    },
+    removeItem(key) {
+      delete store[key]
+    }
+  }
+})
 
 
 // setup Enzyme
@@ -25,3 +43,5 @@ Object.defineProperties(global, props)
 
 global.window = window
 global.document = window.document
+global.localStorage = window.localStorage
+global.HTMLElement = window.HTMLElement

@@ -5,9 +5,6 @@ import { Link } from 'react-router-dom'
 import Settings from '../../lib/Settings'
 import { Statistic, Grid, Image,Header,Divider, Button, Icon } from 'semantic-ui-react'
 
-
-
-
 const UsersDetail = ({usersDetail, handleUnfollowEvent, handleFollowEvent, handleUsersMessagingEvent}) => {
 
   const { username, followers, following, stories_written,id } = usersDetail // eslint-disable-line
