@@ -5,14 +5,28 @@ import Settings from '../../lib/Settings'
 import Auth from '../../lib/Auth'
 import axios from 'axios'
 
+const headers = { headers: { Authorization: `Bearer ${Auth.getToken()}` } }
+
 
 class StoriesInfo extends React.Component{
   constructor(props){
     super(props)
 
     this.state={
+      saved: false,
       nightMode: Settings.isNightMode(),
       isReddit: !(this.props.match.params.id % 1 === 0 || this.props.match.params.id % 1 === 1 ),
+    }
+    this.addToReadList = this.addToReadList.bind(this)
+  }
+
+  addToReadList(e, id){
+    if(!this.state.reddit && Auth.isAuthenticated()){
+      axios.post(`/api/save/${id}`,{data:'ok'}, headers)
+        .then(res => console.log(res))
+    } else if(this.state.reddit && Auth.isAuthenticated()){
+      axios.post(`/api/reddit/save/${id}`, {data:'ok'}, headers)
+        .then(res => console.log(res))
     }
   }
 
@@ -36,6 +50,7 @@ class StoriesInfo extends React.Component{
       <Container textAlign='center'>
         <Segment.Group >
           <Segment inverted={nightMode}><Header as='h2'> {data.title} </Header> </Segment>
+          <Button onClick={(e)=>this.addToReadList(e, data.id)} fluid secondary icon='add' content='Save to your reading list' />
           <Segment.Group>
             <Segment inverted={nightMode}><strong>Genre:</strong> {data.genre}</Segment>
             <Segment inverted={nightMode}><strong>Description:</strong> {data.description}</Segment>
