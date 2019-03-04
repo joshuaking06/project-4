@@ -5,6 +5,7 @@ import { Segment, Sidebar } from 'semantic-ui-react'
 import StoriesIndex from './components/stories/StoriesIndex'
 import StoriesShow from './components/stories/StoriesShow'
 import StoriesNewEdit from './components/stories/StoriesNewEdit'
+import StoriesInfo from './components/stories/StoriesInfo'
 import Navbar from './components/common/Navbar'
 import SideNav from './components/common/SideNav'
 import Register from './components/Auth/Register'
@@ -83,6 +84,7 @@ class App extends React.Component{
                   <Route path="/users/:id/message" component={UsersMessages} />
                   <Route path="/users/:id" component={UsersShow} />
                   <Route path="/stories/edit/:id" component={StoriesNewEdit} />
+                  <Route path="/stories/info/:id" component={StoriesInfo} />
                   <Route path="/stories/new" component={StoriesNewEdit} />
                   <Route path="/stories/:id" component={StoriesShow} />
                   <Route path="/stories" component={StoriesIndex} />
