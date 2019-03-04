@@ -13,7 +13,7 @@ const headers = {headers: { Authorization: Auth.getToken() }}
 const style = {
   width: '100%',
   height: '100vh',
-  backgroundImage: 'url(https://previews.123rf.com/images/ke77kz/ke77kz1701/ke77kz170100026/69863051-old-paper-background-rustic-paper-texture-for-the-design-.jpg)',
+  backgroundImage: 'url(https://ga-students.slack.com/archives/GGGTPLJV7/p1551724276002900)',
   backgroundSize: 'cover'
 }
 
@@ -121,7 +121,7 @@ class StoriesIndex extends React.Component{
                 <Divider section hidden />
                 <Grid stackable columns={3}>
                   <Grid.Column width={16}>
-                  <Button onClick={(e)=>this.addToReadList(e,story)} fluid secondary icon='add' content='Save' />
+                    <Button onClick={(e)=>this.addToReadList(e,story)} fluid secondary icon='add' content='Save' />
                   </Grid.Column>
 
                   <Grid.Column width={16}>

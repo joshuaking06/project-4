@@ -150,6 +150,7 @@ opacity: 0.2;
   margin-top: 0;
   padding-top: 0;
   padding-top: 200px;
+  color: orange;
 }
 
 .ui.header.heading2 {
@@ -160,7 +161,7 @@ opacity: 0.2;
 
 .background {
   height: 92vh;
-  background-image:url('https://st2.depositphotos.com/1020509/8150/i/950/depositphotos_81506536-stock-photo-vintage-background-with-old-books.jpg');
+  background-image:url('https://image.jimcdn.com/app/cms/image/transf/dimension=333x10000:format=jpg/path/s0785f1a12dd449fe/image/ie18cef81ed5256a8/version/1471446675/desk.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -168,6 +169,7 @@ opacity: 0.2;
 .read-me {
   justify-content: center;
   display: flex;
+
 }
 
 @media only screen and (max-width: 600px) {

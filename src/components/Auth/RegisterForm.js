@@ -37,27 +37,26 @@ const RegisterForm = ({ handleChange, handleSubmit, errors }) => {
               />
             </Form.Field>
 
-
-            <Form.Group widths='equal'>
-              <Form.Input
-                icon='info'
-                iconPosition='left'
-                label='First name'
-                required
-                name='firstName'
-                placeholder='First name'
-                onChange={handleChange}
-              />
-
-              <Form.Input
-                icon='info'
-                iconPosition='left'
-                onChange={handleChange}
-                required
-                label='Last name'
-                name='lastName'
-                placeholder='Last Name' />
-            </Form.Group>
+            {/*  // <Form.Group widths='equal'>
+            //   <Form.Input
+            //     icon='info'
+            //     iconPosition='left'
+            //     label='First name'
+            //     required
+            //     name='firstName'
+            //     placeholder='First name'
+            //     onChange={handleChange}
+            //   />
+            //
+            //   <Form.Input
+            //     icon='info'
+            //     iconPosition='left'
+            //     onChange={handleChange}
+            //     required
+            //     label='Last name'
+            //     name='lastName'
+            //     placeholder='Last Name' />
+            // </Form.Group> */}
 
             <Form.Field required>
               <label>Enter Your Email</label>
@@ -70,6 +69,7 @@ const RegisterForm = ({ handleChange, handleSubmit, errors }) => {
                 name='email'
               />
             </Form.Field>
+
             <Form.Field required>
               <label>Create a Password</label>
               <Input
@@ -81,6 +81,7 @@ const RegisterForm = ({ handleChange, handleSubmit, errors }) => {
                 name='password'
               />
             </Form.Field>
+
             <Form.Field required>
               <label>Confirm Your Password</label>
               <Input
