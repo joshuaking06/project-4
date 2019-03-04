@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Segment, Container } from 'semantic-ui-react'
+import { Segment, Container,Divider } from 'semantic-ui-react'
 
 import UsersDetail from './UsersDetail'
 import LoadingPage from '../common/LoadingPage'
@@ -55,6 +55,7 @@ class UsersShow extends React.Component{
     if(!this.state.usersDetail ) return <LoadingPage />
     return(
       <Container>
+        <Divider  hidden />
         <Segment inverted={Settings.isNightMode()}>
           <UsersDetail
             usersDetail={this.state.usersDetail}
