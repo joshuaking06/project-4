@@ -4,6 +4,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import LoadingPage from '../common/LoadingPage'
 
 import {Segment, Grid, Container, Header,Divider,Icon} from 'semantic-ui-react'
 
@@ -19,13 +20,13 @@ class MessageShow extends React.Component{
       .then(console.log(this.state))
   }
 
-  // const {content,  created_at, receiver,sender} = props.location.state.message // eslint-disable-line
-  // const {info} = props.location.state
-  // const {id, username} = sender || receiver
+
   render(){
+    if(!this.state) return <LoadingPage />
+    const {content,  created_at, receiver,sender} = this.state.messageDetail // eslint-disable-line
+    // if(sender.id === Auth.g)
     return(
-      <div>
-        {/*<Container>
+      <Container>
         <Divider section hidden />
 
         <Segment>
@@ -40,9 +41,12 @@ class MessageShow extends React.Component{
             <Grid.Row centered>
 
               <Grid.Column width={10}>
-                <Header size='medium' as='h2'>User Name:</Header>
+                <Header size='medium' as='h2'>From:</Header>
 
-                <p>{username}</p>
+                <p>{sender.username}</p>
+                <Header size='medium' as='h2'>To:</Header>
+
+                <p>{receiver.username}</p>
 
                 <Header size='medium' as='h2'>Messages:</Header>
 
@@ -55,7 +59,7 @@ class MessageShow extends React.Component{
             <Grid.Row>
               <Grid.Column width={16} textAlign='center'>
 
-                <p>This message was {info} at {created_at}</p>
+                <p>This message was {info} at {created_at}</p>{/*  eslint-disable-line*/}
 
                 <Link className='ui button positive'
                   to={'/messages'}
@@ -64,7 +68,7 @@ class MessageShow extends React.Component{
                 Go Back
                 </Link>
 
-                {
+                {/*
                   info==='recieved' &&
                 <Link className='ui button primary'
                   to={`/users/${id}/message`}
@@ -72,7 +76,7 @@ class MessageShow extends React.Component{
                   <i className='reply icon' aria-hidden='true' />
                   Reply Back
                 </Link>
-                }
+                */}
 
               </Grid.Column>
 
@@ -80,9 +84,8 @@ class MessageShow extends React.Component{
           </Grid>
 
         </Segment>
-      </Container>*/}
-        here
-      </div>
+      </Container>
+
     )
   }
 
