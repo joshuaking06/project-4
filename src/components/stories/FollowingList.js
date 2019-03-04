@@ -1,0 +1,29 @@
+import React from 'react'
+import { Segment, List, Image, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import Settings from '../../lib/Settings'
+
+const FollowingList = ({ following }) => {
+  console.log(following)
+  const nightMode = Settings.isNightMode()
+  return(
+    <Segment inverted={nightMode}>
+      <List inverted={nightMode}>
+        {following.map(person =>
+          <List.Item key={person.id}>
+            <Image avatar src='https://react.semantic-ui.com/images/avatar/small/helen.jpg' />
+            <List.Content>
+              <Link to={`/users/${person.id}`}>
+                <List.Header>{person.username}</List.Header>
+              </Link>
+            </List.Content>
+          </List.Item>
+        )}
+      </List>
+    </Segment>
+  )
+}
+
+
+
+export default FollowingList

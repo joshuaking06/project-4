@@ -9,19 +9,22 @@ import Navbar from './components/common/Navbar'
 import SideNav from './components/common/SideNav'
 import Register from './components/Auth/Register'
 import FlashMessages from './components/common/FlashMessages'
+import Settings from './lib/Settings'
 import Login from './components/Auth/Login'
 import UsersShow from './components/user/UsersShow'
 import LoadingPage from './components/common/LoadingPage'
 import UsersMessages from './components/user/UsersMessages'
 import Messages from './components/user/Messages'
 import MessagesShow from './components/user/MessagesShow'
-
 import MyLibrary from './components/stories/MyLibrary'
 import Home from './components/common/Home'
+import SettingsPage from './components/common/SettingsPage'
 
 import 'semantic-ui-css/semantic.min.css'
 import './style.scss'
 
+const nightStyle = {backgroundColor: 'black' }
+const style = {backgroundColor: 'white'}
 
 class App extends React.Component{
   constructor(props){
@@ -36,6 +39,13 @@ class App extends React.Component{
     this.handleSidebarHide = this.handleSidebarHide.bind(this)
   }
 
+  componentDidMount(){
+    console.log('is it set?', Settings.checkIfSet())
+    if(!Settings.checkIfSet())Settings.setNightMode(false)
+  }
+
+
+
   handleShowClick(){
     this.setState({ sidebarVisible: true })
   }
@@ -49,7 +59,7 @@ class App extends React.Component{
       <div>
         <BrowserRouter>
           <main>
-            <Sidebar.Pushable as={Segment}>
+            <Sidebar.Pushable inverted={Settings.isNightMode()} as={Segment}>
               <SideNav
                 handleSidebarHide={this.handleSidebarHide}
                 visible={this.state.sidebarVisible}
@@ -63,6 +73,7 @@ class App extends React.Component{
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
                   <Route path="/messages/:id/show" component={MessagesShow} />
+                  <Route path="/settings" component={SettingsPage} />
                   <Route path="/messages" component={Messages} />
                   <Route path="/users/:id/message" component={UsersMessages} />
                   <Route path="/users/:id" component={UsersShow} />

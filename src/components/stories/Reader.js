@@ -1,6 +1,7 @@
 import React from 'react'
 import { Segment, Divider, Header, Image } from 'semantic-ui-react'
 import FlipPage from 'react-flip-page'
+import Settings from '../../lib/Settings'
 
 
 const style = {
@@ -13,6 +14,7 @@ class Reader extends React.Component{
     super(props)
 
     this.state={
+      nightMode: Settings.isNightMode(),
       width: window.innerWidth
     }
   }
@@ -42,18 +44,20 @@ class Reader extends React.Component{
   }
 
   render(){
+    const { nightMode } = this.state
+    console.log('nightmode is',nightMode)
     if(!this.state.newStory)return null
-    console.log(this.state.newStory)
     if(this.state.width < 500)return(
       <div id='flippertwo'>
+        <Divider hidden/>
         <FlipPage
           orientation='horizontal'
           responsive
           style={{ touchAction: 'none' }}
         >
           {this.state.newStory.map((storyPart, index) =>
-            <Segment style={style} key={index} textAlign='center' color='red'>
-              <Header as='h2'> {this.props.story.title} <Header.Subheader> Page {index} </Header.Subheader></Header>
+            <Segment inverted={nightMode} style={style} key={index} textAlign='center'>
+              <Header as='h2'> {`${this.props.story.title}(${index+1})`}  </Header>
               <Divider section/>
               <p className='content-text'> {`${storyPart}`} </p>
               <Divider hidden />
@@ -64,7 +68,7 @@ class Reader extends React.Component{
     )
     if(this.state.width > 500)return(
       <div>
-        <Segment style={style}  id='reader' textAlign='center' color='red'>
+        <Segment inverted={nightMode} style={style}  id='reader' textAlign='center'>
           <Header as='h2'> {this.props.story.title}</Header>
           <Divider section />
           {this.state.newStory.map((storyPart, index) =>

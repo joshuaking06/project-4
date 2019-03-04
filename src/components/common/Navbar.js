@@ -28,11 +28,7 @@ class Navbar extends React.Component{
 
   handleItemClick(e, { name }){
     this.setState({ activeItem: name })
-    if(name === 'home')this.props.history.push('/')
-    if(name === 'Login')this.props.history.push('/login')
-    if(name === 'Sign Up')this.props.history.push('/register')
-    if(name === 'Stories')this.props.history.push('/reddit')
-    if(name === 'New')this.props.history.push('/stories/new')
+    this.props.history.push(`/${name}`)
   }
 
   logout(){
@@ -78,7 +74,7 @@ class Navbar extends React.Component{
 
 
                 <Menu.Item
-                  name='Stories'
+                  name='stories'
                   onClick={this.handleItemClick} >
                   <Icon name='book'/>
                   Stories
@@ -87,7 +83,7 @@ class Navbar extends React.Component{
 
                 {Auth.isAuthenticated() &&
                   <Menu.Item
-                    name='New'
+                    name='stories/new'
                     as='a'
                     onClick={this.handleItemClick}>
                     <Icon name='pencil alternate' />
@@ -96,30 +92,30 @@ class Navbar extends React.Component{
                 }
 
                 {!Auth.isAuthenticated() &&
-                <Menu.Item
-                  name='Sign Up'
-                  onClick={this.handleItemClick}>
-                  <Icon name='add user' />
-                  Sign Up
-                </Menu.Item>
+                  <Menu.Item
+                    name='register'
+                    onClick={this.handleItemClick}>
+                    <Icon name='add user' />
+                    Sign Up
+                  </Menu.Item>
                 }
 
                 {!Auth.isAuthenticated() &&
-                <Menu.Item
-                  name='Login'
-                  onClick={this.handleItemClick} >
-                  <Icon name='user circle'/>
-                  Log In
-                </Menu.Item>
+                  <Menu.Item
+                    name='login'
+                    onClick={this.handleItemClick} >
+                    <Icon name='user circle'/>
+                    Log In
+                  </Menu.Item>
                 }
 
                 {Auth.isAuthenticated() &&
-              <Menu.Item
-                name='Logout'
-                onClick={this.logout}>
-                <Icon name='log out' />
-                Logout
-              </Menu.Item>
+                  <Menu.Item
+                    name='Logout'
+                    onClick={this.logout}>
+                    <Icon name='log out' />
+                    Logout
+                  </Menu.Item>
                 }
 
               </Menu.Menu>

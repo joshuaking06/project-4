@@ -8,6 +8,8 @@ import LoadingPage from '../common/LoadingPage'
 // import UsersOutbox from './UsersOutbox'
 import MessageComponent from './MessageComponent'
 
+import Settings from '../../lib/Settings'
+
 import Auth from '../../lib/Auth'
 
 
@@ -37,10 +39,12 @@ class Messages extends React.Component{
       <Container>
         <Divider section hidden />
 
-        <Segment>
+        <Segment inverted={Settings.isNightMode()}>
           <Header size='medium' as='h1'>Your Messages</Header>
 
-          <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+          <Tab menu={{ secondary: true, pointing: true,  inverted: Settings.isNightMode() }} panes={panes} />
+
+
         </Segment>
       </Container>
     )

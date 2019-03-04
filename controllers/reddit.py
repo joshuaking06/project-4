@@ -1,7 +1,8 @@
 import os
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, g
 from models.story import StorySchema
 from models.user import User, UserSchema
+from lib.secure_route import secure_route
 import praw
 
 
@@ -50,8 +51,9 @@ def reddit_story_show(post_id):
     return jsonify(post)
 
 
-@api.route('/users/<int:user_id>/reddit/<string:post_id>', methods=['POST'])
-def post_reddit_story(user_id, post_id):
+@api.route('/reddit/save/<string:post_id>', methods=['POST'])
+@secure_route
+def post_reddit_story(post_id):
     submission = reddit.submission(id=post_id)
     post = {}
     post["title"] = submission.title
@@ -64,10 +66,9 @@ def post_reddit_story(user_id, post_id):
     if errors:
         return jsonify(errors), 422
 
-    print(story)
     story.save()
 
-    user = User.query.get(user_id)
+    user = g.current_user
     user.read_list.append(story)
 
     user.save()

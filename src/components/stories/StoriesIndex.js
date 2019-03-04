@@ -12,7 +12,7 @@ const headers = {headers: { Authorization: Auth.getToken() }}
 
 const style = {
   width: '100%',
-  height: '500px',
+  height: '100vh',
   backgroundImage: 'url(https://previews.123rf.com/images/ke77kz/ke77kz1701/ke77kz170100026/69863051-old-paper-background-rustic-paper-texture-for-the-design-.jpg)',
   backgroundSize: 'cover'
 }
@@ -39,7 +39,9 @@ class StoriesIndex extends React.Component{
     if(!this.state.reddit && Auth.isAuthenticated()){
       axios.post(`/api/save/${story.id}`,{data:'ok'}, headers)
         .then(res => console.log(res))
-        .catch(err => console.log(err.response))
+    } else if(this.state.reddit && Auth.isAuthenticated()){
+      axios.post(`/api/reddit/save/${story.id}`, {data:'ok'}, headers)
+        .then(res => console.log(res))
     }
   }
 
@@ -85,6 +87,7 @@ class StoriesIndex extends React.Component{
         <div id='flipper'>
           <Divider section hidden />
           <FlipPage
+            responsive
             style={{ touchAction: 'none' }}
           >
             {this.state.stories.map(story =>
@@ -121,12 +124,7 @@ class StoriesIndex extends React.Component{
                   </Grid.Column>
 
                   <Grid.Column width={16}>
-                    <Link to ={{
-                      pathname: `/stories/${story.id}`,
-                      state: {
-                        reddit: this.state.reddit,
-                        storyId: story.id
-                      }}} >
+                    <Link to ={`/stories/${story.id}`} >
                       <Button size='small' fluid secondary icon='book' content='Read' />
                     </Link>
                   </Grid.Column>
@@ -152,6 +150,7 @@ class StoriesIndex extends React.Component{
       <div>
         <Divider />
         <DesktopIndex
+          addToReadList={this.addToReadList}
           loadMore={this.loadMore}
           reddit={this.state.reddit}
           stories={this.state.stories}

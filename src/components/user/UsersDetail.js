@@ -2,8 +2,8 @@ import React from 'react'
 import StoryCard from './StoryCard'
 import Auth from '../../lib/Auth'
 import { Link } from 'react-router-dom'
-
-import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-react'
+import Settings from '../../lib/Settings'
+import { Statistic, Grid, Image,Header,Divider, Button, Icon } from 'semantic-ui-react'
 
 
 
@@ -11,12 +11,12 @@ import {Statistic, Grid, Image,Header,Divider, Button,Icon} from 'semantic-ui-re
 const UsersDetail = ({usersDetail, handleUnfollowEvent, handleFollowEvent, handleUsersMessagingEvent}) => {
 
   const { username, followers, following, stories_written,id } = usersDetail // eslint-disable-line
-
+  const nightMode = Settings.isNightMode()
   return(
 
     <Grid columns={1} stackable textAlign='center'>
       <Grid.Column width={8}  >
-        <Header as='h1' icon textAlign='center'>
+        <Header inverted={nightMode} as='h1' icon textAlign='center'>
           <Header.Content>{username}</Header.Content>
         </Header>
 
@@ -45,9 +45,9 @@ const UsersDetail = ({usersDetail, handleUnfollowEvent, handleFollowEvent, handl
         <Divider hidden />
 
         <Grid columns={3} stackable textAlign='center'>
-          <Statistic label='followers' value={(followers.length+0.00).toLocaleString()} />
-          <Statistic label='followings' value={(following.length+0.00).toLocaleString()} />
-          <Statistic label='posts' value={(stories_written.length+0.00).toLocaleString()} />
+          <Statistic inverted={nightMode} label='followers' value={(followers.length+0.00).toLocaleString()} />
+          <Statistic inverted={nightMode} label='followings' value={(following.length+0.00).toLocaleString()} />
+          <Statistic inverted={nightMode} label='posts' value={(stories_written.length+0.00).toLocaleString()} />
         </Grid>
 
         <Divider  />

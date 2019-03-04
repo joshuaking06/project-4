@@ -5,6 +5,7 @@ import { Segment, Container,Divider } from 'semantic-ui-react'
 import UsersDetail from './UsersDetail'
 import LoadingPage from '../common/LoadingPage'
 import Auth from '../../lib/Auth'
+import Settings from '../../lib/Settings'
 
 
 class UsersShow extends React.Component{
@@ -55,7 +56,7 @@ class UsersShow extends React.Component{
     return(
       <Container>
         <Divider  hidden />
-        <Segment>
+        <Segment inverted={Settings.isNightMode()}>
           <UsersDetail
             usersDetail={this.state.usersDetail}
             handleFollowEvent={this.handleFollowEvent}
