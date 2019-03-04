@@ -2,7 +2,6 @@ import os
 from flask import Blueprint, jsonify
 from models.story import StorySchema
 from models.user import User, UserSchema
-import praw
 import urllib, json
 import urllib.request
 

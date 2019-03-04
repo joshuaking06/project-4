@@ -49,8 +49,10 @@ def create():
 def update(story_id):
     story = Story.query.get(story_id)
 
-    story, errors = story_schema.load(request.get_json(), instance=story)
+    if story.creator != g.current_user:
+        return jsonify({'message': 'Unauthorized'}), 401
 
+    story, errors = story_schema.load(request.get_json(), instance=story)
     if errors:
         return jsonify(errors), 422
 

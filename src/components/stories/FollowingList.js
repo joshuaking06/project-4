@@ -8,7 +8,7 @@ const FollowingList = ({ following }) => {
   const nightMode = Settings.isNightMode()
   return(
     <Segment inverted={nightMode}>
-      <List inverted={nightMode}>
+      <List animated selection inverted={nightMode}>
         {following.map(person =>
           <List.Item key={person.id}>
             <Image avatar src='https://react.semantic-ui.com/images/avatar/small/helen.jpg' />
