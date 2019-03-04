@@ -22,7 +22,7 @@ describe('Semantic UI tests', () => {
         following: [
           {
             'id': 3,
-            'usernam': 'joshuaking06'
+            'username': 'joshuaking06'
           }
         ],
         stories_written: [
@@ -70,6 +70,20 @@ describe('Semantic UI tests', () => {
       wrapper.update()
       expect(wrapper.find('UsersShow').state().usersDetail).to.be.an('object')
       expect(wrapper.find('UsersShow').state().usersDetail.id).to.eq(1)
+      expect(wrapper.find('UsersShow').state().usersDetail.username).to.eq('SiddantGurung')
+      expect(wrapper.find('UsersShow').state().usersDetail.followers.length).to.eq(0)
+      done()
+    })
+  })
+
+  it('should render the correct HTML', done => {
+    response.then(() => {
+      wrapper.update()
+      expect(wrapper.find('.ui.icon.center.aligned.header .content').text()).to.be.eq('SiddantGurung')
+      expect(wrapper.find('.ui .statistic .value').at(0).text()).to.be.eq('0')
+      expect(wrapper.find('.ui .statistic .value').at(1).text()).to.be.eq('1')
+      expect(wrapper.find('.ui .statistic .value').at(2).text()).to.be.eq('2')
+
       done()
     })
   })

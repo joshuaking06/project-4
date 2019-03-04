@@ -45,6 +45,7 @@ describe('Semantic UI tests', () => {
     expect(wrapper.find('Statistic').length).to.eq(3)
     expect(wrapper.find('HeaderContent').text()).to.eq('<HeaderContent />')
     expect(wrapper.find('StoryCard').length).to.eq(2)
+    
     done()
   })
 
