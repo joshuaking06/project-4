@@ -18,8 +18,8 @@ const MessageList = ({ messageData, information }) => {
         } }>
         <Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />
         <List.Content>
-          <List.Header  as='p'>{username}</List.Header>
-          <List.Description as='p'>{`Message was ${information} at :  ${created_at}`}</List.Description>{/*  eslint-disable-line*/}
+          <List.Header as='p'>{username}</List.Header>
+          <List.Description  as='p'>{`Message was ${information} at :  ${created_at}`}</List.Description>{/*  eslint-disable-line*/}
 
         </List.Content>
 
