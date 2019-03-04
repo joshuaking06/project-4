@@ -33,7 +33,7 @@ describe('Semantic UI tests', () => {
             'title': 'inter'
           },
           {
-            'description': 'a short story about inter',
+            'description': 'a short story',
             'genre': 'fantasy',
             'id': 1,
             'title': 'inter'
@@ -83,7 +83,7 @@ describe('Semantic UI tests', () => {
       expect(wrapper.find('.ui .statistic .value').at(0).text()).to.be.eq('0')
       expect(wrapper.find('.ui .statistic .value').at(1).text()).to.be.eq('1')
       expect(wrapper.find('.ui .statistic .value').at(2).text()).to.be.eq('2')
-
+      expect(wrapper.find('a .ui.card.users-profile-card .description').at(0).text()).to.be.eq('a short story about inter')
       done()
     })
   })
