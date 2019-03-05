@@ -11,6 +11,9 @@ class Speech{
     const msg = new SpeechSynthesisUtterance(text)
     synth.speak(msg)
   }
+  static cancelSpeak(){
+    synth.cancel()
+  }
 
 }
 

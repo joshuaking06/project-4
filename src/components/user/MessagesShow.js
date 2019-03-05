@@ -6,17 +6,15 @@ import axios from 'axios'
 import Auth from '../../lib/Auth'
 import LoadingPage from '../common/LoadingPage'
 
-import {Segment, Grid, Container, Header,Divider,Icon, Button} from 'semantic-ui-react'
+import {Segment, Grid, Container, Header,Divider,Icon} from 'semantic-ui-react'
 import moment from 'moment'
 import Settings from '../../lib/Settings'
-import Speech from '../../lib/Speech'
 
 
 class MessageShow extends React.Component{
 
   constructor(){
     super()
-    this.speakHandle = this.speakHandle.bind(this)
 
   }
 
@@ -30,9 +28,7 @@ class MessageShow extends React.Component{
     }
   }
 
-  speakHandle(){
-    Speech.appSpeak(this.state.messageDetail.content)
-  }
+
 
   render(){
     if(!this.state) return <LoadingPage />
@@ -97,7 +93,6 @@ class MessageShow extends React.Component{
                   Reply Back
                 </Link>
                 }
-                <Button onClick={this.speakHandle}>Speak</Button>
 
               </Grid.Column>
 

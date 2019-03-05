@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import Settings from '../../lib/Settings'
 import CommentFeed from './CommentFeed'
 import Auth from '../../lib/Auth'
+import Speech from '../../lib/Speech'
+
 import axios from 'axios'
 import moment from 'moment'
 
@@ -27,6 +29,7 @@ class StoriesInfo extends React.Component{
     this.handleChange = this.handleChange.bind(this)
     this.postComment = this.postComment.bind(this)
     this.deleteComment = this.deleteComment.bind(this)
+    this.speakHandle = this.speakHandle.bind(this)
   }
 
   addToReadList(e, id){
@@ -56,6 +59,9 @@ class StoriesInfo extends React.Component{
       .catch(err => console.log(err.response, 'error here'))
   }
 
+  speakHandle(){
+    Speech.appSpeak(this.state.data.content)
+  }
 
   componentDidMount(){
     let route
@@ -67,7 +73,6 @@ class StoriesInfo extends React.Component{
 
 
   render(){
-    console.log(this.state)
     if(!this.state.data) return null
     const {commentData, nightMode, data, saved } = this.state
     return(
@@ -92,6 +97,13 @@ class StoriesInfo extends React.Component{
             <Button size='small'>
               <Link to={`/stories/${data.id}`}> Read </Link>
             </Button>
+            <Button.Or
+              size='small'
+              content='Or'
+
+            />
+            <Button onClick={this.speakHandle}>Listen</Button>
+
           </Button.Group>
           <Segment.Group>
             <Segment inverted={nightMode}> <strong>Genre:</strong> {data.genre}</Segment>
