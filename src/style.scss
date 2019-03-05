@@ -213,3 +213,46 @@ opacity: 0.2;
     padding: 0;
   }
 }
+
+@media only screen
+and (max-device-height : 600px) {
+    .content-text{
+      line-height: 1.4;
+      font-size: 14px;
+    }
+}
+
+@media only screen
+and (min-device-height : 600px)
+and (max-device-height : 660px) {
+    .content-text{
+      line-height: 1.8;
+      font-size: 14px;
+    }
+}
+
+@media only screen
+and (min-device-height : 661px)
+and (max-device-height : 700px) {
+    .content-text{
+      line-height: 1.9;
+      font-size: 15px;
+    }
+}
+
+@media only screen
+and (min-device-height : 701px)
+and (max-device-height : 780px) {
+    .content-text{
+      line-height: 2.1;
+      font-size: 16px;
+    }
+}
+
+@media only screen
+and (min-device-height : 781px){
+    .content-text{
+      line-height: 2.1;
+      font-size: 16px;
+    }
+}
