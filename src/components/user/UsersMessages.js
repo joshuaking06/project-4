@@ -35,14 +35,18 @@ class UsersMessage extends React.Component{
   handleSubmit(e){
     e.preventDefault()
     if(Auth.isAuthenticated()){
-      if(!this.state.postData ) return <LoadingPage />
-      const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
-      const body = this.state.postData
-      axios.post(`/api/users/${this.props.match.params.id}/inbox`,  body, {headers: headers}
-      )
-        .then(
-          this.props.history.push('/messages')
+      if(!this.state.postData ){
+        return <LoadingPage />
+
+      }else{
+        const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
+        const body = this.state.postData
+        axios.post(`/api/users/${this.props.match.params.id}/inbox`,  body, {headers: headers}
         )
+          .then(
+            this.props.history.push('/messages')
+          )
+      }
     }
   }
 
