@@ -44,7 +44,6 @@ class App extends React.Component{
   }
 
   componentDidMount(){
-    console.log('is it set?', Settings.checkIfSet())
     if(!Settings.checkIfSet())Settings.setNightMode(false)
     this.setState({ nightMode: false })
   }

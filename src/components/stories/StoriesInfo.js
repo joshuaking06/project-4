@@ -159,7 +159,7 @@ class StoriesInfo extends React.Component{
             />
           }
         </Segment.Group>
-        {<SuccessModal saved={saved} />}
+        <SuccessModal saved={saved} />
       </Container>
     )
   }

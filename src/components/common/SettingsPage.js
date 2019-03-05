@@ -37,7 +37,7 @@ class SettingsPage extends React.Component{
             <Grid.Column width={4}>
               <Checkbox onChange={this.toggleNightMode} toggle checked={nightMode}/>
               <Divider />
-              <Checkbox toggle />
+              <Checkbox toggle checked />
             </Grid.Column>
           </Grid>
         </Segment>

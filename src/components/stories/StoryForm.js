@@ -2,6 +2,7 @@ import React from 'react'
 import { Segment, Form, TextArea, Input, Icon, Divider, Button, Container, Grid } from 'semantic-ui-react'
 import Settings from '../../lib/Settings'
 
+
 const StoryForm = ({ storyData, handleSaveDraft, handleChange, handleSubmit }) => {
   let width
   window.innerwidth <= 500 ? width = 100 : width = 60
