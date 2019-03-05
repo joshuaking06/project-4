@@ -9,7 +9,9 @@ import LoadingPage from '../common/LoadingPage'
 import {Segment, Grid, Container, Header,Divider,Icon} from 'semantic-ui-react'
 import moment from 'moment'
 import Settings from '../../lib/Settings'
-import Text from '../../lib/TexttoSpeech'
+// import Speech from '../../lib/Speech'
+let voices = []
+const synth = window.speechSynthesis
 
 
 class MessageShow extends React.Component{
@@ -21,19 +23,34 @@ class MessageShow extends React.Component{
         .then( res =>{
           this.setState({ messageDetail: res.data})
         })
-
-      console.log(Text.getSpeech())
     }
+    this.voices()
   }
 
+  voices(){
+    voices = synth.getVoices()
+    voices = voices[0]
+    console.log(voices)
+    // this.setState({  voices: window.speechSynthesis.getVoices()})
+  }
+
+  speakHandle(){
+    const text = 'hello'
+    const msg = new SpeechSynthesisUtterance(text)
+    synth.speak(msg)
+  }
 
   render(){
     if(!this.state) return <LoadingPage />
     const {content,  created_at, receiver,sender} = this.state.messageDetail // eslint-disable-line
     let info
+
     if(sender.id !== Auth.getUserID()) info = 'recieved'
     else info = 'send'
+
     return(
+
+
       <Container>
         <Divider section hidden />
 

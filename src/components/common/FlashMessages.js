@@ -29,7 +29,6 @@ class FlashMessages extends React.Component{
   }
 
   render(){
-    console.log(this.state.messageObj)
     return(
       <div>
         {this.state.messageObj && Object.keys(this.state.messageObj).map(type =>
