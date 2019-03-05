@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import LoadingPage from '../common/LoadingPage'
 import { Segment, Header, Divider, Container, Button, Grid } from 'semantic-ui-react'
-import IndexFlipper from './IndexFlipper'
 import DesktopIndex from './DesktopIndex'
+import IndexFlipper from './IndexFlipper'
 import Auth from '../../lib/Auth'
 
 const headers = {headers: { Authorization: Auth.getToken() }}
@@ -25,26 +25,38 @@ class StoriesIndex extends React.Component{
 
     this.state={
       count: 20,
-      reddit: false,
+      reddit: true,
       width: window.innerWidth,
       stories: []
     }
 
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this)
+    this.loadMore = this.loadMore.bind(this)
     this.addToReadList = this.addToReadList.bind(this)
   }
 
   addToReadList(e, story){
     if(Auth.isAuthenticated()){
-      axios.post(`/api/save/${story.id}`,{data: 'ok'}, headers)
+      axios.post(`/api/reddit/save/${story.id}`, {data: 'ok'}, headers)
         .then(res => console.log(res))
-      }
+    }
   }
+
+  loadMore(){
+    axios.get(`/api/reddit/count/${this.state.count}`)
+      .then(stories => {
+        this.setState({ stories: stories, count: this.state.count + 10 })
+      })
+  }
+
 
   // bringing in all the stories
   componentDidMount(){
     window.addEventListener('resize', this.handleWindowSizeChange)
-    axios.get('/api/stories').then(stories => this.setState({ stories: stories.data }))
+    axios.get(`/api/reddit/count/10`)
+      .then(stories => {
+        this.setState({ stories: stories.data })
+      })
   }
 
   // checking if window size changes
@@ -61,16 +73,17 @@ class StoriesIndex extends React.Component{
 
   render(){
     if(this.state.stories.length < 1) return <LoadingPage />
+    console.log(this.state)
     const { width } = this.state
     const isMobile = width <= 500
     if(isMobile){
       return(
         <IndexFlipper
-          loadMore={this.loadMore}
-          reddit={this.state.reddit}
           style={style}
-          addToReadList={this.addToReadList}
           stories={this.state.stories}
+          reddit={this.state.reddit}
+          addToReadList={this.addToReadList}
+          loadMore={this.loadMore}
         />
       )
     } else return(

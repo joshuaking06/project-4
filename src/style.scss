@@ -16,10 +16,17 @@ html{
       height: 85vh;
       overflow: scroll;
     }
-    .content-text{
+    .desktop-content-text{
       padding-left: 2%;
       padding-right: 2%;
       line-height: 1.6;
+      font-size: 16px;
+      font-family: helvetica !important;
+    }
+    .content-text{
+      padding-left: 2%;
+      padding-right: 2%;
+      font-family: helvetica !important;
     }
 
     #nav{
@@ -40,14 +47,12 @@ html{
     }
 
     #flippertwo{
-      background-color: #E9E3B4;
+      background-color: #black;
       display: flex;
       justify-content: center;
       margin-left: auto;
       margin-right: auto;
-      height: 100vh;
-      background-image: url(https://previews.123rf.com/images/ke77kz/ke77kz1701/ke77kz170100026/69863051-old-paper-background-rustic-paper-texture-for-the-design-.jpg);
-      background-position: cover;
+      height: 93vh;
     }
     #flipper{
       background-color: #E9E3B4;
@@ -146,10 +151,9 @@ opacity: 0.2;
   text-align: center;
   font-size: 100px;
   font-family: 'Cabin Sketch', monospace;
-  margin-bottom: 0;
   margin-top: 0;
-  padding-top: 0;
-  padding-top: 200px;
+  padding-top: 300px;
+  color: orange;
 }
 
 .ui.header.heading2 {
@@ -160,7 +164,7 @@ opacity: 0.2;
 
 .background {
   height: 92vh;
-  background-image:url('https://st2.depositphotos.com/1020509/8150/i/950/depositphotos_81506536-stock-photo-vintage-background-with-old-books.jpg');
+  background-image:url('https://image.jimcdn.com/app/cms/image/transf/dimension=333x10000:format=jpg/path/s0785f1a12dd449fe/image/ie18cef81ed5256a8/version/1471446675/desk.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -168,6 +172,13 @@ opacity: 0.2;
 .read-me {
   justify-content: center;
   display: flex;
+
+}
+
+.read-me {
+  justify-content: center;
+  display: flex;
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -178,6 +189,160 @@ opacity: 0.2;
 
 @media only screen and (max-width: 600px) {
   .ui.header.heading2 {
-    font-size: 40px;
+    font-size: 35px;
+    padding-top: 0;
   }
 }
+
+@media only screen and (max-width: 360px) {
+  .ui.header.heading2 {
+    font-size: 40px;
+    padding-top: 50px;
+  }
+}
+
+
+@media only screen and (max-width: 360px) {
+  .ui.header.heading {
+    font-size: 80px;
+    padding-top: 50px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .ui.header.heading2 {
+    font-size: 40px;
+    padding-top: 0;
+  }
+}
+
+
+@media only screen and (max-width: 320px) {
+  .ui.header.heading {
+    font-size: 80px;
+    padding: 0;
+  }
+}
+
+// READER TEXT -------------------------------------------------------------------
+
+@media only screen
+and (max-device-height : 600px) {
+    .content-text{
+      line-height: 1.4;
+      font-size: 14px;
+    }
+}
+
+@media only screen
+and (min-device-height : 600px)
+and (max-device-height : 660px) {
+    .content-text{
+      line-height: 1.8;
+      font-size: 14px;
+    }
+}
+
+@media only screen
+and (min-device-height : 661px)
+and (max-device-height : 700px) {
+    .content-text{
+      line-height: 1.9;
+      font-size: 15px;
+    }
+}
+
+@media only screen
+and (min-device-height : 701px)
+and (max-device-height : 780px) {
+    .content-text{
+      line-height: 2.1;
+      font-size: 16px;
+    }
+}
+
+@media only screen
+and (min-device-height : 781px){
+    .content-text{
+      line-height: 2.1;
+      font-size: 16px;
+    }
+}
+
+
+
+// @media only screen and (max-width: 600px) {
+//   .ui.header.heading {
+//     font-size: 80px;
+//   }
+// }
+//
+// @media only screen and (max-width: 600px) {
+//   .ui.header.heading2 {
+//     font-size: 35px;
+//     padding-top: 0;
+//   }
+// }
+
+// @media only screen and (max-width: 750px) {
+//   .ui.header.heading {
+//     font-size: 80px;
+//     padding: 50px;
+//     margin-bottom: -30px;
+//   }
+// }
+//
+// @media only screen and (max-width: 700px) {
+//   .ui.header.heading2 {
+//     font-size: 35px;
+//     padding: 0;
+//     margin: -30px;
+//   }
+// }
+
+// @media only screen and (max-width: 380px) {
+//   .ui.header.heading2 {
+//     font-size: 30px;
+//     padding-top: 0;
+//     margin: 0;
+//   }
+// }
+//
+// @media only screen and (max-width: 380px) {
+//   .ui.header.heading {
+//     font-size: 80px;
+//     padding-top: 50px;
+//   }
+// }
+//
+// @media only screen and (max-width: 320px) {
+//   .ui.header.heading2 {
+//     font-size: 30px;
+//     padding-top: 40px;
+//     margin: 20px;
+//   }
+// }
+//
+//
+// @media only screen and (max-width: 320px) {
+//   .ui.header.heading {
+//     font-size: 80px;
+//     padding: 0;
+//     padding-top: 30px;
+//   }
+// }
+// //
+// @media only screen and (max-width: 1024px) {
+//   .ui.header.heading2 {
+//     font-size: 60px;
+//     padding-top: 0;
+//   }
+// }
+//
+//
+// @media only screen and (max-width: 1024px) {
+//   .ui.header.heading {
+//     font-size: 130px;
+//     padding-top: 370px;
+//   }
+// }

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Segment, Sidebar } from 'semantic-ui-react'
 import StoriesIndex from './components/stories/StoriesIndex'
+import RedditIndex from './components/stories/RedditIndex'
 import StoriesShow from './components/stories/StoriesShow'
 import StoriesNewEdit from './components/stories/StoriesNewEdit'
 import StoriesInfo from './components/stories/StoriesInfo'
@@ -88,7 +89,7 @@ class App extends React.Component{
                   <Route path="/stories/new" component={StoriesNewEdit} />
                   <Route path="/stories/:id" component={StoriesShow} />
                   <Route path="/stories" component={StoriesIndex} />
-                  <Route path="/reddit" component={StoriesIndex} />
+                  <Route path="/reddit" component={RedditIndex} />
                   <Route path="/" component={Home} />
                 </Switch>
 

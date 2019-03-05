@@ -30,7 +30,6 @@ class StoriesShow extends React.Component{
     if(!this.state.story) return null
     return(
       <Container>
-        <Divider hidden />
         <Reader story={this.state.story}/>
       </Container>
     )

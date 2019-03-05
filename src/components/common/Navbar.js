@@ -88,6 +88,13 @@ class Navbar extends React.Component{
                   Stories
                 </Menu.Item>
 
+                <Menu.Item
+                  name='reddit'
+                  onClick={this.handleItemClick} >
+                  <Icon name='alien reddit'/>
+                  Reddit
+                </Menu.Item>
+
                 {Auth.isAuthenticated() &&
                   <Menu.Item
                     name='user/:id'

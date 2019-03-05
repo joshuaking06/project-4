@@ -75,8 +75,15 @@ class SideNav extends React.Component{
             </Menu.Item>
         }
 
-        <Menu.Item as='a'
+        <Menu.Item
           name='reddit'
+          onClick={this.handleItemClick} >
+          <Icon name='alien reddit'/>
+          Reddit
+        </Menu.Item>
+
+        <Menu.Item as='a'
+          name='stories'
           onClick={this.handleItemClick} >
           <Icon name='book' />
             Stories
