@@ -37,10 +37,10 @@ class StoriesIndex extends React.Component{
   addToReadList(e, story){
     console.log(story.id)
     if(!this.state.reddit && Auth.isAuthenticated()){
-      axios.post(`/api/save/${story.id}`,{data:'ok'}, headers)
+      axios.post(`/api/save/${story.id}`,{data: 'ok'}, headers)
         .then(res => console.log(res))
     } else if(this.state.reddit && Auth.isAuthenticated()){
-      axios.post(`/api/reddit/save/${story.id}`, {data:'ok'}, headers)
+      axios.post(`/api/reddit/save/${story.id}`, {data: 'ok'}, headers)
         .then(res => console.log(res))
     }
   }

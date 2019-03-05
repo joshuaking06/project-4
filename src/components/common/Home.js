@@ -1,5 +1,5 @@
 import React from 'react'
-import  { Header, Container, Diveder } from 'semantic-ui-react'
+import  { Header, Container } from 'semantic-ui-react'
 
 
 class Home extends React.Component {
