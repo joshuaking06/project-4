@@ -175,6 +175,12 @@ opacity: 0.2;
 
 }
 
+.read-me {
+  justify-content: center;
+  display: flex;
+
+}
+
 @media only screen and (max-width: 600px) {
   .ui.header.heading {
     font-size: 80px;
@@ -188,31 +194,15 @@ opacity: 0.2;
   }
 }
 
-@media only screen and (max-width: 750px) {
-  .ui.header.heading {
-    font-size: 80px;
-    padding: 50px;
-    margin-bottom: -30px;
-  }
-}
-
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 360px) {
   .ui.header.heading2 {
-    font-size: 35px;
-    padding: 0;
-    margin: -30px;
+    font-size: 40px;
+    padding-top: 50px;
   }
 }
 
-@media only screen and (max-width: 380px) {
-  .ui.header.heading2 {
-    font-size: 30px;
-    padding-top: 0;
-    margin: 0;
-  }
-}
 
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 360px) {
   .ui.header.heading {
     font-size: 80px;
     padding-top: 50px;
@@ -221,9 +211,8 @@ opacity: 0.2;
 
 @media only screen and (max-width: 320px) {
   .ui.header.heading2 {
-    font-size: 30px;
-    padding-top: 40px;
-    margin: 20px;
+    font-size: 40px;
+    padding-top: 0;
   }
 }
 
@@ -232,28 +221,10 @@ opacity: 0.2;
   .ui.header.heading {
     font-size: 80px;
     padding: 0;
-    padding-top: 30px;
   }
 }
 
-@media only screen and (max-width: 1024px) {
-  .ui.header.heading2 {
-    font-size: 60px;
-    padding-top: 0;
-  }
-}
-
-
-@media only screen and (max-width: 1024px) {
-  .ui.header.heading {
-    font-size: 130px;
-    padding-top: 400px;
-  }
-}
-
-
-
-// hello
+// READER TEXT -------------------------------------------------------------------
 
 @media only screen
 and (max-device-height : 600px) {
@@ -297,3 +268,85 @@ and (min-device-height : 781px){
       font-size: 16px;
     }
 }
+
+
+
+// @media only screen and (max-width: 600px) {
+//   .ui.header.heading {
+//     font-size: 80px;
+//   }
+// }
+//
+// @media only screen and (max-width: 600px) {
+//   .ui.header.heading2 {
+//     font-size: 35px;
+//     padding-top: 0;
+//   }
+// }
+
+// @media only screen and (max-width: 750px) {
+//   .ui.header.heading {
+//     font-size: 80px;
+//     padding: 50px;
+//     margin-bottom: -30px;
+//   }
+// }
+//
+// @media only screen and (max-width: 700px) {
+//   .ui.header.heading2 {
+//     font-size: 35px;
+//     padding: 0;
+//     margin: -30px;
+//   }
+// }
+
+// @media only screen and (max-width: 380px) {
+//   .ui.header.heading2 {
+//     font-size: 30px;
+//     padding-top: 0;
+//     margin: 0;
+//   }
+// }
+
+// @media only screen and (max-width: 380px) {
+//   .ui.header.heading {
+//     font-size: 80px;
+//     padding-top: 50px;
+//   }
+// }
+//
+// @media only screen and (max-width: 320px) {
+//   .ui.header.heading2 {
+//     font-size: 30px;
+//     padding-top: 40px;
+//     margin: 20px;
+//   }
+// }
+//
+//
+// @media only screen and (max-width: 320px) {
+//   .ui.header.heading {
+//     font-size: 80px;
+//     padding: 0;
+//     padding-top: 30px;
+//   }
+// }
+//
+// @media only screen and (max-width: 1024px) {
+//   .ui.header.heading2 {
+//     font-size: 60px;
+//     padding-top: 0;
+//   }
+// }
+//
+//
+// @media only screen and (max-width: 1024px) {
+//   .ui.header.heading {
+//     font-size: 130px;
+//     padding-top: 400px;
+//   }
+// }
+
+
+
+// hello
