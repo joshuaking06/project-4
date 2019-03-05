@@ -8,6 +8,8 @@ import LoadingPage from '../common/LoadingPage'
 
 import {Segment, Grid, Container, Header,Divider,Icon} from 'semantic-ui-react'
 import moment from 'moment'
+import Settings from '../../lib/Settings'
+
 
 class MessageShow extends React.Component{
 
@@ -32,9 +34,9 @@ class MessageShow extends React.Component{
       <Container>
         <Divider section hidden />
 
-        <Segment>
+        <Segment inverted={Settings.isNightMode()}>
 
-          <Grid celled='internally' stackable>
+          <Grid celled='internally' stackable >
             <Grid.Row>
               <Grid.Column width={16} textAlign='center'>
                 <Icon name='mail' size='huge' />
@@ -44,14 +46,14 @@ class MessageShow extends React.Component{
             <Grid.Row centered>
 
               <Grid.Column width={10}>
-                <Header size='medium' as='h2'>From:</Header>
+                <Header size='medium' as='h2' inverted={Settings.isNightMode()}>From:</Header>
 
                 <p>{sender.username}</p>
-                <Header size='medium' as='h2'>To:</Header>
+                <Header size='medium' as='h2' inverted={Settings.isNightMode()}>To:</Header>
 
                 <p>{receiver.username}</p>
 
-                <Header size='medium' as='h2'>Messages:</Header>
+                <Header size='medium' as='h2' inverted={Settings.isNightMode()}>Messages:</Header>
 
                 <p>{content}</p>
 
