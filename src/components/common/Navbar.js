@@ -91,7 +91,7 @@ class Navbar extends React.Component{
                 <Menu.Item
                   name='reddit'
                   onClick={this.handleItemClick} >
-                  <Icon name='list alternate'/>
+                  <Icon name='alien reddit'/>
                   Reddit
                 </Menu.Item>
 
