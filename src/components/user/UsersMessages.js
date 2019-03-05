@@ -36,7 +36,7 @@ class UsersMessage extends React.Component{
     e.preventDefault()
     if(Auth.isAuthenticated()){
       if(!this.state.postData ){
-        return <LoadingPage />
+        this.setState()
 
       }else{
         const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
