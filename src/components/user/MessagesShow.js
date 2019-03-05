@@ -10,8 +10,6 @@ import {Segment, Grid, Container, Header,Divider,Icon, Button} from 'semantic-ui
 import moment from 'moment'
 import Settings from '../../lib/Settings'
 import Speech from '../../lib/Speech'
-// let voices = []
-// const synth = window.speechSynthesis
 
 
 class MessageShow extends React.Component{
@@ -31,13 +29,6 @@ class MessageShow extends React.Component{
         })
     }
   }
-
-  // voices(){
-  //   voices = synth.getVoices()
-  //   voices = voices[0]
-  //   console.log(voices)
-  //   // this.setState({  voices: window.speechSynthesis.getVoices()})
-  // }
 
   speakHandle(){
     console.log(Speech.getVoice())
