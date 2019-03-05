@@ -1,5 +1,5 @@
 import React from 'react'
-import { Divider, Button, Grid, Form, Input, Segment, Icon } from 'semantic-ui-react'
+import { Divider, Button, Grid, Form, Input, Segment, Icon,Message } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 
@@ -11,7 +11,8 @@ class ResetPassword extends React.Component{
     this.state={
       postData: {
         email: ''
-      }
+      },
+      errors: {}
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -28,7 +29,7 @@ class ResetPassword extends React.Component{
       .then((res) =>  {
         this.props.history.push(`/users/${res.data.id}/newpassword`)
       })
-      .catch(() => this.setState({ message: 'Email does not exist!' }))
+      .catch(() => this.setState({ errors: { email: 'Email does not exist!'} }))
 
   }
 
@@ -36,12 +37,21 @@ class ResetPassword extends React.Component{
 
   render(){
     const { postData } = this.state
+    const errorMessages = Object.keys(this.state.errors).map(errorKey => {
+      return this.state.errors[errorKey]
+    })
+    console.log(errorMessages)
     return(
       <Grid columns={1} stackable textAlign='center'>
         <Grid.Column width={5}>
           <Divider hidden/>
           <Segment color="blue">
             <Icon name='user circle' size='huge' />
+            {errorMessages.length > 0 && <Message
+              error
+              header='There were some errors with your submission'
+              list={errorMessages}
+            />}
             <Form onSubmit={this.handleSubmit}>
               <Divider hidden />
               <Form.Field>
