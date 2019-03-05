@@ -17,20 +17,21 @@ class DesktopIndex extends React.Component{
 
 
   render(){
-    const { addToReadList } = this.props
-    console.log(this.props.stories)
+    const { addToReadList, stories } = this.props
+    console.log(stories, 'stories')
+    stories.forEach(story => console.log('hi'))
     return(
       <Container>
         <Grid columns={3}>
-          <Grid.Column width={3}></Grid.Column>
-          <Grid.Column width={10}>
+          <Grid.Column width={2}></Grid.Column>
+          <Grid.Column width={11}>
             <Segment
               inverted={Settings.isNightMode()}
               id='index-reader'
               className='desktop-index'
               raised
             >
-              {this.props.stories.map(story =>
+              {stories.map(story =>
                 <Segment key={story.id}
                   className='desktop-index'
                   style={style}
@@ -72,7 +73,7 @@ class DesktopIndex extends React.Component{
               }
             </Segment>
           </Grid.Column>
-          <Grid.Column width={3}></Grid.Column>
+          <Grid.Column width={2}></Grid.Column>
         </Grid>
       </Container>
     )
