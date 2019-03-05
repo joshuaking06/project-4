@@ -42,7 +42,7 @@ class Messages extends React.Component{
         <Segment inverted={Settings.isNightMode()}>
           <Header size='medium' as='h1'>Your Messages</Header>
 
-          <Tab menu={{ secondary: true, pointing: true,  inverted: true }} panes={panes} />
+          <Tab menu={{ secondary: true, pointing: true,  inverted: Settings.isNightMode() }} panes={panes} />
 
 
         </Segment>

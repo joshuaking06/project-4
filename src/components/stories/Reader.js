@@ -31,9 +31,9 @@ class Reader extends React.Component{
       }
     } else {
       const storySentences = this.props.story.content.split('')
-      for(let i = 950; i < storySentences.length+949; i+=950){
+      for(let i = 750; i < storySentences.length+749; i+=750){
         newStory.push(storySentences.slice(base,i).join(''))
-        base +=950
+        base +=750
       }
     }
     if (newStory.length === 0) return [this.props.story.content]
@@ -46,6 +46,7 @@ class Reader extends React.Component{
 
   render(){
     const { nightMode } = this.state
+    console.log(this.state.newStory)
     if(!this.state.newStory)return null
     if(this.state.width < 500)return(
       <div id='flippertwo'>
@@ -55,12 +56,16 @@ class Reader extends React.Component{
           style={{ touchAction: 'none' }}
         >
           {this.state.newStory.map((storyPart, index) =>
-            <Segment inverted={nightMode} style={style} key={index} textAlign='center'>
-              <Header as='h2'> {`${this.props.story.title}(${index+1})`}  </Header>
-              <Link to={`info/${this.props.story.id}`}> Info </Link>
-              <Divider section/>
+            <Segment id='reader-segment' inverted={nightMode} style={style} key={index} textAlign='center'>
+              <Header as='h4'> Page {index+1}  </Header>
+              <Link to={`info/${this.props.story.id}`}> View Info </Link>
+              <Divider />
               <p className='content-text'> {`${storyPart}`} </p>
-              <Divider hidden />
+              <Divider hidden section />
+              <Divider hidden section />
+              <Divider hidden section />
+              <Divider hidden section />
+              <Divider hidden section />
             </Segment>
           )}
         </FlipPage>
@@ -73,7 +78,7 @@ class Reader extends React.Component{
           <Link to={`info/${this.props.story.id}`}> Info </Link>
           <Divider />
           {this.state.newStory.map((storyPart, index) =>
-            <p key={index} className='content-text'> {storyPart} </p>
+            <p key={index} className='desktop-content-text'> {storyPart} </p>
           )}
           <Divider hidden />
         </Segment>
