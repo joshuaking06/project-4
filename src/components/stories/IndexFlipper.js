@@ -46,21 +46,19 @@ const IndexFlipper = ({ style, stories, addToReadList, loadMore, reddit }) => {
 
             </Container>
             <Divider section hidden />
+            <Divider section hidden />
             <Grid stackable columns={3}>
               <Grid.Column width={16}>
-                <Button onClick={(e)=> addToReadList(e,story)} fluid secondary icon='add' content='Save' />
-              </Grid.Column>
+                <Button onClick={(e)=> addToReadList(e,story)}  secondary icon='add' content='Save' />
 
-              <Grid.Column width={16}>
                 <Link to ={`/stories/${story.id}`} >
-                  <Button size='small' fluid secondary icon='book' content='Read' />
+                  <Button  secondary icon='book' content='Read' />
                 </Link>
               </Grid.Column>
 
-              <Grid.Column width={16}>
+              <Grid.Column width={10}>
                 {reddit &&
                   <Button
-                    fluid
                     size='small'
                     onClick={loadMore}
                     primary> Load More
