@@ -31,9 +31,9 @@ class Reader extends React.Component{
       }
     } else {
       const storySentences = this.props.story.content.split('')
-      for(let i = 1000; i < storySentences.length+999; i+=1000){
+      for(let i = 750; i < storySentences.length+749; i+=750){
         newStory.push(storySentences.slice(base,i).join(''))
-        base +=1000
+        base +=750
       }
     }
     if (newStory.length === 0) return [this.props.story.content]
@@ -46,22 +46,26 @@ class Reader extends React.Component{
 
   render(){
     const { nightMode } = this.state
+    console.log(this.state.newStory)
     if(!this.state.newStory)return null
     if(this.state.width < 500)return(
       <div id='flippertwo'>
-        <Divider hidden/>
         <FlipPage
           orientation='horizontal'
           responsive
           style={{ touchAction: 'none' }}
         >
           {this.state.newStory.map((storyPart, index) =>
-            <Segment inverted={nightMode} style={style} key={index} textAlign='center'>
-              <Header as='h2'> {`${this.props.story.title}(${index+1})`}  </Header>
-              <Link to={`info/${this.props.story.id}`}> Info </Link>
-              <Divider section/>
+            <Segment id='reader-segment' inverted={nightMode} style={style} key={index} textAlign='center'>
+              <Header as='h4'> Page {index+1}  </Header>
+              <Link to={`info/${this.props.story.id}`}> View Info </Link>
+              <Divider />
               <p className='content-text'> {`${storyPart}`} </p>
-              <Divider hidden />
+              <Divider hidden section />
+              <Divider hidden section />
+              <Divider hidden section />
+              <Divider hidden section />
+              <Divider hidden section />
             </Segment>
           )}
         </FlipPage>
@@ -72,9 +76,9 @@ class Reader extends React.Component{
         <Segment inverted={nightMode} style={style}  id='reader' textAlign='center'>
           <Header as='h2'> {this.props.story.title}</Header>
           <Link to={`info/${this.props.story.id}`}> Info </Link>
-          <Divider section />
+          <Divider />
           {this.state.newStory.map((storyPart, index) =>
-            <p key={index} className='content-text'> {storyPart} </p>
+            <p key={index} className='desktop-content-text'> {storyPart} </p>
           )}
           <Divider hidden />
         </Segment>

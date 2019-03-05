@@ -16,10 +16,17 @@ html{
       height: 85vh;
       overflow: scroll;
     }
-    .content-text{
+    .desktop-content-text{
       padding-left: 2%;
       padding-right: 2%;
       line-height: 1.6;
+      font-size: 16px;
+      font-family: helvetica !important;
+    }
+    .content-text{
+      padding-left: 2%;
+      padding-right: 2%;
+      font-family: helvetica !important;
     }
 
     #nav{
@@ -40,14 +47,12 @@ html{
     }
 
     #flippertwo{
-      background-color: #E9E3B4;
+      background-color: #black;
       display: flex;
       justify-content: center;
       margin-left: auto;
       margin-right: auto;
-      height: 100vh;
-      background-image: url(https://previews.123rf.com/images/ke77kz/ke77kz1701/ke77kz170100026/69863051-old-paper-background-rustic-paper-texture-for-the-design-.jpg);
-      background-position: cover;
+      height: 93vh;
     }
     #flipper{
       background-color: #E9E3B4;
@@ -244,4 +249,111 @@ opacity: 0.2;
     font-size: 130px;
     padding-top: 400px;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// hello
+@media only screen
+and (max-device-height : 600px) {
+    .content-text{
+      line-height: 1.4;
+      font-size: 14px;
+    }
+}
+
+@media only screen
+and (min-device-height : 600px)
+and (max-device-height : 660px) {
+    .content-text{
+      line-height: 1.8;
+      font-size: 14px;
+    }
+}
+
+@media only screen
+and (min-device-height : 661px)
+and (max-device-height : 700px) {
+    .content-text{
+      line-height: 1.9;
+      font-size: 15px;
+    }
+}
+
+@media only screen
+and (min-device-height : 701px)
+and (max-device-height : 780px) {
+    .content-text{
+      line-height: 2.1;
+      font-size: 16px;
+    }
+}
+
+@media only screen
+and (min-device-height : 781px){
+    .content-text{
+      line-height: 2.1;
+      font-size: 16px;
+    }
 }

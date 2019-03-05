@@ -13,7 +13,7 @@ const headers = {headers: { Authorization: Auth.getToken() }}
 const style = {
   width: '100%',
   height: '100vh',
-  backgroundImage: 'url(https://ga-students.slack.com/archives/GGGTPLJV7/p1551724276002900)',
+  backgroundImage: 'url(http://www.rossettiarchive.org/img/9p-1850.virginia.endp4.jpg)',
   backgroundSize: 'cover'
 }
 
