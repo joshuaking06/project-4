@@ -74,10 +74,25 @@ class StoriesInfo extends React.Component{
       <Container textAlign='center'>
         <Divider hidden />
         <Segment.Group >
-          <Segment inverted={nightMode}><Header as='h2'> {data.title} </Header> </Segment>
+          <Segment inverted={nightMode}><Header as='h2'> {data.title} </Header> </Segment> <br />
+          <Button.Group>
+
           {!saved &&
-            <Button onClick={(e)=>this.addToReadList(e, data.id)} positive icon='add' content='Save to your reading list' />
+            <Button
+              size='small'
+              onClick={(e)=>this.addToReadList(e, data.id)}
+              positive icon='add'
+              content='Save' />
           }
+          {!saved &&
+            <Button.Or
+              size='small'
+              content='Or' />
+          }
+            <Button size='small'>
+              <Link to={`/stories/${data.id}`}> Read </Link>
+            </Button>
+          </Button.Group>
           <Segment.Group>
             <Segment inverted={nightMode}> <strong>Genre:</strong> {data.genre}</Segment>
             <Segment inverted={nightMode}> <strong>Description:</strong> {data.description}</Segment>
