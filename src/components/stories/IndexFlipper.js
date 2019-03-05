@@ -49,7 +49,9 @@ const IndexFlipper = ({ style, stories, addToReadList, loadMore, reddit }) => {
             <Divider section hidden />
             <Grid stackable columns={3}>
               <Grid.Column width={16}>
-                <Button onClick={(e)=> addToReadList(e,story)}  secondary icon='add' content='Save' />
+                <Link to ={`/stories/info/${story.id}`} >
+                  <Button  secondary icon='info' content='Info Page' />
+                </Link>
 
                 <Link to ={`/stories/${story.id}`} >
                   <Button  secondary icon='book' content='Read' />
