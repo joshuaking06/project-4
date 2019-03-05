@@ -30,10 +30,6 @@ class Navbar extends React.Component{
   handleItemClick(e, { name }){
     this.setState({ activeItem: name })
     this.props.history.push(`/${name}`)
-    if(name === 'reddit' && this.props.location.pathname === '/stories' ||
-      name === 'stories' && this.props.location.pathname === '/reddit' ){
-      window.location.reload()
-    }
   }
 
   logout(){

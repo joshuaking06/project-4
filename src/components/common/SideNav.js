@@ -25,9 +25,6 @@ class SideNav extends React.Component{
     this.setState({ activeItem: name })
     this.props.handleSidebarHide()
     this.props.history.push(`/${name}`)
-    if(name === 'reddit' || name === 'stories'){
-      window.location.reload()
-    }
   }
 
   myprofile() {
