@@ -1,6 +1,6 @@
 import React from 'react'
 import Settings from '../../lib/Settings'
-import { Button, Container, Checkbox, Segment, Header, Divider, Grid } from 'semantic-ui-react'
+import { Container, Checkbox, Segment, Header, Divider, Grid } from 'semantic-ui-react'
 
 class SettingsPage extends React.Component{
   constructor(){
@@ -29,10 +29,10 @@ class SettingsPage extends React.Component{
         <Divider hidden section />
         <Segment inverted={nightMode}>
           <Grid columns={2}>
-              <Grid.Column width={12}>
-                <Header inverted={nightMode}> Night Mode </Header>
-                <Header inverted={nightMode}> Text-to-speech </Header>
-              </Grid.Column>
+            <Grid.Column width={12}>
+              <Header inverted={nightMode}> Night Mode </Header>
+              <Header inverted={nightMode}> Text-to-speech </Header>
+            </Grid.Column>
 
             <Grid.Column width={4}>
               <Checkbox onChange={this.toggleNightMode} toggle checked={nightMode}/>

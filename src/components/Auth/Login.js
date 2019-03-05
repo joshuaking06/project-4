@@ -60,7 +60,9 @@ class Login extends React.Component{
         <Grid.Column width={8}>
           <Divider hidden/>
           <Segment color="blue">
-            <Image src="https://d2lp05f39ek59n.cloudfront.net/uploads/ReadMe_product_img_690313098_readme.png" />
+
+            <Image id="image-login" src="https://d2lp05f39ek59n.cloudfront.net/uploads/ReadMe_product_img_690313098_readme.png" />
+
             <p> Welcome back!</p>
 
             {/* displaying error messages when they exist, passing in list  of error messages */}
