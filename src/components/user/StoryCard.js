@@ -11,7 +11,7 @@ const StoryCard = (story) => {
       <Card.Content header={title} />
       <Card.Meta content={genre} />
       <Card.Content description={description} />
-      <Card.Content extra >
+      {/*<Card.Content extra >
         <p>
           <Icon name='comment outline' />
                         0 comments
@@ -20,7 +20,7 @@ const StoryCard = (story) => {
           <Icon name='heart outline' />
                         0 likes
         </p>
-      </Card.Content>
+      </Card.Content>*/}
     </Card>
   )
 
