@@ -45,7 +45,7 @@ class StoriesIndex extends React.Component{
   loadMore(){
     axios.get(`/api/reddit/count/${this.state.count}`)
       .then(stories => {
-        this.setState({ stories: stories, count: this.state.count + 10 })
+        this.setState({ stories: stories.data, count: this.state.count + 10 })
       })
   }
 

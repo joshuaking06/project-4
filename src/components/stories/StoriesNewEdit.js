@@ -3,6 +3,7 @@ import StoryForm from './StoryForm'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Flash from '../../lib/Flash'
+import SuccessModal from '../common/SuccessModal'
 
 const headers = { headers: { Authorization: `Bearer ${Auth.getToken()}` } }
 
@@ -13,6 +14,7 @@ class StoriesNewEdit extends React.Component{
     super(props)
 
     this.state={
+      saved: false,
       errors: true,
       isNew: (this.props.match.path === '/stories/new'),
       storyData: {
@@ -38,7 +40,7 @@ class StoriesNewEdit extends React.Component{
   handleSaveDraft(e){
     e.preventDefault()
     if(this.state.isNew) this.handleSubmitOrSave(true, 'save').then(() => {
-      console.log('popup message goes here')
+      this.setState({ saved: true })
     })
     else this.handleSubmitOrSave(false)
       .then(() => this.props.history.push(`${this.props.match.params.id}`))
@@ -86,12 +88,15 @@ class StoriesNewEdit extends React.Component{
   render(){
     console.log(this.state.storyData)
     return(
-      <StoryForm
-        storyData={this.state.storyData}
-        handleSaveDraft={this.handleSaveDraft}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
+      <div>
+        <StoryForm
+          storyData={this.state.storyData}
+          handleSaveDraft={this.handleSaveDraft}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+        <SuccessModal saved={this.state.saved} />
+      </div>
     )
   }
 }

@@ -18,6 +18,7 @@ class StoriesInfo extends React.Component{
     super(props)
 
     this.state={
+      listening: false,
       saved: false,
       nightMode: Settings.isNightMode(),
       isReddit: !(this.props.match.params.id % 1 === 0 || this.props.match.params.id % 1 === 1 ),
@@ -64,9 +65,12 @@ class StoriesInfo extends React.Component{
 
   speakHandle(){
     Speech.appSpeak(this.state.data.content)
+    this.setState({ listening: true })
   }
+
   cancelHandle(){
     Speech.cancelSpeak()
+    this.setState({ listening: false })
   }
 
   componentDidMount(){
@@ -76,6 +80,7 @@ class StoriesInfo extends React.Component{
     axios.get(`/api/${route}/${this.props.match.params.id}`)
       .then(res => this.setState({ data: res.data }))
   }
+
   componentWillUnmount(){
     Speech.cancelSpeak()
   }
@@ -91,34 +96,35 @@ class StoriesInfo extends React.Component{
           <Segment inverted={nightMode}><Header as='h2'> {data.title} </Header> </Segment> <br />
           <Button.Group>
 
-          {!saved &&
-            <Button
-              size='small'
-              onClick={(e)=>this.addToReadList(e, data.id)}
-              positive icon='add'
-              content='Save' />
-          }
-          {!saved &&
-            <Button.Or
-              size='small'
-              content='Or' />
-          }
-            <Button size='small'>
-              <Link to={`/stories/${data.id}`}> Read </Link>
-            </Button>
-            <Button.Or
-              size='small'
-              content='Or'
+            {!saved &&
+              <Button
+                size='small'
+                onClick={(e)=>this.addToReadList(e, data.id)}
+                icon='add'
+                content='Save' />
+            }
+            {!saved &&
+              <Button.Or
+                size='small'
+                content='Or' />
+            }
 
-            />
-            <Button onClick={this.speakHandle}>Listen</Button>
+            <Link to={`/stories/${data.id}`}><Button size='small' icon='book' content='Read' /></Link>
+
 
             <Button.Or
               size='small'
               content='Or'
 
             />
-            <Button onClick={this.cancelHandle}>Canel</Button>
+
+            {!this.state.listening &&
+              <Button size='small' icon='sound' content='Listen' onClick={this.speakHandle}/>
+            }
+
+            {this.state.listening &&
+              <Button size='small' icon='cancel' content='Cancel' onClick={this.cancelHandle}/>
+            }
 
 
           </Button.Group>
@@ -153,7 +159,7 @@ class StoriesInfo extends React.Component{
             />
           }
         </Segment.Group>
-        {<SuccessModal saved={saved} />}
+        <SuccessModal saved={saved} />
       </Container>
     )
   }
