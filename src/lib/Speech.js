@@ -1,14 +1,15 @@
-const msg = new SpeechSynthesisUtterance()
-
+const synth = window.speechSynthesis
+const voice = synth.getVoices()[0]
 class Speech{
 
-  static getSpeech(){
-    console.log(window.speechSynthesis.getVoices())
-    // console.log(this.getVoices())
-    return msg
+  static getVoice(){
+    return voice
   }
 
-
+  static appSpeak(text){
+    const msg = new SpeechSynthesisUtterance(text)
+    synth.speak(msg)
+  }
 
 }
 

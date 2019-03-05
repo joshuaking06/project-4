@@ -6,15 +6,21 @@ import axios from 'axios'
 import Auth from '../../lib/Auth'
 import LoadingPage from '../common/LoadingPage'
 
-import {Segment, Grid, Container, Header,Divider,Icon} from 'semantic-ui-react'
+import {Segment, Grid, Container, Header,Divider,Icon, Button} from 'semantic-ui-react'
 import moment from 'moment'
 import Settings from '../../lib/Settings'
-// import Speech from '../../lib/Speech'
-let voices = []
-const synth = window.speechSynthesis
+import Speech from '../../lib/Speech'
+// let voices = []
+// const synth = window.speechSynthesis
 
 
 class MessageShow extends React.Component{
+
+  constructor(){
+    super()
+    this.speakHandle = this.speakHandle.bind(this)
+
+  }
 
   componentDidMount(){
     if(Auth.isAuthenticated()){
@@ -24,20 +30,18 @@ class MessageShow extends React.Component{
           this.setState({ messageDetail: res.data})
         })
     }
-    this.voices()
   }
 
-  voices(){
-    voices = synth.getVoices()
-    voices = voices[0]
-    console.log(voices)
-    // this.setState({  voices: window.speechSynthesis.getVoices()})
-  }
+  // voices(){
+  //   voices = synth.getVoices()
+  //   voices = voices[0]
+  //   console.log(voices)
+  //   // this.setState({  voices: window.speechSynthesis.getVoices()})
+  // }
 
   speakHandle(){
-    const text = 'hello'
-    const msg = new SpeechSynthesisUtterance(text)
-    synth.speak(msg)
+    console.log(Speech.getVoice())
+    Speech.appSpeak(this.state.messageDetail.content)
   }
 
   render(){
@@ -103,6 +107,7 @@ class MessageShow extends React.Component{
                   Reply Back
                 </Link>
                 }
+                <Button onClick={this.speakHandle}>Speak</Button>
 
               </Grid.Column>
 
