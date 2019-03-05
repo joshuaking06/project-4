@@ -36,7 +36,6 @@ class App extends React.Component{
 
     this.state={
       sidebarVisible: false,
-      nightMode: false
     }
 
     this.handleShowClick = this.handleShowClick.bind(this)
@@ -46,6 +45,7 @@ class App extends React.Component{
   componentDidMount(){
     console.log('is it set?', Settings.checkIfSet())
     if(!Settings.checkIfSet())Settings.setNightMode(false)
+    this.setState({ nightMode: false })
   }
 
 

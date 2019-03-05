@@ -7,6 +7,7 @@ import Auth from '../../lib/Auth'
 import LoadingPage from '../common/LoadingPage'
 
 import {Segment, Grid, Container, Header,Divider,Icon} from 'semantic-ui-react'
+import moment from 'moment'
 
 class MessageShow extends React.Component{
 
@@ -56,12 +57,13 @@ class MessageShow extends React.Component{
 
               </Grid.Column>
 
+
             </Grid.Row>
 
             <Grid.Row>
               <Grid.Column width={16} textAlign='center'>
 
-                <p>This message was {info} at {created_at}</p>{/*  eslint-disable-line*/}
+              <p>This message was {info} at {moment(created_at).format('dddd HH:mm')}</p>{/*  eslint-disable-line*/}
 
                 <Link className='ui button positive'
                   to={'/messages'}
