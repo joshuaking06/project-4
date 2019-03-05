@@ -217,8 +217,9 @@ opacity: 0.2;
 
 @media only screen and (max-width: 320px) {
   .ui.header.heading2 {
-    font-size: 40px;
-    padding-top: 0;
+    font-size: 30px;
+    padding-top: 40px;
+    margin: 20px;
   }
 }
 
@@ -227,5 +228,6 @@ opacity: 0.2;
   .ui.header.heading {
     font-size: 80px;
     padding: 0;
+    padding-top: 30px;
   }
 }
