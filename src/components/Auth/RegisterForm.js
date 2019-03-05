@@ -5,7 +5,7 @@ import { Segment, Grid, Form, Input, Divider, Button, TextArea, Message, Icon } 
 const RegisterForm = ({ handleChange, handleSubmit, errors }) => {
 
   // function made to return error messages from the error response from server, putting them in array to be passed into message
-  const errorMessages = Object.keys(errors).map(errorKey => {
+  const errorMessages = Object.keys(errors).map((errorKey, index) => {
     return errors[errorKey]
   })
 
@@ -17,11 +17,17 @@ const RegisterForm = ({ handleChange, handleSubmit, errors }) => {
           <Icon name='user plus' size='huge' />
 
           {/* displaying any error messages the user has received */}
-          {errorMessages.length >0 && <Message
-            error
-            header='There were some errors with your submission'
-            list={errorMessages}
-          />}
+          {errorMessages.length >0 &&
+            <Message>
+              <Message.Header>There were some errors with your submission</Message.Header>
+              <Message.List>
+                {errorMessages.map((msg, index) =>
+                  <Message.Item key={index}>{msg}</Message.Item>
+                )}
+              </Message.List>
+            </Message>
+          }
+
           <Form onSubmit={handleSubmit} >
 
 
