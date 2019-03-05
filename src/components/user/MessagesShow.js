@@ -9,6 +9,7 @@ import LoadingPage from '../common/LoadingPage'
 import {Segment, Grid, Container, Header,Divider,Icon} from 'semantic-ui-react'
 import moment from 'moment'
 import Settings from '../../lib/Settings'
+import Text from '../../lib/TexttoSpeech'
 
 
 class MessageShow extends React.Component{
@@ -20,6 +21,8 @@ class MessageShow extends React.Component{
         .then( res =>{
           this.setState({ messageDetail: res.data})
         })
+
+      console.log(Text.getSpeech())
     }
   }
 
