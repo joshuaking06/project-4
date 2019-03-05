@@ -31,7 +31,6 @@ class MessageShow extends React.Component{
   }
 
   speakHandle(){
-    console.log(Speech.getVoice())
     Speech.appSpeak(this.state.messageDetail.content)
   }
 
