@@ -40,7 +40,6 @@ class ResetPassword extends React.Component{
     const errorMessages = Object.keys(this.state.errors).map(errorKey => {
       return this.state.errors[errorKey]
     })
-    console.log(errorMessages)
     return(
       <Grid columns={1} stackable textAlign='center'>
         <Grid.Column width={5}>
