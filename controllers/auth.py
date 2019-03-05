@@ -50,7 +50,11 @@ def resetpassword():
 
     data = request.get_json()
     user = User.query.filter_by(email=data.get('email')).first()
-    return user_schema.jsonify(user)
+    print(user)
+    if user == None:
+        return '', 404
+
+    return user_schema.jsonify(user), 200
 
 
 
@@ -78,7 +82,7 @@ def index():
     users = User.query.all()
     return users_schema.jsonify(users)
 
-    
+
 
 # === SHOW ===
 @api.route('/users/<int:user_id>', methods=['GET'])
