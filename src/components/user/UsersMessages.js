@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Container, Segment, Grid, Form, Input, Divider, Button, TextArea, Icon } from 'semantic-ui-react'
+import { Container, Segment, Grid, Form, Input, Divider, Button, TextArea, Icon, Message } from 'semantic-ui-react'
 // import Flash from '../../lib/Flash'
 
 import LoadingPage from '../common/LoadingPage'
@@ -12,7 +12,9 @@ class UsersMessage extends React.Component{
 
   constructor(){
     super()
-    this.state = {}
+    this.state = {
+      errors: {}
+    }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -26,7 +28,7 @@ class UsersMessage extends React.Component{
 
   // taking the value and name of input to set in state, before making post request to register
   handleChange({ target: { name, value }}) {
-    const postData = {...this.state.postData, [name]: value }
+    const postData = {...this.state.postData, [name]: value, errors: {} }
     this.setState({ postData })
   }
 
@@ -35,9 +37,8 @@ class UsersMessage extends React.Component{
   handleSubmit(e){
     e.preventDefault()
     if(Auth.isAuthenticated()){
-      if(!this.state.postData ){
-        this.setState()
-
+      if(!this.state.postData || this.state.postData.content.length < 1 ){
+        this.setState({ errors: { content: 'Cannot send a empty message'} })
       }else{
         const headers = {'Authorization': `Bearer ${Auth.getToken()}`}
         const body = this.state.postData
@@ -52,6 +53,10 @@ class UsersMessage extends React.Component{
 
   render(){
     const nightMode = Settings.isNightMode()
+    const errorMessages = Object.keys(this.state.errors).map(errorKey => {
+      return this.state.errors[errorKey]
+    })
+    console.log(errorMessages)
     if(!this.state.usersDetail ) return <LoadingPage />
     return(
       <Container>
@@ -61,6 +66,11 @@ class UsersMessage extends React.Component{
           <Grid columns={1} stackable textAlign='center'>
             <Grid.Column width={8}>
               <Icon name='mail' size='huge' />
+              {errorMessages.length > 0 && <Message
+                error
+                header='There were some errors with your submission'
+                list={errorMessages}
+              />}
               <Form inverted={nightMode} onSubmit={this.handleSubmit} >
                 <Form.Field required>
                   <label>Send message to:</label>
