@@ -64,7 +64,7 @@ class Login extends React.Component{
             <p> Welcome back!</p>
 
             {/* displaying error messages when they exist, passing in list  of error messages */}
-            {errorMessages.length >0 && <Message
+            {errorMessages.length > 0 && <Message
               error
               header='There was some errors with your submission'
               list={errorMessages}
