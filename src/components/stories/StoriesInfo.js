@@ -30,6 +30,9 @@ class StoriesInfo extends React.Component{
     this.postComment = this.postComment.bind(this)
     this.deleteComment = this.deleteComment.bind(this)
     this.speakHandle = this.speakHandle.bind(this)
+    this.cancelHandle = this.cancelHandle.bind(this)
+
+
   }
 
   addToReadList(e, id){
@@ -62,6 +65,9 @@ class StoriesInfo extends React.Component{
   speakHandle(){
     Speech.appSpeak(this.state.data.content)
   }
+  cancelHandle(){
+    Speech.cancelSpeak()
+  }
 
   componentDidMount(){
     let route
@@ -69,6 +75,9 @@ class StoriesInfo extends React.Component{
     if(this.state.isReddit) route = 'reddit'
     axios.get(`/api/${route}/${this.props.match.params.id}`)
       .then(res => this.setState({ data: res.data }))
+  }
+  componentWillUnmount(){
+    Speech.cancelSpeak()
   }
 
 
@@ -103,6 +112,14 @@ class StoriesInfo extends React.Component{
 
             />
             <Button onClick={this.speakHandle}>Listen</Button>
+
+            <Button.Or
+              size='small'
+              content='Or'
+
+            />
+            <Button onClick={this.cancelHandle}>Canel</Button>
+
 
           </Button.Group>
           <Segment.Group>
