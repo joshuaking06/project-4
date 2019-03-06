@@ -10,7 +10,7 @@ const FollowingList = ({ following }) => {
       <List animated selection inverted={nightMode}>
         {following.map(person =>
           <List.Item key={person.id}>
-            <Image avatar src='https://react.semantic-ui.com/images/avatar/small/helen.jpg' />
+            <Image avatar src='https://pngimage.net/wp-content/uploads/2018/05/default-user-png-2.png' />
             <List.Content>
               <Link to={`/users/${person.id}`}>
                 <List.Header>{person.username}</List.Header>

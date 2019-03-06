@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Divider, Header, Image } from 'semantic-ui-react'
+import { Segment, Divider, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import FlipPage from 'react-flip-page'
 import Settings from '../../lib/Settings'
