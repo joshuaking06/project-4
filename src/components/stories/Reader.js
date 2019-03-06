@@ -46,7 +46,6 @@ class Reader extends React.Component{
 
   render(){
     const { nightMode } = this.state
-    console.log(this.state.newStory)
     if(!this.state.newStory)return null
     if(this.state.width < 500)return(
       <div id='flippertwo'>

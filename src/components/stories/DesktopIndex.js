@@ -18,7 +18,6 @@ class DesktopIndex extends React.Component{
 
   render(){
     const { addToReadList, stories } = this.props
-    console.log(stories, 'stories')
     stories.forEach(story => console.log('hi'))
     return(
       <Container>

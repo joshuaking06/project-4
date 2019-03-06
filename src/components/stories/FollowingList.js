@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import Settings from '../../lib/Settings'
 
 const FollowingList = ({ following }) => {
-  console.log(following)
   const nightMode = Settings.isNightMode()
   return(
     <Segment inverted={nightMode}>
