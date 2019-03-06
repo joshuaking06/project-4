@@ -39,11 +39,16 @@ html{
       background-color: #E9E3B4;
       .card-text{
         text-align: center;
+        font-size: 19px;
+
       }
     }
 
     .desktop-index{
       text-align: center;
+      background-image: 'url(http://www.rossettiarchive.org/img/9p-1850.virginia.endp4.jpg)';
+      background-size: cover;
+
     }
 
     #flippertwo{
@@ -267,6 +272,10 @@ and (min-device-height : 781px){
       line-height: 2.1;
       font-size: 16px;
     }
+}
+
+#image-login {
+  margin: auto;
 }
 
 
