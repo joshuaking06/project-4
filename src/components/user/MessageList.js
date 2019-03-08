@@ -1,7 +1,6 @@
 import React from 'react'
 import { List, Image} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import Settings from '../../lib/Settings'
 import moment from 'moment'
 
 const MessageList = ({ messageData, information }) => {
