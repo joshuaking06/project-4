@@ -67,17 +67,22 @@ Tasks were managed and assigned through the task manager Trello. We performed da
 
 
 # Features
+## Night Mode 
+We thought night mode would be a very useful feature for those who love reading without the eye strain of a bright screen. This feature was achieved by creating a Settings class with static methods which saved the night mode setting in local storage, which would still be useful for if the user left the site and returned later. It was debated having night be stored in the database for each account, however we wanted any user(logged in or otherwise) to have access to night mode. 
+
+## Mobile Focused
+From the outset, we decided we wanted to make the app heavily focused towards mobile. Since this is an app we envisioned people using while on the commute to work, sitting in bed, or just anywhere on the go. Semantic UI's very good documentation made it even more achievable to do this with a large app on just a seven day timeframe. Because of this mobile focused development, we felt a sidebar would fit very well for this app.
+
+## Flip Effects
+This was achieved using a package call 'react-flip-page'. While it certainly was an essential and very useful part of creating the overall look and feel of the site, it was definitely a big challenge to work with and to style correctly.
+
 
 reset password
 text to voice
-night mode
-mobile responsive
-flip effect
-sidebar on mobile
-navbar on desktop
 
 
 ### Challenges and Wins
+
 
 
 ## Future features
