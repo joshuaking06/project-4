@@ -67,7 +67,7 @@ Tasks were managed and assigned through the task manager Trello. We performed da
 
 
 # Features
-###Reddit API
+### Reddit API
 We used the Reddit API to pull in additional short stories from the short stories subreddit. This was done using "praw", a wrapper for for the Reddit API using python. We also allow users to save a story from reddit to their reading list, which will also save the short story to our database, allowing users to make comments on it as well. In the future, we'd like to prevent the same reddit story from being added to the database multiple times. 
 
 ### Night Mode 
