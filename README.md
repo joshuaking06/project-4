@@ -61,6 +61,7 @@ The development of the project started with brainstorming some features to be in
 * A many-to-many relationship between User and Story
 * A many-to-many relationship between Reading List and Story
 * A many-to-many relationship between User
+
 To manage the project Trello was used frequently, also we had daily stand-ups to track our progress. Features were implemented by creating a separate git branches on our local computer before merging into the main development branch. Any merger conflict or blockers were discussed as a group to solve the issues as fast as possible. The routes for the front-end and the back-end were discussed as a group, so any confusion could be avoided during the development phase. Each of the application features were prioritised using the MoSCoW method.
 
 ## Back End Functionality
