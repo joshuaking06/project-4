@@ -158,9 +158,6 @@ Tasks were managed and assigned through the task manager Trello. We performed da
 We carried out test on the front-end side of the application using  Mocha, Chai, and Enzyme to test a functional and classical React component. We set-up the JSDOM to create a virtual browser which will run on the terminal. We tested UsersShow for classical component and UsersDetail for functional component. The test we conducted on these components were to see if they would render data properly on HTML format.
 For the functional component dummy data were created and passed as props. Using the Enzyme shallow method it was then render and test were conducted. To see if the component rendered the HMTL properly. We also conducted similar type of test for the classical component, as the classical component get the data using the axios request. We had to use sinon to fake the axios request. As the classical component contains a lot of functional component, we had to Enzyme mount method which will allow us to go bit deeper with rendering process. This allowed us to check that the data stored in the state was accurate and was rendered properly on the HTML.
 
-### Reading Page
-This page was particularly challenging for several reasons, and went through quite a few changes before the final version was settled. The main difficulties were due to the nature of the flip card component and how difficult it was to style correctly. Another difficulty was trying to get each page display the correct amount of words, so as to not flow off the page. This was done on the front end using a for loop. As the story came from the database(or API), it was a long string. I then split the string into an array, spliced it every 800 characters roughly, then placed each long portion into a div which then was styled via media queries to make them appear readable for each mobile size.
-
 ### Night Mode
 We thought night mode would be a very useful feature for those who love reading without the eye strain of a bright screen. This feature was achieved by creating a Settings class with static methods which saved the night mode setting in local storage, which would still be useful for if the user left the site and returned later. It was debated having night be stored in the database for each account, however we wanted any user(logged in or otherwise) to have access to night mode.
 
@@ -175,6 +172,33 @@ static appSpeak(text){
   synth.speak(msg)
 }
 ```
+
+## Challenges
+### Reading Page
+This page was particularly challenging for several reasons, and went through quite a few changes before the final version was settled. The main difficulties were due to the nature of the flip card component and how difficult it was to style correctly. Another difficulty was trying to get each page display the correct amount of words, so as to not flow off the page. This was done on the front end using a for loop. As the story came from the database(or API), it was a long string. I then split the string into an array, spliced it every 800 characters roughly, then placed each long portion into a div which then was styled via media queries to make them appear readable for each mobile size.
+
+```
+modifyStory(){
+    const newStory = []
+    let base = 0
+    if(this.state.width > 500){
+      const storySentences = this.props.story.content.split('.')
+      for(let i = 10; i < storySentences.length+9; i+=10){
+        newStory.push(storySentences.slice(base,i).join('.'))
+        base +=10
+      }
+    } else {
+      const storySentences = this.props.story.content.split('')
+      for(let i = 750; i < storySentences.length+749; i+=750){
+        newStory.push(storySentences.slice(base,i).join(''))
+        base +=750
+      }
+    }
+    if (newStory.length === 0) return [this.props.story.content]
+    return newStory
+  }
+```
+
 # Future features
 If we would have had more time our idea was to implement these features to the application App:
 * language translator to let the user choose the reading prefer reading language.
