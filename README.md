@@ -114,6 +114,21 @@ def send_message(user_id):
 ### Reddit API
 We used the Reddit API to pull in additional short stories from the short stories subreddit. This was done using "praw", a wrapper for for the Reddit API using python. We also allow users to save a story from reddit to their reading list, which will also save the short story to our database, allowing users to make comments on it as well. In the future, we'd like to prevent the same reddit story from being added to the database multiple times.
 
+```
+@api.route('/reddit/<string:post_id>', methods=['GET'])
+def reddit_story_show(post_id):
+    submission = reddit.submission(id=post_id)
+    post = {}
+    post["title"] = submission.title
+    post["score"] = submission.score
+    post["id"] = submission.id
+    post["genre"] = submission.link_flair_text
+    post["url"] = submission.url
+    post["created"] = submission.created
+    post["content"] = submission.selftext
+    return jsonify(post)
+```
+
 ### Reading List
 In the event that a user finds a story they like, but do not have the time or possibility of starting or finishing the story, users can choose to save the selected story to their reading list. This was done using a /save endpoint along with the selected storyid. When users made the request to this endpoint, SQLAlchemy would query the database to find the specified story and then append it to the current user's reading list. Finally, the user would then be saved again in the database and updated with the updated reading list.
 ```
