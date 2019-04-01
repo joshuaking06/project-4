@@ -197,7 +197,7 @@ window.localStorage = (function() {
 Implementing the follow and following feature was hard, as it required the model to reference it self. I had to start researching and had to read documentation for SQLAlchemy, which I found extremely confusing. I was able to overcome this issue by following the guidance of this tutorial https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-viii-followers-contacts-and-friends-legacy. Another issue I had to deal was, python has a function called id. Therefore when I was trying to reference the table id, python was referencing the id to the python id function.
 
 # Win
-The implement of the follow and following feature was a personal win for me, this was the hardest and confusing feature to work on. I am pleased to be able to implement this feature as it give a realistic feel to the app. The main takeaway form this project was being able to develop an application using a new language which we learned in a timeframe of 2 weeks.  
+The implement of the follow and following feature was a personal win for me, this was the hardest and most confusing feature to work on. I am pleased to be able to implement this feature as it gives a realistic feel to the app. The main takeaway form this project was being able to develop an application using a new language which we learned in a timeframe of 2 weeks.  
 
 # Future features
 If we would have had more time our idea was to implement these features to the application App:
