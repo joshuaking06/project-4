@@ -1,5 +1,5 @@
 import React from 'react'
-import  { Header, Container } from 'semantic-ui-react'
+import { Header, Container } from 'semantic-ui-react'
 
 
 class Home extends React.Component {
@@ -14,7 +14,7 @@ class Home extends React.Component {
 
   render() {
 
-    return(
+    return (
 
       <div>
         <Header className='background'>
@@ -22,7 +22,7 @@ class Home extends React.Component {
           <Container className='homepage-margin'>
             <Header as='h1' className='heading read-me'>READ-ME
             </Header>
-            <Header as="h4" className='heading2'>Share your short stories and join our readers community
+            <Header as="h4" className='heading2'>Share your short stories and join our readers community Testing Deploy
             </Header>
           </Container>
         </Header>
