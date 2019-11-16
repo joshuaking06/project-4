@@ -1,64 +1,63 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { Segment, Sidebar } from 'semantic-ui-react'
-import StoriesIndex from './components/stories/StoriesIndex'
-import RedditIndex from './components/stories/RedditIndex'
-import StoriesShow from './components/stories/StoriesShow'
-import StoriesNewEdit from './components/stories/StoriesNewEdit'
-import StoriesInfo from './components/stories/StoriesInfo'
-import Navbar from './components/common/Navbar'
-import SideNav from './components/common/SideNav'
-import Register from './components/Auth/Register'
-import FlashMessages from './components/common/FlashMessages'
-import Settings from './lib/Settings'
-import Login from './components/Auth/Login'
-import UsersShow from './components/user/UsersShow'
-import LoadingPage from './components/common/LoadingPage'
-import UsersMessages from './components/user/UsersMessages'
-import Messages from './components/user/Messages'
-import MessagesShow from './components/user/MessagesShow'
-import ResetPassword from './components/Auth/ResetPassword'
-import NewPassword from './components/Auth/NewPassword'
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Segment, Sidebar } from "semantic-ui-react";
+import StoriesIndex from "./components/stories/StoriesIndex";
+import RedditIndex from "./components/stories/RedditIndex";
+import StoriesShow from "./components/stories/StoriesShow";
+import StoriesNewEdit from "./components/stories/StoriesNewEdit";
+import StoriesInfo from "./components/stories/StoriesInfo";
+import Navbar from "./components/common/Navbar";
+import SideNav from "./components/common/SideNav";
+import Register from "./components/Auth/Register";
+import FlashMessages from "./components/common/FlashMessages";
+import Settings from "./lib/Settings";
+import Login from "./components/Auth/Login";
+import UsersShow from "./components/user/UsersShow";
+import LoadingPage from "./components/common/LoadingPage";
+import UsersMessages from "./components/user/UsersMessages";
+import Messages from "./components/user/Messages";
+import MessagesShow from "./components/user/MessagesShow";
+import ResetPassword from "./components/Auth/ResetPassword";
+import NewPassword from "./components/Auth/NewPassword";
 
-import MyLibrary from './components/stories/MyLibrary'
-import Home from './components/common/Home'
-import SettingsPage from './components/common/SettingsPage'
+import MyLibrary from "./components/stories/MyLibrary";
+import Home from "./components/common/Home";
+import SettingsPage from "./components/common/SettingsPage";
 
-import 'semantic-ui-css/semantic.min.css'
-import './style.scss'
+import "semantic-ui-css/semantic.min.css";
+import "./style.scss";
 
-const nightStyle = {backgroundColor: 'black' }
-const style = {backgroundColor: 'white'}
+const nightStyle = { backgroundColor: "black" };
+const style = { backgroundColor: "white" };
 
-class App extends React.Component{
-  constructor(props){
-    super(props)
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-    this.state={
-      sidebarVisible: false,
-    }
+    this.state = {
+      sidebarVisible: false
+    };
 
-    this.handleShowClick = this.handleShowClick.bind(this)
-    this.handleSidebarHide = this.handleSidebarHide.bind(this)
+    this.handleShowClick = this.handleShowClick.bind(this);
+    this.handleSidebarHide = this.handleSidebarHide.bind(this);
   }
 
-  componentDidMount(){
-    if(!Settings.checkIfSet())Settings.setNightMode(false)
-    this.setState({ nightMode: false })
+  componentDidMount() {
+    console.log("here");
+    if (!Settings.checkIfSet()) Settings.setNightMode(false);
+    this.setState({ nightMode: false });
   }
 
-
-
-  handleShowClick(){
-    this.setState({ sidebarVisible: true })
+  handleShowClick() {
+    this.setState({ sidebarVisible: true });
   }
 
-  handleSidebarHide(){
-    this.setState({ sidebarVisible: false })
+  handleSidebarHide() {
+    this.setState({ sidebarVisible: false });
   }
 
-  render(){
+  render() {
     return (
       <div>
         <BrowserRouter>
@@ -69,15 +68,21 @@ class App extends React.Component{
                 visible={this.state.sidebarVisible}
               />
               <Sidebar.Pusher>
-                <Navbar hideSidebar={this.handleSidebarHide} handleShowClick={this.handleShowClick} />
+                <Navbar
+                  hideSidebar={this.handleSidebarHide}
+                  handleShowClick={this.handleShowClick}
+                />
                 <FlashMessages />
                 <Switch>
                   <Route path="/loading" component={LoadingPage} />
-                  <Route path='/library' component={MyLibrary} />
+                  <Route path="/library" component={MyLibrary} />
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
                   <Route path="/resetpassword" component={ResetPassword} />
-                  <Route path="/users/:id/newpassword" component={NewPassword} />
+                  <Route
+                    path="/users/:id/newpassword"
+                    component={NewPassword}
+                  />
                   <Route path="/messages/:id/show" component={MessagesShow} />
                   <Route path="/settings" component={SettingsPage} />
                   <Route path="/messages" component={Messages} />
@@ -91,14 +96,13 @@ class App extends React.Component{
                   <Route path="/reddit" component={RedditIndex} />
                   <Route path="/" component={Home} />
                 </Switch>
-
               </Sidebar.Pusher>
             </Sidebar.Pushable>
           </main>
         </BrowserRouter>
       </div>
-    )
+    );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById("root"));
