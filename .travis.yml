@@ -8,7 +8,7 @@ cache:
 deploy: 
     provider: heroku
   api_key:
-    secure: KEY
+    secure: $HEROKU_DEPLOY_KEY
   app: read-meee
   on:
     repo: Siddant/project-4
