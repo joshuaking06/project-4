@@ -5,6 +5,10 @@ cache:
   yarn: true
   directories:
     - "node_modules"
+
+after_success:
+  - echo "passed the test now building"
+  - yarn build
 deploy:
   provider: heroku
   api_key:
