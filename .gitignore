@@ -1,1 +1,8 @@
 dist
+.DS_Store
+node_modules
+.sass-cache
+*.log
+.env
+.nyc_output
+coverage*
