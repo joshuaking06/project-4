@@ -8,7 +8,7 @@ cache:
 
 after_success:
   - echo "passed the test now building"
-  - yarn build
+  # - yarn build
 deploy:
   provider: heroku
   api_key:
