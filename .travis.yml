@@ -5,8 +5,8 @@ cache:
   yarn: true
   directories:
     - "node_modules"
-deploy: 
-    provider: heroku
+deploy:
+  provider: heroku
   api_key:
     secure: $HEROKU_DEPLOY_KEY
   app: read-meee
