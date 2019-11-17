@@ -16,7 +16,7 @@ class Home extends React.Component {
         <Header className="background">
           <Container className="homepage-margin">
             <Header as="h1" className="heading read-me">
-              READ-ME
+              READ-MEEEEE
             </Header>
             <Header as="h4" className="heading2">
               Share your short stories and join our readers community
