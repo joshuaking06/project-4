@@ -15,8 +15,7 @@ jobs:
       script: yarn test
     - stage: "build"
       name: "building project" # names the second Tests stage job
-      script: skip
-      after_success:
+      script:
         - echo "passed the test now building"
         - yarn build
         - git add .
