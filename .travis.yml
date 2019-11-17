@@ -15,6 +15,7 @@ jobs:
       script: yarn test
     - stage: "build"
       name: "building project" # names the second Tests stage job
+      script: skip
       after_success:
         - echo "passed the test now building"
         - yarn build
@@ -22,6 +23,7 @@ jobs:
         - git commit -m "ready to deploy"
     - stage: "deploy"
       name: "Deploy to heroku"
+      script: skip
       deploy:
         provider: heroku
         api_key:
